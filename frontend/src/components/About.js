@@ -1,5 +1,5 @@
 import React from 'react';
-import {about_page} from '../Helpers/helperString';
+import { about_page } from '../Helpers/helperString';
 
 export default function About() {
     return (

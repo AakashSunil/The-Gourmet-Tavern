@@ -109,3 +109,9 @@ export const Menu_Page = {
     FOOD: "Food Menu",
     DRINK: "Drinks Menu"
 }
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const Card_Item_Page = {
+    ADD: "Add to Cart"
+}

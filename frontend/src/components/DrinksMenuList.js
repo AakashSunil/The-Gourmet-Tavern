@@ -4,8 +4,49 @@ import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import CardItem from './CardItem';
 import { DrinksMenu_Page } from '../Helpers/helperString';
+import { drinks_menu_item } from '../Helpers/menu';
+import { dropdown_populate } from '../Helpers/dropdown_helpers';
 
 export default function DrinksMenuList() {
+
+    const item_loop = (items) => {
+
+        const item_blank = {
+            image: "",
+            name: "",
+            description: "",
+            price: "",
+            isDeleted: true,
+            category:"",
+            level: "",
+            stockQuantity: 0,
+            ingredients: ""
+        }
+        let i = 0;
+        const rows = [...Array( Math.ceil(items.length / 4) )];
+        let productRows = rows.map( (row, idx) => items.slice(idx * 4, idx * 4 + 4) );
+        let temp_rows = productRows
+        temp_rows.map((row,idx) => {
+            if(row.length != 4) {
+                for(i = 0;i <= 4 - (row.length-1);i++) {
+                    productRows[idx].push(item_blank)
+                }
+            }
+        })
+        const content = productRows.map((row, idx_row) => (
+            
+            <Row className="card_align" key={idx_row}>
+            
+            { row.map( (product,idx) => (
+                <Col md key={idx}>
+                    {!product.isDeleted && <CardItem item = {product} key={idx} /> }
+                </Col>
+                )
+            )}
+            </Row> ));
+
+        return content
+    }
 
     const isAdmin = true;
 
@@ -39,9 +80,7 @@ export default function DrinksMenuList() {
                             <FloatingLabel controlId="floatingSelectGrid" label="Category">
                                 <Form.Select aria-label="Floating label select example" value = { category } onChange = { (e) => setCategory(e.target.value) }>
                                     <option>Select Category</option>
-                                    <option value="Beer">Beer</option>
-                                    <option value="Wine">Wine</option>
-                                    <option value="Whiskey">Whiskey</option>
+                                    {dropdown_populate(drinks_menu_item,"category")}
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
@@ -49,9 +88,7 @@ export default function DrinksMenuList() {
                             <FloatingLabel controlId="floatingSelectGrid" label="Alcohol Level">
                                 <Form.Select aria-label="Floating label select example" value={ level } onChange = { (e) => setLevel(e.target.value) }>
                                     <option>Select Alcohol Level</option>
-                                    <option value="10">Less than 10</option>
-                                    <option value="30">Less than 30, Greater than 10</option>
-                                    <option value="50">Less than 50, Greater than 30</option>
+                                    {dropdown_populate(drinks_menu_item,"level")}
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
@@ -80,36 +117,10 @@ export default function DrinksMenuList() {
                 null
             }
             <div className="card_align">
-                <Row className="card_align">
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                </Row>
-                <Row className="card_align">
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                    <Col md>
-                        <CardItem />
-                    </Col>
-                </Row>
-                
-                </div>
+            {
+                item_loop(drinks_menu_item)
+            }    
+            </div>
         </div>
     )
 }
