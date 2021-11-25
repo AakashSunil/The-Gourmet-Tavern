@@ -45,5 +45,16 @@
       width: 50%;
       height: 25%;
       /* border: 3px solid black; */
-      padding: 3%;
+      /* padding: 3%; */
   }
+
+  .heading {
+      font-size: 80px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'Courier New', 'Courier', 'monospace', 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
+      padding: 5%;
+  }
+
+.submission {
+    display: flex;
+    justify-content: space-between;
+}

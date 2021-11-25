@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Form, Button, FormControl} from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
     
@@ -41,9 +42,12 @@ export default function Login() {
                     <Form.Label>Enter Password</Form.Label>
                     <Form.Control type= "password" placeholder = "Enter Password" value={password} onChange = { handlePasswordChange }/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
+                <div className="submission">
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
+                    <Link to="/register" className="">Do Not have an Account? Create One</Link>
+                </div>
             </Form>
         </div>
     )

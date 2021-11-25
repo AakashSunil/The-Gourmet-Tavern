@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Form, Button, FormControl} from 'react-bootstrap';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import './components.css'
 export default function Register() {
 
@@ -82,9 +83,12 @@ export default function Register() {
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control type= "password" placeholder = "Enter Password" value={password_confirm} onChange = { handlePasswordConfirmChange }/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Register User
-                </Button>
+                <div className="submission">
+                    <Button variant="primary" type="submit">
+                        Register User
+                    </Button>
+                    <Link to="/login" className="">Already have an Account? Login Now</Link>
+                </div>
             </Form>
         </div>
     )
