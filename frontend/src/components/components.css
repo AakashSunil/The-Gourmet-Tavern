@@ -48,6 +48,9 @@
       /* padding: 3%; */
   }
 
+  .filter_position {
+      overflow-y: visible;
+  }
   .heading {
       font-size: 80px;
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'Courier New', 'Courier', 'monospace', 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
@@ -57,4 +60,23 @@
 .submission {
     display: flex;
     justify-content: space-between;
+}
+
+.button_align {
+    align-self: center;
+    width: 100%;
+}
+
+.card_align {
+    padding: 2%;
+    height: fit-content;
+    /* overflow: auto; */
+    /* margin: 2%; */
+    /* display: flex; */
+    /* justify-content: flex-start; */
+    text-align: "center";
+}
+
+.Searching {
+     overflow: hidden;
 }

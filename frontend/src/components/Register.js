@@ -15,32 +15,6 @@ export default function Register() {
     const [password_confirm, setPasswordConfirm] = useState('');
     const [errors, setErrors] = useState({});
 
-
-    const handleNameChange = e => {
-        setName(e.target.value);
-    };
-
-    const handleEmailChange = e => {
-        setEmail(e.target.value);
-    };
-
-    const handlePhoneChange = e => {
-        setPhone(e.target.value);
-    };
-
-    const handleAddressChange = e => {
-        setAddress(e.target.value);
-    };
-
-    const handlePasswordChange = e => {
-        setPassword(e.target.value);
-    };
-
-    const handlePasswordConfirmChange = e => {
-        setPasswordConfirm(e.target.value);
-    };
-
-
     const handleSubmit = e => {
         e.preventDefault()
         const user = {
@@ -61,27 +35,27 @@ export default function Register() {
             <Form onSubmit = { handleSubmit }>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="name" placeholder="Enter Name" value={name} onChange = { handleNameChange } />
+                    <Form.Control type="name" placeholder="Enter Name" value={name} onChange = { (e) => setName(e.target.value) } />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" value={email} onChange = { handleEmailChange }/>
+                    <Form.Control type="email" placeholder="name@example.com" value={email} onChange = { (e) => setEmail(e.target.value) }/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Mobile Number</Form.Label>
-                    <Form.Control type = "number" placeholder="Enter Mobile Number" value={phone} onChange = { handlePhoneChange }/>
+                    <Form.Control type = "number" placeholder="Enter Mobile Number" value={phone} onChange = { (e) => setPhone(e.target.value) }/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="Enter Address" value={address} onChange = { handleAddressChange }/>
+                    <Form.Control as="textarea" rows={3} placeholder="Enter Address" value={address} onChange = { (e) => setAddress(e.target.value) }/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Enter Password</Form.Label>
-                    <Form.Control type= "password" placeholder = "Enter Password" value={password} onChange = { handlePasswordChange }/>
+                    <Form.Control type= "password" placeholder = "Enter Password" value={password} onChange = { (e) => setPassword(e.target.value) }/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type= "password" placeholder = "Enter Password" value={password_confirm} onChange = { handlePasswordConfirmChange }/>
+                    <Form.Control type= "password" placeholder = "Enter Password" value={password_confirm} onChange = { (e) => setPasswordConfirm(e.target.value) }/>
                 </Form.Group>
                 <div className="submission">
                     <Button variant="primary" type="submit">
