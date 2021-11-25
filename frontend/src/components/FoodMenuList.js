@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 // import { Link, Redirect } from "react-router-dom";
 // import { useHistory } from 'react-router';
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
-import CardItem from './CardItem';
 import { FoodMenu_Page } from '../Helpers/helperString';
 import { food_menu_item } from '../Helpers/menu';
-import { dropdown_populate } from '../Helpers/dropdown_helpers';
+import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
 
 
 export default function FoodMenuList() {
@@ -24,31 +23,9 @@ export default function FoodMenuList() {
             stockQuantity: 0,
             ingredients: ""
         }
-        let i = 0;
-        const rows = [...Array( Math.ceil(items.length / 4) )];
-        let productRows = rows.map( (row, idx) => items.slice(idx * 4, idx * 4 + 4) );
-        let temp_rows = productRows
-        temp_rows.map((row,idx) => {
-            if(row.length !== 4) {
-                for(i = 0;i <= 4 - (row.length-1);i++) {
-                    productRows[idx].push(item_blank)
-                }
-            }
-            return productRows
-        })
-        const content = productRows.map((row, idx_row) => (
-            
-            <Row className="card_align" key={idx_row}>
-            
-            { row.map( (product,idx) => (
-                <Col md key={idx}>
-                    {!product.isDeleted && <CardItem item = {product} key={idx} /> }
-                </Col>
-                )
-            )}
-            </Row> ));
-
-        return content
+        
+        let card_grid = grid_create(items,item_blank)
+        return card_grid
     }
 
     
