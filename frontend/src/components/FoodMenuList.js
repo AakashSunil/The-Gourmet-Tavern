@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
 import { Link, Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
-import "./components.css"
-const Home = () => {
-    return(
-        <div>
+export default function FoodMenuList() {
+    return (
+        <div id="About">
+            <h4>Food Menu</h4>
+            <p>
+            Food Menu List
+            </p>
             <div className="content">
                 <img src='/name.png' className="center"></img>
             </div>
@@ -35,5 +38,3 @@ const Home = () => {
         </div>
     )
 }
-
-export default Home;

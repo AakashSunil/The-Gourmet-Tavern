@@ -1,10 +1,17 @@
+// import authReducer from "./authReducer";
+// import errorReducer from "./errorReducer";
+// import productReducer from "./productReducer";
+// import cartReducer from "./cartReducer";
+// import orderReducer, { order } from "./orderReducer";
 import { combineReducers } from 'redux';
-import errorReducer from './errorReducer';
 
-import { connectRouter } from 'connected-react-router'
+const allReducers = combineReducers({
+    // auth : authReducer,
+    // error : errorReducer,
+    // product : productReducer,
+    // cart : cartReducer,
+    // order : orderReducer
+});
 
-const createRootReducer = (history) => combineReducers({
-  router: connectRouter(history),
-  errors: errorReducer
-})
-export default createRootReducer;
+export default allReducers;
+
