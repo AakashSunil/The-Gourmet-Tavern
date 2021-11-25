@@ -7,18 +7,12 @@
     padding-top: 5%;
 }
 
-/* .justify_button {
-    display: table-cell;
-    text-align: center;
-} */
-
 .content {
     padding-top: 5%;
 }
 
 .footer{
     margin-top: 1rem;
-    /* padding: 1rem; */
     background-color: rgb(1, 1, 1);
     position: fixed;
     bottom: 0;
@@ -38,14 +32,11 @@
   .form_css {
       margin-top: 1%;
       width: fit-content;
-      /* align-items: center; */
       text-align: start;
       margin-left: auto;
       margin-right: auto;
       width: 50%;
       height: 25%;
-      /* border: 3px solid black; */
-      /* padding: 3%; */
   }
 
   .filter_position {
@@ -70,13 +61,19 @@
 .card_align {
     padding: 2%;
     height: fit-content;
-    /* overflow: auto; */
-    /* margin: 2%; */
-    /* display: flex; */
-    /* justify-content: flex-start; */
     text-align: "center";
 }
 
 .Searching {
      overflow: hidden;
+}
+
+.contact_width {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.contact_page {
+    padding-top: 10%;
 }

@@ -1,16 +1,17 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { Menu_Page } from '../Helpers/helperString'
 
 export default function Menu() {
     return(
         <div>
             <div className="content">
-                <h1>Choose Which Menu to Open:</h1>
+                <h1>{Menu_Page.HEADING}</h1>
             </div>
             <div className = "justify_button">
-                <Link to="/foodMenu"><Button size="lg">Food Menu</Button></Link>
-                <Link to="/drinksMenu"><Button size="lg">Drinks Menu</Button></Link>
+                <Link to="/foodMenu"><Button size="lg">{Menu_Page.FOOD}</Button></Link>
+                <Link to="/drinksMenu"><Button size="lg">{Menu_Page.DRINK}</Button></Link>
                 
             </div>
         </div>

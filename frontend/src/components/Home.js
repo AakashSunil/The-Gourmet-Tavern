@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import "./components.css"
+import { Home_Page } from '../Helpers/helperString';
 const Home = () => {
     return(
         <div>
             <div className="content">
-                <h1 className="heading">Welcome To</h1>
+                <h1 className="heading">{Home_Page.GREETING}</h1>
                 <img src='/name.png' className="center"></img>
             </div>
             <div className = "justify_button">
-                <Link to="/login"><Button>Log-In</Button></Link>
-                <Link to="/register"><Button>Sign-Up</Button></Link>
-                <Link to="/menu"><Button>Menu</Button></Link>
-                <Link to="/about"><Button>About</Button></Link>
-                <Link to="/contact"><Button>Contact</Button></Link>
+                <Link to="/login"><Button>{Home_Page.LOGIN}</Button></Link>
+                <Link to="/register"><Button>{Home_Page.REGISTER}</Button></Link>
+                <Link to="/menu"><Button>{Home_Page.MENU}</Button></Link>
+                <Link to="/about"><Button>{Home_Page.ABOUT}</Button></Link>
+                <Link to="/contact"><Button>{Home_Page.CONTACT}</Button></Link>
             </div>
         </div>
     )

@@ -1,20 +1,48 @@
 import React from 'react'
+import { Table } from 'react-bootstrap'
+import { contact_page } from '../Helpers/helperString'
 
 export default function Contact() {
     return (
-        <div id="About">
-            <h4>Contact Us</h4>
-            <pre className="data" id="Contact">
-            <p>HOURS OF OPERATION                          Contact Us: </p>                
-            <p>Monday	:	11:30 AM - 10:00 PM             9999 N. Greenville Ave, Suite #999 , <br/>  
-                Tuesday	:	11:30 AM - 10:00 PM            Richardson, TX - 75081<br/> 
-                Wednesday	:	11:30 AM - 10:00 PM          Phone:  (999) 999-9999<br/>  
-                Thursday	:	11:30 AM - 10:00 PM           Email: dummy.richardson@gmail.com<br/>  
-                Friday	:	11:30 AM - 10:30 PM                                             <br/>  
-                Saturday	:	11:30 AM - 10:30 PM                                         <br/>  
-                Sunday	:	11:30 AM - 09:30 PM                                             <br/>
-                </p> 
-        </pre>    
+        <div className="contact_page">
+            <h2>{contact_page.CONTACT_US}</h2>
+            <div className="contact_width">
+                <Table borderless={true}>
+                    <thead>
+                        <tr>
+                            <th><h4>{contact_page.HEADING_TIME}</h4></th>
+                            <th><h4>{contact_page.HEADING_ADDRESS}</h4></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{contact_page.MONDAY}</td>
+                            <td>{contact_page.ADDRESS_LINE_1}</td>
+                        </tr>
+                        <tr>
+                            <td>{contact_page.TUESDAY}</td>
+                            <td>{contact_page.ADDRESS_LINE_2}</td>
+                        </tr>
+                        <tr>
+                            <td>{contact_page.WEDNESDAY}</td>
+                            <td>{contact_page.PHONE}</td>
+                        </tr>
+                        <tr>
+                            <td>{contact_page.THURSDAY}</td>
+                            <td>{contact_page.EMAIL}</td>
+                        </tr>
+                        <tr>
+                            <td>{contact_page.FRIDAY}</td>
+                        </tr>
+                        <tr>
+                            <td>{contact_page.SATURDAY}</td>
+                        </tr>
+                        <tr>
+                            <td>{contact_page.SUNDAY}</td>
+                        </tr>
+                    </tbody>
+                </Table>
+            </div>
         </div>
     )
 }

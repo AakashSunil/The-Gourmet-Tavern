@@ -3,6 +3,8 @@ import { Link, Redirect } from "react-router-dom";
 import { useHistory } from 'react-router';
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import CardItem from './CardItem';
+import { FoodMenu_Page } from '../Helpers/helperString';
+
 
 export default function FoodMenuList() {
 
@@ -29,8 +31,8 @@ export default function FoodMenuList() {
         <div>
             <div className="Searching">
             <div className="content">
-                <h1>Food Menu</h1>
-                <p>Food Menu List</p>
+                <h1>{FoodMenu_Page.HEADING}</h1>
+                <p>{FoodMenu_Page.DESCRIPTION}</p>
             </div>
             <div className="form_css">
                 <Form onSubmit = { handleSubmit }>
@@ -62,8 +64,8 @@ export default function FoodMenuList() {
                             <FloatingLabel controlId="floatingSelectGrid" label="Preference">
                                 <Form.Select aria-label="Floating label select example" value={ preference } onChange = { (e) => setPreference(e.target.value) }>
                                     <option>Select Preference</option>
-                                    <option value="Continental">Vegetarian</option>
-                                    <option value="Italian">Non-Vegetarian</option>
+                                    <option value="Vegetarian">{FoodMenu_Page.VEG}</option>
+                                    <option value="Non-Vegetarian">{FoodMenu_Page.NON_VEG}</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
@@ -75,7 +77,7 @@ export default function FoodMenuList() {
                         <Col md className="button_align">
                             <div className="d-grid gap-2">
                                 <Button variant="primary" type="submit" size="lg">
-                                    Search
+                                    {FoodMenu_Page.SEARCH}
                                 </Button>
                             </div>
                         </Col>
@@ -86,7 +88,7 @@ export default function FoodMenuList() {
             {isAdmin?
                 <div className="card_align">
                     <Button variant="primary" type="submit" size="lg">
-                        Add Food Item
+                        {FoodMenu_Page.ADD}
                     </Button>
                 </div>
                 :

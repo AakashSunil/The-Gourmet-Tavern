@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Form, Button, FormControl} from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Login_Page } from '../Helpers/helperString';
 
 export default function Login() {
     
@@ -32,21 +33,19 @@ export default function Login() {
 
     return(
         <div className="form_css">
-            <h2 style={{marginBottom: '40px'}}>Login to the Restaurant</h2>
+            <h2 style={{marginBottom: '40px'}}>{Login_Page.HEADING}</h2>
             <Form onSubmit = { handleSubmit }>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>{Login_Page.EMAIL}</Form.Label>
                     <Form.Control type="email" placeholder="name@example.com" value={email} onChange = { handleEmailChange }/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Enter Password</Form.Label>
+                    <Form.Label>{Login_Page.PASSWORD}</Form.Label>
                     <Form.Control type= "password" placeholder = "Enter Password" value={password} onChange = { handlePasswordChange }/>
                 </Form.Group>
                 <div className="submission">
-                    <Button variant="primary" type="submit">
-                        Login
-                    </Button>
-                    <Link to="/register" className="">Do Not have an Account? Create One</Link>
+                    <Button variant="primary" type="submit">{Login_Page.LOGIN}</Button>
+                    <Link to="/register" className="">{Login_Page.MESSAGE}</Link>
                 </div>
             </Form>
         </div>

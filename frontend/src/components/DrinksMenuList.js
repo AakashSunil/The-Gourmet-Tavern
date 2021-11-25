@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import CardItem from './CardItem';
-
+import { DrinksMenu_Page } from '../Helpers/helperString';
 
 export default function DrinksMenuList() {
 
@@ -29,8 +29,8 @@ export default function DrinksMenuList() {
     return (
         <div>
             <div className="content">
-                <h1>Drinks Menu</h1>
-                <p>Drinks Menu List</p>
+                <h1>{DrinksMenu_Page.HEADING}</h1>
+                <p>{DrinksMenu_Page.DESCRIPTION}</p>
             </div>
             <div className="form_css">
                 <Form onSubmit = { handleSubmit }>
@@ -57,13 +57,13 @@ export default function DrinksMenuList() {
                         </Col>
                         <Col md>
                             <FloatingLabel controlId="floatingInputGrid" label="Search">
-                            <Form.Control type="text" placeholder="Search Drink Name" value={search} onChange = { (e) => { setSearch(e.target.value) }} />
+                                <Form.Control type="text" placeholder="Search Drink Name" value={search} onChange = { (e) => { setSearch(e.target.value) }} />
                             </FloatingLabel>
                         </Col>
                         <Col md className="button_align">
                             <div className="d-grid gap-2">
                                 <Button variant="primary" type="submit" size="lg">
-                                    Search
+                                    {DrinksMenu_Page.SEARCH}
                                 </Button>
                             </div>
                         </Col>
@@ -73,7 +73,7 @@ export default function DrinksMenuList() {
             {isAdmin?
                 <div className="card_align">
                     <Button variant="primary" type="submit" size="lg">
-                        Add Drinks Item
+                        {DrinksMenu_Page.ADD}
                     </Button>
                 </div>
                 :
