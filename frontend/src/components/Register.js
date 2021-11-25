@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Form, Button, FormControl} from 'react-bootstrap';
+import React, { useState } from 'react';
+import {Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Register_Page } from '../Helpers/helperString';
@@ -14,7 +14,7 @@ export default function Register() {
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirm, setPasswordConfirm] = useState('');
-    const [errors, setErrors] = useState({});
+    // const [errors, setErrors] = useState({});
 
     const handleSubmit = e => {
         e.preventDefault()

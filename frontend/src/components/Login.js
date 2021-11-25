@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {Form, Button, FormControl} from 'react-bootstrap';
+import React, { useState } from 'react';
+import {Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Login_Page } from '../Helpers/helperString';
@@ -10,7 +10,7 @@ export default function Login() {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({});
+    // const [errors, setErrors] = useState({});
 
 
     const handleEmailChange = e => {

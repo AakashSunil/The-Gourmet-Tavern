@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from "react-router-dom";
-import { useHistory } from 'react-router';
+// import { Link, Redirect } from "react-router-dom";
+// import { useHistory } from 'react-router';
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import CardItem from './CardItem';
 import { FoodMenu_Page } from '../Helpers/helperString';
@@ -29,11 +29,12 @@ export default function FoodMenuList() {
         let productRows = rows.map( (row, idx) => items.slice(idx * 4, idx * 4 + 4) );
         let temp_rows = productRows
         temp_rows.map((row,idx) => {
-            if(row.length != 4) {
+            if(row.length !== 4) {
                 for(i = 0;i <= 4 - (row.length-1);i++) {
                     productRows[idx].push(item_blank)
                 }
             }
+            return productRows
         })
         const content = productRows.map((row, idx_row) => (
             
@@ -52,7 +53,7 @@ export default function FoodMenuList() {
 
     
     const isAdmin = true;
-    const history = useHistory()
+    // const history = useHistory()
     
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import React from 'react';
+import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 import "./components.css"
 import { Home_Page } from '../Helpers/helperString';
@@ -8,7 +8,7 @@ const Home = () => {
         <div>
             <div className="content">
                 <h1 className="heading">{Home_Page.GREETING}</h1>
-                <img src='/name.png' className="center"></img>
+                <img src='/name.png' className="center" alt="The Gourmet Tavern"></img>
             </div>
             <div className = "justify_button">
                 <Link to="/login"><Button>{Home_Page.LOGIN}</Button></Link>

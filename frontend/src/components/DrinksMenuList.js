@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link, Redirect } from "react-router-dom";
+// import { Link, Redirect } from "react-router-dom";
 import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import CardItem from './CardItem';
 import { DrinksMenu_Page } from '../Helpers/helperString';
 import { drinks_menu_item } from '../Helpers/menu';
@@ -27,11 +27,13 @@ export default function DrinksMenuList() {
         let productRows = rows.map( (row, idx) => items.slice(idx * 4, idx * 4 + 4) );
         let temp_rows = productRows
         temp_rows.map((row,idx) => {
-            if(row.length != 4) {
+            if(row.length !== 4) {
                 for(i = 0;i <= 4 - (row.length-1);i++) {
                     productRows[idx].push(item_blank)
                 }
             }
+            return productRows
+
         })
         const content = productRows.map((row, idx_row) => (
             
@@ -50,7 +52,7 @@ export default function DrinksMenuList() {
 
     const isAdmin = true;
 
-    const history = useHistory()
+    // const history = useHistory()
     
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');

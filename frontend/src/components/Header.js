@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from "react-router-dom";
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { Redirect } from "react-router-dom";
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -39,7 +39,7 @@ const Header = () => { //(props) was removed
         <div className="header">
             <Navbar bg="light">
                 <Container>
-                    <Navbar.Brand href="/"><img src = "symbol.png" height="40px"/></Navbar.Brand>
+                    <Navbar.Brand href="/"><img src = "symbol.png" height="40px" alt="GT"/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
