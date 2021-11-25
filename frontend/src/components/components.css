@@ -77,3 +77,13 @@
 .contact_page {
     padding-top: 10%;
 }
+
+.design {
+    height: 575px;
+    /* width: 420px; */
+}
+
+.description_height {
+    height:100px;
+    width: fit-content;
+}

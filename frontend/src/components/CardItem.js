@@ -6,11 +6,11 @@ export default function CardItem(props) {
 
   const { item } = props;
   return(
-    <Card>
-      <Card.Img variant="top" src={item.image} />
+    <Card className="design">
+      <Card.Img variant="top" src={item.image} height="310px" width="420px"/>
       <Card.Body>
         <Card.Title>{item.name}</Card.Title>
-        <Card.Text>
+        <Card.Text className="description_height">
           {item.description}
         </Card.Text>
         <Card.Text>

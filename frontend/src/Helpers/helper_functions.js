@@ -6,7 +6,11 @@ import CardItem from "../components/CardItem";
 export const dropdown_populate = (items,type) => {
     let cat = new Set();
     items.forEach(element => {
-        cat.add(element[type].trim())
+        console.log(element);
+        var sep = element[type].split(';');
+        sep.forEach(ele => {
+            cat.add(ele.trim())
+        })
     });
     let cat_array = [...cat];
     const options = cat_array.map((element,idx) => {
