@@ -19,7 +19,6 @@ export default function DrinksMenuList() {
             category:"",
             level: "",
             stockQuantity: 0,
-            ingredients: ""
         }
         
         let card_grid = grid_create(items,item_blank)

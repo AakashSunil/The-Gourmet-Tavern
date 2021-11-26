@@ -13,9 +13,20 @@ export const dropdown_populate = (items,type) => {
         })
     });
     let cat_array = [...cat];
-    const options = cat_array.map((element,idx) => {
-        return <option value={element} key={idx}>{element}</option>
-    })
+    let options;
+    if(type==="level"){
+        cat_array.sort(function(a, b) {
+            return a - b;});
+        options = cat_array.map((element,idx) => {
+            return <option value={element} key={idx}>{element}{type==="level"?"%":""}</option>
+        })
+    }
+    else {
+        options = cat_array.map((element,idx) => {
+            return <option value={element} key={idx}>{element}</option>
+        })
+    }
+    
     return options
 }
 
