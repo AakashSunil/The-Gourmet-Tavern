@@ -46,12 +46,13 @@ export const dropdown_populate = (items,type) => {
 
 export const grid_create = (items,item_blank) => {
         let i = 0;
-        const rows = [...Array( Math.ceil(items.length / 4) )];
-        let productRows = rows.map( (row, idx) => items.slice(idx * 4, idx * 4 + 4) );
+        let limit = 3;
+        const rows = [...Array( Math.ceil(items.length / limit) )];
+        let productRows = rows.map( (row, idx) => items.slice(idx * limit, idx * limit + limit) );
         let temp_rows = productRows
         temp_rows.map((row,idx) => {
-            if(row.length !== 4) {
-                for(i = 0;i <= 4 - (row.length-1);i++) {
+            if(row.length !== limit) {
+                for(i = 0;i <= limit - (row.length-1);i++) {
                     productRows[idx].push(item_blank)
                 }
             }

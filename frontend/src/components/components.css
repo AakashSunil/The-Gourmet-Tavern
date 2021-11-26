@@ -8,7 +8,7 @@
 }
 
 .content {
-    padding-top: 5%;
+    padding-top: 1%;
 }
 
 .footer{
@@ -19,6 +19,7 @@
     left: 0;
     width: 100%;
     height: 60px;
+    z-index: 1;
   }
 
   .clear { clear: both; height: 60px; }
@@ -26,6 +27,7 @@
   .header {
       position: sticky;
       top: 0;      
+      z-index: 1;
     
   }
 
@@ -38,6 +40,16 @@
       width: 50%;
       height: 25%;
   }
+
+  .form_css_menu {
+    margin-top: 1%;
+    width: fit-content;
+    text-align: start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 25%;
+}
 
   .filter_position {
       overflow-y: visible;
@@ -59,9 +71,10 @@
 }
 
 .card_align {
-    padding: 2%;
+    padding: 1%;
     height: fit-content;
-    text-align: "center";
+    text-align: -webkit-center;
+
 }
 
 .Searching {
@@ -79,15 +92,46 @@
 }
 
 .design {
-    height: 575px;
-    /* width: 420px; */
+    height: 675px;
+    width: 490px;
+    text-align: justify;
 }
 
 .description_height {
     height:100px;
     width: fit-content;
+    font-size: large
+}
+
+.TextSize {
+    font-size: x-large;
+}
+
+.TextSize_Title {
+    font-size: x-large;
+    text-align: left;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
 }
 
 .search_reset {
     display: flex;
+    text-align: center;
+    /* margin-left: 50px; */
+    /* margin-right: 50px; */
+
+}
+
+.quantity {
+    text-align: center;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.qunatity_text {
+    font-size: large;
 }

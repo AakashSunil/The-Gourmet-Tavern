@@ -50,9 +50,8 @@ export default function DrinksMenuList() {
         <div>
             <div className="content">
                 <h1>{DrinksMenu_Page.HEADING}</h1>
-                <p>{DrinksMenu_Page.DESCRIPTION}</p>
             </div>
-            <div className="form_css">
+            <div className="form_css_menu">
                 <Form onSubmit = { handleSubmit }>
                     <Row className="g-2">
                         <Col md>
@@ -78,7 +77,7 @@ export default function DrinksMenuList() {
                         </Col>
                         <Col md className="button_align">
                             <div className="search_reset">
-                                <Col md style={{marginRight:"1%",marginLeft:"5%"}}>
+                                <Col md >
                                     <Button variant="primary" type="submit"size="lg" >
                                         {DrinksMenu_Page.SEARCH}
                                     </Button>

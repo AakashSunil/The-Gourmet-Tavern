@@ -30,7 +30,6 @@ export const contact_page = {
 
 export const DrinksMenu_Page = {
     HEADING: "Drinks Menu",
-    DESCRIPTION: "Drinks Menu List",
     SEARCH: "Search",
     RESET: "Reset",
     ADD: "Add Drinks Item"
@@ -40,7 +39,6 @@ export const DrinksMenu_Page = {
 
 export const FoodMenu_Page = {
     HEADING: "Food Menu",
-    DESCRIPTION: "Food Menu List",
     SEARCH: "Search",
     RESET: "Reset",
     ADD: "Add Food Item",
@@ -114,7 +112,7 @@ export const Card_Item_Page = {
 // --------------------------------------------------------------------------------------------------------------------------------
 
 export const Add_Drink_Page = {
-    ADD:"Add New Food",
+    ADD:"Add New Drink Item",
     NAME: "Drink Name",
     DESCRIPTION: "Drink Description",
     PRICE: "Price",
@@ -130,7 +128,7 @@ export const Add_Drink_Page = {
 // --------------------------------------------------------------------------------------------------------------------------------
 
 export const Add_Food_Page = {
-    ADD:"Add New Food",
+    ADD:"Add New Food Item",
     NAME: "Food Name",
     DESCRIPTION: "Food Description",
     PRICE: "Price",

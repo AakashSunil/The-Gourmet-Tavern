@@ -82,6 +82,10 @@ export const AddFoodItem = () => {
                     <Form.Label>{Add_Food_Page.NAME}</Form.Label>
                     <Form.Control type="name" placeholder="Enter Food Name" value={name} onChange = { (e) => setName(e.target.value) } />
                 </Form.Group>
+                <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>{Add_Food_Page.FOOD_IMAGE}</Form.Label>
+                    <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
+                </Form.Group>  
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>{Add_Food_Page.DESCRIPTION}</Form.Label>
                     <Form.Control as="textarea" rows={3} placeholder="Enter Food Description" value={description} onChange = { (e) => setDescription(e.target.value) }/>
@@ -110,10 +114,11 @@ export const AddFoodItem = () => {
                     <Form.Label>{Add_Food_Page.STOCK_QUANTITY}</Form.Label>
                     <Form.Control type= "number" placeholder = "Enter Stock Quantity" value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
                 </Form.Group>
-                <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Label>{Add_Food_Page.DRINK_IMAGE}</Form.Label>
-                    <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
-                </Form.Group>                
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <div key={`default-checkbox`} className="mb-3">
+                        <Form.Check type="checkbox" id={`default-checkbox`} label={`Food Item Deleted?`} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
+                    </div>
+                </Form.Group>              
             </Form>
         </Modal.Body>
         <Modal.Footer>

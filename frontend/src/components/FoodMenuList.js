@@ -54,11 +54,10 @@ export default function FoodMenuList() {
             <div className="Searching">
             <div className="content">
                 <h1>{FoodMenu_Page.HEADING}</h1>
-                <p>{FoodMenu_Page.DESCRIPTION}</p>
             </div>
-            <div className="form_css">
+            <div className="form_css_menu">
                 <Form onSubmit = { handleSubmit }>
-                    <Row className="g-2">
+                    <Row className="g-1" lg>
                         <Col md>
                             <FloatingLabel controlId="floatingSelectGrid" label="Category">
                                 <Form.Select aria-label="Floating label select example" value = { category } onChange = { (e) => setCategory(e.target.value) }>
@@ -85,13 +84,13 @@ export default function FoodMenuList() {
                         </Col>
                         <Col md>
                             <FloatingLabel controlId="floatingInputGrid" label="Search">
-                            <Form.Control type="text" placeholder="Search Dish Name" value={search} onChange = { (e) => { setSearch(e.target.value) }} />
+                                <Form.Control type="text" placeholder="Search Dish Name" value={search} onChange = { (e) => { setSearch(e.target.value) }} />
                             </FloatingLabel>
                         </Col>
                         <Col md className="button_align">
                             <div className="search_reset">
-                                <Col md style={{marginRight:"5%",marginLeft:"5%"}}>
-                                    <Button variant="primary" type="submit"size="lg" >
+                                <Col md>
+                                    <Button variant="primary" type="submit" size="lg" >
                                         {FoodMenu_Page.SEARCH}
                                     </Button>
                                 </Col>
