@@ -88,10 +88,17 @@ export default function FoodMenuList() {
                             </FloatingLabel>
                         </Col>
                         <Col md className="button_align">
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit" size="lg">
-                                    {FoodMenu_Page.SEARCH}
-                                </Button>
+                            <div className="search_reset">
+                                <Col md style={{marginRight:"5%",marginLeft:"5%"}}>
+                                    <Button variant="primary" type="submit"size="lg" >
+                                        {FoodMenu_Page.SEARCH}
+                                    </Button>
+                                </Col>
+                                <Col md>
+                                    <Button variant="primary" type="submit" size="lg">
+                                        {FoodMenu_Page.RESET}
+                                    </Button>
+                                </Col>
                             </div>
                         </Col>
                     </Row>

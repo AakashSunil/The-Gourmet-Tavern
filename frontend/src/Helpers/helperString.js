@@ -32,6 +32,7 @@ export const DrinksMenu_Page = {
     HEADING: "Drinks Menu",
     DESCRIPTION: "Drinks Menu List",
     SEARCH: "Search",
+    RESET: "Reset",
     ADD: "Add Drinks Item"
 }
 
@@ -41,6 +42,7 @@ export const FoodMenu_Page = {
     HEADING: "Food Menu",
     DESCRIPTION: "Food Menu List",
     SEARCH: "Search",
+    RESET: "Reset",
     ADD: "Add Food Item",
     VEG: "Vegetarian",
     NON_VEG: "Non-Vegetarian"

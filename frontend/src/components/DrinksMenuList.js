@@ -75,10 +75,17 @@ export default function DrinksMenuList() {
                             </FloatingLabel>
                         </Col>
                         <Col md className="button_align">
-                            <div className="d-grid gap-2">
-                                <Button variant="primary" type="submit" size="lg">
-                                    {DrinksMenu_Page.SEARCH}
-                                </Button>
+                            <div className="search_reset">
+                                <Col md style={{marginRight:"1%",marginLeft:"5%"}}>
+                                    <Button variant="primary" type="submit"size="lg" >
+                                        {DrinksMenu_Page.SEARCH}
+                                    </Button>
+                                </Col>
+                                <Col md>
+                                    <Button variant="primary" type="submit" size="lg">
+                                        {DrinksMenu_Page.RESET}
+                                    </Button>
+                                </Col>
                             </div>
                         </Col>
                     </Row>
@@ -93,6 +100,7 @@ export default function DrinksMenuList() {
                 :
                 null
             }
+            
             <div className="card_align">
             {
                 item_loop(drinks_menu_item)
