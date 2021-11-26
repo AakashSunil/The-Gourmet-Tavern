@@ -43,6 +43,9 @@ export const dropdown_populate = (items,type) => {
     
     return options
 }
+export const pagination = (items,page_no) => {
+
+}
 
 export const grid_create = (items,item_blank) => {
         let i = 0;

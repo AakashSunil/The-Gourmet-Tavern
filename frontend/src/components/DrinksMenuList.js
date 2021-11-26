@@ -9,6 +9,27 @@ import { Link } from 'react-router-dom';
 
 export default function DrinksMenuList() {
 
+    const [page,setPage] = useState(0);
+    // const [item_list,setItems] = useState();
+    
+    const page_no_loop = (size,limit) => {
+        let page_array =[]
+        for(let i = 0;i < Math.ceil(size/limit);i++){
+             page_array.push(i+1);
+        }
+        const buttons = page_array.map((ele,idx) => {
+            return <Button key={idx} onClick={() => handlePage(ele)}>{ele}</Button>
+        })
+        return buttons
+    }
+
+    const handlePage = (ele) => {
+        console.log(ele,page);
+        setPage(ele-1)
+        console.log(page);
+
+    }
+
     
     const item_loop = (items) => {
 
@@ -44,7 +65,6 @@ export default function DrinksMenuList() {
         }
         console.log(search_filter);
     }
-
 
     return (
         <div>
@@ -105,6 +125,11 @@ export default function DrinksMenuList() {
             <div className="card_align">
             {
                 item_loop(drinks_menu_item)
+            }    
+            </div>
+            <div className="card_align">
+            {
+                page_no_loop(drinks_menu_item.length,6)
             }    
             </div>
         </div>
