@@ -117,6 +117,15 @@
     flex-direction: column;
 }
 
+.edit {
+    display: flex;
+    flex-direction: row;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: auto; */
+    justify-content: space-between;
+}
+
 .search_reset {
     display: flex;
     text-align: center;
