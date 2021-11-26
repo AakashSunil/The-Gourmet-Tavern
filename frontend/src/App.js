@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 import {BrowserRouter as Router, Route}  from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -13,17 +12,17 @@ import DrinksMenuList from './components/DrinksMenuList';
 import Register from './components/Register';
 import Contact from './components/Contact';
 import Menu from './components/Menu';
-import { AddDrinkItem } from './components/AddDrinkItem';
-import { AddFoodItem } from './components/AddFoodItem';
+import { loadUser } from './actions';
+import { MyOrders } from './components/MyOrders';
 
 function App() {
 
-  // const token = useSelector(state => state.auth.token);
-  // const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // loadUser(dispatch, token);  
-  }, []);
+    loadUser(dispatch, token);  
+  }, [dispatch,token]);
 
 
   return (
@@ -40,9 +39,7 @@ function App() {
         <Route exact path='/Menu'><Menu /></Route>
         <Route exact path='/foodMenu'><FoodMenuList /></Route>
         <Route exact path='/drinksMenu'><DrinksMenuList /></Route>
-        <Route exact path='/addDrinks'><AddDrinkItem /></Route>
-        <Route exact path='/addFood'><AddFoodItem /></Route>
-
+        <Route exact path='/myOrders'><MyOrders /></Route>
       </div>
       
       <Footer />

@@ -1,39 +1,23 @@
 import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Container, Nav, Navbar, NavDropdown,  } from 'react-bootstrap';
 import { Header_NavBar } from '../Helpers/helperString';
-// import LogIn from './LogIn';
-// import SignUp from './SignUp';
-// import ProductForm from './ProductForm';
-// import MyCart from "./MyCart";
 
-// import { logoutUser, getOrders } from '../actions';
+import { logoutUser } from '../actions';
 
 
-const Header = () => { //(props) was removed
+const Header = () => {
 
-    // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-    // const user = useSelector(state => state.auth.user);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const user = useSelector(state => state.auth.user);
     // const order = useSelector(state => state.order);
     // //const token = useSelector(state => state.auth.token);
-    // const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-    // const dispatch = useDispatch();
-
-    // const [isOpen, setIsOpen] = useState(false);
-    // const [redirect, setRedirect] = useState(false);
-    // const toggle = () => setIsOpen(!isOpen);
-
-    // const onClick = async () => {
-
-    //     getOrders(dispatch, token);
-    //     setRedirect(true);
-        
-    // }
+    const dispatch = useDispatch();
     
     return (
         <div className="header">
@@ -52,10 +36,21 @@ const Header = () => { //(props) was removed
                         <Nav.Link href="/contact">{Header_NavBar.CONTACT}</Nav.Link>
 
                     </Nav>
-                    <Nav>
-                        <Nav.Link href="/register">{Header_NavBar.REGISTER}</Nav.Link>
-                        <Nav.Link href="/login">{Header_NavBar.LOGIN}</Nav.Link>
-                    </Nav>
+                    {((token && isAuthenticated === null) || (isAuthenticated))?
+                        <Nav>
+                            {
+                                <>
+                                    <Nav.Link href="/myOrders">{Header_NavBar.ORDER}</Nav.Link>
+                                    <Nav.Link onClick={()=>logoutUser(dispatch, user._id, token)}>{Header_NavBar.LOGOUT}</Nav.Link>
+                                </>
+                            }
+                        </Nav>
+                        :
+                        <Nav>
+                            <Nav.Link href="/register">{Header_NavBar.REGISTER}</Nav.Link>
+                            <Nav.Link href="/login">{Header_NavBar.LOGIN}</Nav.Link>
+                        </Nav>
+                    }
                     </Navbar.Collapse>
                 </Container>
             </Navbar>    

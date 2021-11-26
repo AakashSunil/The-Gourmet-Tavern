@@ -76,3 +76,61 @@ export const logoutUser = (dispatch, id, token) => {
             });
         })
 }
+
+export const loadUser = (dispatch, token) => {
+
+    const headers = getConfig(token).header;
+
+    axios.get('/user', {headers : headers})
+        .then(res => {
+            dispatch({
+                type : 'CLEAR_ERROR'
+            });
+            dispatch({
+                type : 'USER_LOADED',
+                payload : {
+                    ...res.data,
+                    token : token
+                }
+            });
+        })
+        .catch(err => {
+            setError(dispatch, err.response.data.message, err.response.status, 'AUTH_FAILURE');
+            dispatch({
+                type : 'AUTH_FAILURE'
+            });
+
+        })
+}
+
+export const getConfig = (token, contentType='application/json') => {
+    const config = {
+        header : {
+            'Content-Type' : contentType
+        }
+    }
+    if(token) {
+        config.header['auth-token'] = token;
+    }
+    return config;
+}
+
+export const getOrders = (dispatch, token) => {
+   
+    axios.get('/orders', {headers: getConfig(token).header})
+        .then(res => {
+            
+            dispatch({
+                type : 'CLEAR_ERROR'
+            })
+
+            dispatch({
+                type : 'GET_ORDERS',
+                payload : res.data
+            })
+            
+        })
+        .catch(err => {
+            setError(dispatch, err.response.data.message, err.response.status, 'ORDER_FAILURE');
+        })
+}

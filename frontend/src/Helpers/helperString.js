@@ -32,7 +32,19 @@ export const DrinksMenu_Page = {
     HEADING: "Drinks Menu",
     SEARCH: "Search",
     RESET: "Reset",
-    ADD: "Add Drinks Item"
+    ADD: "Add Drinks Item",
+
+    ADD_DRINK:"Add New Drink Item",
+    NAME: "Drink Name",
+    DESCRIPTION: "Drink Description",
+    PRICE: "Price",
+    CATEGORY: "Drink Category",
+    LEVEL:"Alcohol Percentage Level",
+    STOCK_QUANTITY: "Stock Quantity",
+    IMAGE: "Image Data",
+    SUBMIT: "Add New Drink",
+    CANCEL: "Cancel",
+    DRINK_IMAGE:"Drink Image"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +55,21 @@ export const FoodMenu_Page = {
     RESET: "Reset",
     ADD: "Add Food Item",
     VEG: "Vegetarian",
-    NON_VEG: "Non-Vegetarian"
+    NON_VEG: "Non-Vegetarian",
+
+    ADD_FOOD:"Add New Food Item",
+    NAME: "Food Name",
+    DESCRIPTION: "Food Description",
+    PRICE: "Price",
+    CATEGORY: "Food Category",
+    CUISINE: "Food Cuisine",
+    PREFERENCE: "Food Preference",
+    STOCK_QUANTITY: "Stock Quantity",
+    INGREDIENTS: "Food Ingredients",
+    IMAGE: "Image Data",
+    SUBMIT: "Add New Food",
+    CANCEL: "Cancel",
+    FOOD_IMAGE: "Food Image"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +81,9 @@ export const Header_NavBar = {
     DRINK: "Drinks Menu",
     CONTACT: "Contact",
     REGISTER: "Sign Up / Register",
-    LOGIN: "Log In"
+    LOGIN: "Log In",
+    ORDER: "My Orders",
+    LOGOUT: "Logout"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -109,22 +137,6 @@ export const Card_Item_Page = {
     ADD: "Add to Cart",
     EDIT: "Edit"
 
-}
-
-// --------------------------------------------------------------------------------------------------------------------------------
-
-export const Add_Drink_Page = {
-    ADD:"Add New Drink Item",
-    NAME: "Drink Name",
-    DESCRIPTION: "Drink Description",
-    PRICE: "Price",
-    CATEGORY: "Drink Category",
-    LEVEL:"Alcohol Percentage Level",
-    STOCK_QUANTITY: "Stock Quantity",
-    IMAGE: "Image Data",
-    SUBMIT: "Add New Drink",
-    CANCEL: "Cancel",
-    DRINK_IMAGE:"Drink Image"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
