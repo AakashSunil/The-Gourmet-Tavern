@@ -7,7 +7,7 @@ const orders = require('./routes/api/orderRoutes');
 const user = require('./routes/api/userRoutes');
 const food = require('./routes/api/foodRoutes');
 const drinks = require('./routes/api/drinkRoutes');
-const publicPath = path.join(__dirname, 'client', 'build');
+const publicPath = path.join(__dirname, 'frontend', 'build');
 const port = process.env.PORT || 3000;
 
 //connect to database
