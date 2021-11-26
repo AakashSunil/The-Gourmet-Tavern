@@ -1,0 +1,154 @@
+.justify_button {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: 50%;
+    margin: auto;
+    padding-top: 5%;
+}
+
+.content {
+    padding-top: 1%;
+}
+
+.footer{
+    margin-top: 1rem;
+    background-color: rgb(1, 1, 1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1;
+  }
+
+  .clear { clear: both; height: 60px; }
+
+  .header {
+      position: sticky;
+      top: 0;      
+      z-index: 1;
+    
+  }
+
+  .form_css {
+      margin-top: 1%;
+      width: fit-content;
+      text-align: start;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      height: 25%;
+  }
+
+  .form_css_menu {
+    margin-top: 1%;
+    width: fit-content;
+    text-align: start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 25%;
+}
+
+  .filter_position {
+      overflow-y: visible;
+  }
+  .heading {
+      font-size: 80px;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, 'Courier New', 'Courier', 'monospace', 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
+      padding: 5%;
+  }
+
+.submission {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button_align {
+    align-self: center;
+    width: 100%;
+}
+
+.card_align {
+    padding: 1%;
+    height: fit-content;
+    text-align: -webkit-center;
+
+}
+
+.Searching {
+     overflow: hidden;
+}
+
+.contact_width {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
+.contact_page {
+    padding-top: 10%;
+}
+
+.design {
+    height: 675px;
+    width: 490px;
+    text-align: justify;
+}
+
+.description_height {
+    height:100px;
+    width: fit-content;
+    font-size: large
+}
+
+.TextSize {
+    font-size: x-large;
+}
+
+.TextSize_Title {
+    font-size: x-large;
+    text-align: left;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit {
+    display: flex;
+    flex-direction: row;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: auto; */
+    justify-content: space-between;
+}
+
+.search_reset {
+    display: flex;
+    text-align: center;
+    /* margin-left: 50px; */
+    /* margin-right: 50px; */
+
+}
+
+.quantity {
+    text-align: center;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.qunatity_text {
+    font-size: large;
+}
+
+.pagination_align {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 20%;
+}
