@@ -110,3 +110,39 @@ export const Menu_Page = {
 export const Card_Item_Page = {
     ADD: "Add to Cart"
 }
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const Add_Drink_Page = {
+    ADD:"Add New Food",
+    NAME: "Drink Name",
+    DESCRIPTION: "Drink Description",
+    PRICE: "Price",
+    CATEGORY: "Drink Category",
+    LEVEL:"Alcohol Percentage Level",
+    STOCK_QUANTITY: "Stock Quantity",
+    IMAGE: "Image Data",
+    SUBMIT: "Add New Drink",
+    CANCEL: "Cancel",
+    DRINK_IMAGE:"Drink Image"
+}
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const Add_Food_Page = {
+    ADD:"Add New Food",
+    NAME: "Food Name",
+    DESCRIPTION: "Food Description",
+    PRICE: "Price",
+    CATEGORY: "Food Category",
+    CUISINE: "Food Cuisine",
+    PREFERENCE: "Food Preference",
+    STOCK_QUANTITY: "Stock Quantity",
+    INGREDIENTS: "Food Ingredients",
+    IMAGE: "Image Data",
+    SUBMIT: "Add New Food",
+    CANCEL: "Cancel",
+    FOOD_IMAGE: "Food Image"
+}
+
+// --------------------------------------------------------------------------------------------------------------------------------

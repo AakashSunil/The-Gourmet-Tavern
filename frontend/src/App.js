@@ -13,6 +13,8 @@ import DrinksMenuList from './components/DrinksMenuList';
 import Register from './components/Register';
 import Contact from './components/Contact';
 import Menu from './components/Menu';
+import { AddDrinkItem } from './components/AddDrinkItem';
+import { AddFoodItem } from './components/AddFoodItem';
 
 function App() {
 
@@ -38,6 +40,9 @@ function App() {
         <Route exact path='/Menu'><Menu /></Route>
         <Route exact path='/foodMenu'><FoodMenuList /></Route>
         <Route exact path='/drinksMenu'><DrinksMenuList /></Route>
+        <Route exact path='/addDrinks'><AddDrinkItem /></Route>
+        <Route exact path='/addFood'><AddFoodItem /></Route>
+
       </div>
       
       <Footer />

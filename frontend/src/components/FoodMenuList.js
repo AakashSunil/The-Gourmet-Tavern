@@ -5,6 +5,7 @@ import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { FoodMenu_Page } from '../Helpers/helperString';
 import { food_menu_item } from '../Helpers/menu';
 import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
+import { Link } from 'react-router-dom';
 
 
 export default function FoodMenuList() {
@@ -107,9 +108,9 @@ export default function FoodMenuList() {
             </div>
             {isAdmin?
                 <div className="card_align">
-                    <Button variant="primary" type="submit" size="lg">
+                    <Link to="/addFood"><Button variant="primary" type="submit" size="lg">
                         {FoodMenu_Page.ADD}
-                    </Button>
+                    </Button></Link>
                 </div>
                 :
                 null
