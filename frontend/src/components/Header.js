@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Container, Nav, Navbar, NavDropdown,  } from 'react-bootstrap';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
@@ -39,21 +39,16 @@ export default function Login() {
         } 
     }
 
-    const toggle = () => { 
-        dispatch({
-            type : 'CLEAR_ERROR'
-        });
-    }
-
-
     useEffect( () => {
         if(error.id === 'LOGIN_FAILURE') {
             setMsg(error.msg);
         }
         if(isAuthenticated) {
-            toggle();
+            dispatch({
+                type : 'CLEAR_ERROR'
+            });
         }
-    }, [error, isAuthenticated] )
+    }, [error, isAuthenticated,dispatch] )
 
     return(
         <div className="form_css">

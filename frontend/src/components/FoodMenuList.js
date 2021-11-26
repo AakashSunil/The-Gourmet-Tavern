@@ -8,6 +8,32 @@ import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
 
 export default function FoodMenuList() {
 
+    const item_filter = (page_number,page_size) => {
+        console.log(page_number);
+        let filtered = food_menu_item.slice((page_number - 1) * page_size, page_number * page_size)
+        console.log(filtered);
+        return filtered
+    }
+
+    const [page,setPage] = useState(null);
+    const [items,setItems] = useState(item_filter(1,6));
+    
+    const page_no_loop = (size,limit) => {
+        let page_array =[]
+        for(let i = 0;i < Math.ceil(size/limit);i++){
+             page_array.push(i+1);
+        }
+        const buttons = page_array.map((ele,idx) => (
+            <Button key={idx} onClick={() => handlePage(ele)}>{ele}</Button>
+        ))
+        return buttons
+    }
+
+    const handlePage = (ele) => {
+        setPage(ele)
+        setItems(item_filter(ele,6))
+    }
+    
     const item_loop = (items) => {
 
         const item_blank = {
@@ -169,7 +195,12 @@ export default function FoodMenuList() {
             }
             <div className="card_align">
             {
-                item_loop(food_menu_item)
+                item_loop(items)
+            }    
+            </div>
+            <div className="pagination_align">
+            {
+                page_no_loop(food_menu_item.length,6)
             }    
             </div>
             <Modal

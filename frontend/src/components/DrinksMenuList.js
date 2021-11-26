@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Col, FloatingLabel, Form, Modal, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { DrinksMenu_Page } from '../Helpers/helperString';
@@ -7,12 +7,26 @@ import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
 
 export default function DrinksMenuList() {
 
-    const [page,setPage] = useState(0);
+    const item_filter = (page_number,page_size) => {
+        console.log(page_number);
+        let filtered = drinks_menu_item.slice((page_number - 1) * page_size, page_number * page_size)
+        console.log(filtered);
+        return filtered
+    }
+    
+    const [page,setPage] = useState(null);
+    const [items,setItems] = useState(item_filter(1,6));
     
     const page_no_loop = (size,limit) => {
         let page_array =[]
-        for(let i = 0;i < Math.ceil(size/limit);i++){
-             page_array.push(i+1);
+        let pages = Math.ceil(size/limit)
+        if(pages <= 9) {
+            for(let i = 0;i < pages;i++){
+                page_array.push(i+1);
+           }
+        }
+        else {
+
         }
         const buttons = page_array.map((ele,idx) => {
             return <Button key={idx} onClick={() => handlePage(ele)}>{ele}</Button>
@@ -20,10 +34,12 @@ export default function DrinksMenuList() {
         return buttons
     }
 
+    
+
+
     const handlePage = (ele) => {
-        console.log(ele,page);
-        setPage(ele-1)
-        console.log(page);
+        setPage(ele)
+        setItems(item_filter(ele,6))
 
     }
     
@@ -61,7 +77,6 @@ export default function DrinksMenuList() {
     const [level,setLevel] = useState('')
     const [stockQuantity,setStockQuantity] = useState('')
     const [imageData,setImageData] = useState('')
-
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -171,10 +186,10 @@ export default function DrinksMenuList() {
             
             <div className="card_align">
             {
-                item_loop(drinks_menu_item)
+                item_loop(items)
             }    
             </div>
-            <div className="card_align">
+            <div className="pagination_align">
             {
                 page_no_loop(drinks_menu_item.length,6)
             }    

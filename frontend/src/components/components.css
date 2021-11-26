@@ -144,3 +144,11 @@
 .qunatity_text {
     font-size: large;
 }
+
+.pagination_align {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 20%;
+}
