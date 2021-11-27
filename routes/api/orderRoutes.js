@@ -20,7 +20,7 @@ router.get('/', auth ,async (req, res) => {
     }).execPopulate();
     res.send(user.orders);
 
-})
+});
 
 // @route   POST /orders/add
 // @desc    Add the final order to the database
@@ -85,7 +85,7 @@ router.post('/add', auth ,async (req, res) => {
         console.log(err);
         res.status(500).send({"message" : "error while saving orders"})
     }
-})
+});
 
 
 module.exports = router;
