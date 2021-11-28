@@ -6,6 +6,7 @@ import { Container, Nav, Navbar, NavDropdown,  } from 'react-bootstrap';
 import { Header_NavBar } from '../Helpers/helperString';
 
 import { logoutUser } from '../actions';
+import { useHistory } from 'react-router';
 
 
 const Header = () => {
@@ -13,10 +14,11 @@ const Header = () => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const user = useSelector(state => state.auth.user);
     // const order = useSelector(state => state.order);
-    // //const token = useSelector(state => state.auth.token);
     const token = localStorage.getItem('token');
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
     
     return (
         <div className="header">
@@ -39,8 +41,9 @@ const Header = () => {
                         <Nav>
                             {
                                 <>
+                                    <Nav.Link href="/myCart">{Header_NavBar.CART}</Nav.Link>
                                     <Nav.Link href="/myOrders">{Header_NavBar.ORDER}</Nav.Link>
-                                    <Nav.Link onClick={()=>logoutUser(dispatch, user._id, token)}>{Header_NavBar.LOGOUT}</Nav.Link>
+                                    <Nav.Link onClick={()=>logoutUser(dispatch, user._id, token,history)}>{Header_NavBar.LOGOUT}</Nav.Link>
                                 </>
                             }
                         </Nav>

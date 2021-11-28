@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const setError = (dispatch, msg, status, id) => {
     dispatch({
         type : 'SET_ERROR',
@@ -12,10 +13,11 @@ export const setError = (dispatch, msg, status, id) => {
 }
 
 
-export const signUpUser = (dispatch, name, email, phnno, password) => {
+export const signUpUser = (dispatch, name, email, phone, password, address, history) => {
 
-    axios.post('/user/register',{name, email, phnno, password})
+    axios.post('/user/register',{name, email, phone, password, address})
         .then(res => {
+            
             dispatch({
                 type : 'CLEAR_ERROR'
             });
@@ -25,6 +27,8 @@ export const signUpUser = (dispatch, name, email, phnno, password) => {
                     token : res.headers['auth-token']
                 }
             });
+            history.push('/');
+
         })
         .catch(err => {
             setError(dispatch, err.response.data.message, err.response.status, 'REGISTRATION_FAILURE');
@@ -34,7 +38,7 @@ export const signUpUser = (dispatch, name, email, phnno, password) => {
         })
 }
 
-export const signInUser = (dispatch, email, password) => {
+export const signInUser = (dispatch, email, password, history) => {
 
     axios.post('/user/login',{email, password})
         .then(res => {
@@ -47,6 +51,7 @@ export const signInUser = (dispatch, email, password) => {
                     token : res.headers['auth-token']
                 }
             });
+            history.push('/')
         })
         .catch(err => {
             setError(dispatch, err.response.data.message, err.response.status, 'LOGIN_FAILURE');
@@ -81,8 +86,10 @@ export const loadUser = (dispatch, token) => {
 
     const headers = getConfig(token).header;
 
+    console.log(headers);
     axios.get('/user', {headers : headers})
         .then(res => {
+            console.log(res);
             dispatch({
                 type : 'CLEAR_ERROR'
             });

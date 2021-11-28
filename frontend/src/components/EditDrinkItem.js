@@ -1,28 +1,34 @@
-import Button from '@restart/ui/esm/Button';
-import React, { useEffect, useState } from 'react';
-import { Form, Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router';
-import { Add_Drink_Page } from '../Helpers/helperString';
+import React, { useState } from 'react';
+import { Form, Modal, Button } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
+import { Add_Edit_Drink_Page } from '../Helpers/helperString';
 
 export const EditDrinkItem = () => {
+
+    const location = useLocation();
+    const {item} = location.state;
 
     const history = useHistory();
     const [show, setShow] = useState(true);
 
-    const [name,setName] = useState('')
-    const [description,setDescription] = useState('')
-    const [price,setPrice] = useState('')
-    const [isDeleted,setDeleted] = useState(false)
-    const [category,setCategory] = useState('')
-    const [level,setLevel] = useState('')
-    const [stockQuantity,setStockQuantity] = useState('')
-    const [imageData,setImageData] = useState('')
+    const [name,setName] = useState(item.name)
+    const [description,setDescription] = useState(item.description)
+    const [price,setPrice] = useState(item.price)
+    const [isDeleted,setDeleted] = useState(item.isDeleted)
+    const [category,setCategory] = useState(item.category)
+    const [level,setLevel] = useState(item.level)
+    const [stockQuantity,setStockQuantity] = useState(item.stockQuantity)
+    const [imageData,setImageData] = useState(item.image)
 
     const handleClose = () => {
         history.push('/drinksMenu')
         setShow(false);
     }
 
+    const handleDelete = () => {
+        history.push('/drinksMenu')
+        setShow(false)
+    }
     const handleSubmit = () => {
         const drink_item = {
             name:name,
@@ -40,22 +46,20 @@ export const EditDrinkItem = () => {
 
     const getBase64 = (file) => {
         return new Promise((resolve) => {
-          let fileInfo;
-          let baseURL = "";
-          // Make new FileReader
-          let reader = new FileReader();
+            let fileInfo;
+            let baseURL = "";
+            
+            let reader = new FileReader();
     
-          // Convert the file to base64 text
-          reader.readAsDataURL(file);
+            reader.readAsDataURL(file);
     
-          // on reader load somthing...
-          reader.onload = () => {
-            // Make a fileInfo Object
-            baseURL = reader.result;
-            setImageData(baseURL)
-            resolve(baseURL);
-          };
-          console.log(fileInfo);
+            reader.onload = () => {
+
+                baseURL = reader.result;
+                setImageData(baseURL)
+                resolve(baseURL);
+            };
+            console.log(fileInfo);
         });
       };
 
@@ -63,65 +67,60 @@ export const EditDrinkItem = () => {
         getBase64(e.target.files[0])
     }
 
-    useEffect(()=>{
-        
-    })
   return (
     <>
-
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>{Add_Drink_Page.ADD}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <Form onSubmit = { handleSubmit }>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>{Add_Drink_Page.NAME}</Form.Label>
-                    <Form.Control type="name" placeholder="Enter Drink Name" value={name} onChange = { (e) => setName(e.target.value) } />
-                </Form.Group>
-                <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Label>{Add_Drink_Page.DRINK_IMAGE}</Form.Label>
-                    <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>{Add_Drink_Page.DESCRIPTION}</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder="Enter Drink Description" value={description} onChange = { (e) => setDescription(e.target.value) }/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>{Add_Drink_Page.PRICE}</Form.Label>
-                    <Form.Control type="number" placeholder="Enter Price" value={price} onChange = { (e) => setPrice(e.target.value) }/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>{Add_Drink_Page.CATEGORY}</Form.Label>
-                    <Form.Control type = "text" placeholder="Enter Category" value={category} onChange = { (e) => setCategory(e.target.value) }/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>{Add_Drink_Page.LEVEL}</Form.Label>
-                    <Form.Control type= "text" placeholder = "Enter Alcohol Percentage" value={level} onChange = { (e) => setLevel(e.target.value) }/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>{Add_Drink_Page.STOCK_QUANTITY}</Form.Label>
-                    <Form.Control type= "number" placeholder = "Enter Stock Quantity" value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <div key={`default-checkbox`} className="mb-3">
-                        <Form.Check type="checkbox" id={`default-checkbox`} label={`Drink Item Deleted?`} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
-                    </div>
-                </Form.Group>
-                
-                
-            </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>{Add_Drink_Page.CANCEL}</Button>
-          <Button variant="primary" onClick={handleSubmit}>{Add_Drink_Page.SUBMIT}</Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>{Add_Edit_Drink_Page.EDIT_DRINK}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form onSubmit = { handleSubmit }>
+                    <Form.Group className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.NAME}</Form.Label>
+                        <Form.Control type="name" placeholder = {Add_Edit_Drink_Page.PLACEHOLDER_DRINK_NAME} value={name} onChange = { (e) => setName(e.target.value) } />
+                    </Form.Group>
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.DRINK_IMAGE}</Form.Label>
+                        <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.DESCRIPTION}</Form.Label>
+                        <Form.Control as="textarea" rows={3} placeholder = {Add_Edit_Drink_Page.PLACEHOLDER_DRINK_DESCRIPTION} value={description} onChange = { (e) => setDescription(e.target.value) }/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.PRICE}</Form.Label>
+                        <Form.Control type="number" placeholder = {Add_Edit_Drink_Page.PLACEHOLDER_DRINK_PRICE} value={price} onChange = { (e) => setPrice(e.target.value) }/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.CATEGORY}</Form.Label>
+                        <Form.Control type = "text" placeholder = {Add_Edit_Drink_Page.PLACEHOLDER_DRINK_CATEGORY} value={category} onChange = { (e) => setCategory(e.target.value) }/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.LEVEL}</Form.Label>
+                        <Form.Control type= "text" placeholder = {Add_Edit_Drink_Page.PLACEHOLDER_DRINK_ALCOHOL_PERCENTAGE} value={level} onChange = { (e) => setLevel(e.target.value) }/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>{Add_Edit_Drink_Page.STOCK_QUANTITY}</Form.Label>
+                        <Form.Control type= "number" placeholder = {Add_Edit_Drink_Page.PLACEHOLDER_DRINK_STOCK_QUANTITY} value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <div key={`default-checkbox`} className="mb-3">
+                            <Form.Check type="checkbox" id={`default-checkbox`} label={Add_Edit_Drink_Page.PLACEHOLDER_DRINK_DELETED} defaultChecked={isDeleted} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
+                        </div>
+                    </Form.Group>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>{Add_Edit_Drink_Page.CANCEL}</Button>
+                <Button variant="primary" onClick={handleSubmit}>{Add_Edit_Drink_Page.SUBMIT_EDIT}</Button>
+                <Button variant="primary" onClick={handleDelete}>{Add_Edit_Drink_Page.DELETE}</Button>
+            </Modal.Footer>
+        </Modal>
     </>
   );
 }

@@ -9,10 +9,10 @@ const food = require('./routes/api/foodRoutes');
 const drinks = require('./routes/api/drinkRoutes');
 const cart = require('./routes/api/cartRoutes');
 const publicPath = path.join(__dirname, 'frontend', 'build');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 //connect to database
-mongoose.connect("mongodb://localhost:27017/FoodiesParadise",{useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
+mongoose.connect("mongodb://localhost:27017/The-Gourmet-Tavern",{useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true})
      .then(() => console.log("database connected"))
      .catch(err => console.log(err));
 

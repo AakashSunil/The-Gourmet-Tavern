@@ -214,7 +214,7 @@ export const drinks_menu_item = [
         name: "American Amber Ale",
         description: "An Amber, Hoppy, Moderate-Strength American Craft Beer with a Caramel Malty Flavor.",
         price: "30",
-        isDeleted: false,
+        isDeleted: true,
         category:"Beer",
         level: "6.2",
         stockQuantity: 120,
