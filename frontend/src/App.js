@@ -26,35 +26,30 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('s');
     loadUser(dispatch, token);  
   }, [dispatch,token]);
 
 
   return (
     <Router>
-      
-      <Header />
-      
-      <div className="App">
-        <Route exact path='/'><Home /></Route>
-        <Route exact path='/login'><Login /></Route>
-        <Route exact path='/register'><Register /></Route>
-        <Route exact path='/about'><About /></Route>
-        <Route exact path='/contact'><Contact /></Route>
-        <Route exact path='/Menu'><Menu /></Route>
-        <Route exact path='/foodMenu'><FoodMenuList /></Route>
-        <Route exact path='/drinksMenu'><DrinksMenuList /></Route>
-        <Route exact path='/addDrinks'><AddDrinkItem /></Route>
-        <Route exact path='/editDrinks'><EditDrinkItem /></Route>
-        <Route exact path='/addFood'><AddFoodItem /></Route>
-        <Route exact path='/editFood'><EditFoodItem /></Route>
-        <Route exact path='/myOrders'><MyOrders /></Route>
-        <Route exact path='/myCart'><MyCart /></Route>
-      </div>
-      
-      <Footer />
-    
+        <Header />
+        <div className="App">
+            <Route exact path='/'><Home /></Route>
+            <Route exact path='/login'><Login /></Route>
+            <Route exact path='/register'><Register /></Route>
+            <Route exact path='/about'><About /></Route>
+            <Route exact path='/contact'><Contact /></Route>
+            <Route exact path='/Menu'><Menu /></Route>
+            <Route exact path='/foodMenu'><FoodMenuList /></Route>
+            <Route exact path='/drinksMenu'><DrinksMenuList /></Route>
+            <Route exact path='/addDrinks'><AddDrinkItem /></Route>
+            <Route exact path='/editDrinks'><EditDrinkItem /></Route>
+            <Route exact path='/addFood'><AddFoodItem /></Route>
+            <Route exact path='/editFood'><EditFoodItem /></Route>
+            <Route exact path='/myOrders'><MyOrders /></Route>
+            <Route exact path='/myCart'><MyCart /></Route>
+        </div>
+        <Footer />
     </Router>
   );
 }

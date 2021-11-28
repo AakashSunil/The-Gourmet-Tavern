@@ -12,12 +12,10 @@ export default function DrinksMenuList() {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
     let isAdmin;
-    isUser===null?isAdmin=false:isAdmin=isUser.isAdmin
+    isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
 
     const item_filter = (page_number,page_size) => {
-        console.log(page_number);
         let filtered = drinks_menu_item.slice((page_number - 1) * page_size, page_number * page_size)
-        console.log(filtered);
         return filtered
     }
     
@@ -44,7 +42,6 @@ export default function DrinksMenuList() {
     const handlePage = (ele) => {
         setPage(ele)
         setItems(item_filter(ele,6))
-
     }
     
     const item_loop = (items) => {
@@ -58,13 +55,10 @@ export default function DrinksMenuList() {
             category:"",
             level: "",
             stockQuantity: 0,
-        }
-        
+        }       
         let card_grid = grid_create(items,item_blank,isAdmin)
         return card_grid
     }
-
-
 
     const [search, setSearch] = useState('');
     const [category_filter, setCategoryFilter] = useState('');
@@ -89,24 +83,24 @@ export default function DrinksMenuList() {
                 <Form onSubmit = { handleSubmit }>
                     <Row className="g-2">
                         <Col md>
-                            <FloatingLabel controlId="floatingSelectGrid" label="Category">
-                                <Form.Select aria-label="Floating label select example" value = { category_filter } onChange = { (e) => setCategoryFilter(e.target.value) }>
-                                    <option>Select Category</option>
-                                    {dropdown_populate(drinks_menu_item,"category")}
+                            <FloatingLabel label="Category">
+                                <Form.Select value = { category_filter } onChange = { (e) => setCategoryFilter(e.target.value) }>
+                                    <option>{DrinksMenu_Page.SELECT_CATEGORY}</option>
+                                    {dropdown_populate(drinks_menu_item,DrinksMenu_Page.CATEGORY)}
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel controlId="floatingSelectGrid" label="Alcohol Level">
-                                <Form.Select aria-label="Floating label select example" value={ level_filter } onChange = { (e) => setLevelFilter(e.target.value) }>
-                                    <option>Select Alcohol Level</option>
-                                    {dropdown_populate(drinks_menu_item,"level")}
+                            <FloatingLabel label="Alcohol Level">
+                                <Form.Select value={ level_filter } onChange = { (e) => setLevelFilter(e.target.value) }>
+                                    <option>{DrinksMenu_Page.SELECT_ALCOHOL_LEVEL}</option>
+                                    {dropdown_populate(drinks_menu_item,DrinksMenu_Page.LEVEL)}
                                 </Form.Select>
                             </FloatingLabel>
                         </Col>
                         <Col md>
-                            <FloatingLabel controlId="floatingInputGrid" label="Search">
-                                <Form.Control type="text" placeholder="Search Drink Name" value={search} onChange = { (e) => { setSearch(e.target.value) }} />
+                            <FloatingLabel label="Search">
+                                <Form.Control type="text" placeholder = {DrinksMenu_Page.PLACEHOLDER_SEARCH} value={search} onChange = { (e) => { setSearch(e.target.value) }} />
                             </FloatingLabel>
                         </Col>
                         <Col md className="button_align">
@@ -137,7 +131,6 @@ export default function DrinksMenuList() {
                 :
                 null
             }
-            
             <div className="card_align">
             {
                 item_loop(items)
@@ -147,8 +140,7 @@ export default function DrinksMenuList() {
             {
                 page_no_loop(drinks_menu_item.length,6)
             }    
-            </div>
-            
+            </div>            
         </div>
     )
 }

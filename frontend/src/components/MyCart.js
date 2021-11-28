@@ -18,11 +18,12 @@ export const MyCart = () => {
     // useEffect(() => {
     //     getOrders(dispatch, token);
     // },[cartList])
+    
     return (
-        <div>
+        <>
         {
             loop_items(cartList)
         }
-        </div>
+        </>
     )
 }

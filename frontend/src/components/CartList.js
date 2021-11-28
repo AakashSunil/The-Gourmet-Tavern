@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Card, Table, Button } from 'react-bootstrap';
+import { Card_Item_Page, Cart_Items } from '../Helpers/helperString';
 import { CartQuantity } from './CartQuantity';
 
 export const CartList = (props) => {
@@ -28,7 +29,7 @@ export const CartList = (props) => {
     const changeButton = (type) => {
         console.log(type);
         if(!(showQuantity || showRemove)) {
-            if(type === "quantity"){
+            if(type === "Quantity"){
                 setShowQuantity(true)
             }
             else {
@@ -43,15 +44,15 @@ export const CartList = (props) => {
     return (
     <>
         <Card className="cart-align">
-        <Card.Title variant="top"><h1>{"Cart Items"}</h1></Card.Title>
+            <Card.Title variant="top"><h1>{Cart_Items.TITLE}</h1></Card.Title>
             <Card.Body>
                 <Table borderless={true}>
                     <thead>
                         <tr>
-                            <th><h4>{"Name"}</h4></th>
-                            <th><h4>{"Price"}</h4></th>
-                            <th><h4>{"Quantity Ordered"}</h4></th>
-                            {<th><h4>{(showQuantity || showRemove) && "Modify"}</h4></th>}
+                            <th><h4>{Cart_Items.NAME}</h4></th>
+                            <th><h4>{Cart_Items.PRICE}</h4></th>
+                            <th><h4>{Cart_Items.QUANTITIY}</h4></th>
+                            {<th><h4>{(showQuantity || showRemove) && Cart_Items.EDIT_COLUMN}</h4></th>}
                         </tr>
                     </thead>     
                     <tbody>
@@ -63,25 +64,19 @@ export const CartList = (props) => {
                                 <td>{item_detail.quantity}</td>
                                 <td>
                                     {showQuantity && <CartQuantity items = {item_detail} close ={()=>handleClick() } add = { (item,quantity) => handleAdd(item,quantity) } />}
-                                    {showRemove && <Button onClick={()=>handleRemoveItem(item_detail)}>Remove</Button>}
+                                    {showRemove && <Button onClick={()=>handleRemoveItem(item_detail)}>{Cart_Items.REMOVE}</Button>}
                                 </td>
                             </tr>)
                     })}
                     </tbody>
                 </Table>
-                <Card.Title>
-                    {/* {"Total Price: $"}{item_detail.price * item_detail.quantity} */}
-                </Card.Title>
-                
             </Card.Body>
-            
         </Card>
         <div className="cart_button_align">
-                {!showQuantity && <Button onClick={()=>changeButton("quantity")}>Update Quantities</Button>}
-                {!showRemove && <Button onClick={()=>changeButton("remove")}>Remove Items</Button>}
-                <Button onClick={()=>handleSubmit()}>Place Order</Button>
-            </div>
+            {!showQuantity && <Button onClick={()=>changeButton(Cart_Items.QUANTITIY_STRING)}>{Cart_Items.UPDATE_QUANTITY}</Button>}
+            {!showRemove && <Button onClick={()=>changeButton(Cart_Items.REMOVE)}>{Cart_Items.REMOVE_ITEMS}</Button>}
+            <Button onClick={()=>handleSubmit()}>{Cart_Items.PLACE_ORDER}</Button>
+        </div>
     </>
-    
     )
 }

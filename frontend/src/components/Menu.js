@@ -5,15 +5,14 @@ import { Menu_Page } from '../Helpers/helperString'
 
 export default function Menu() {
     return(
-        <div>
+        <>
             <div className="content">
                 <h1>{Menu_Page.HEADING}</h1>
             </div>
             <div className = "justify_button">
                 <Link to="/foodMenu"><Button size="lg">{Menu_Page.FOOD}</Button></Link>
                 <Link to="/drinksMenu"><Button size="lg">{Menu_Page.DRINK}</Button></Link>
-                
             </div>
-        </div>
+        </>
     )
 }

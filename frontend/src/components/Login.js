@@ -55,11 +55,11 @@ export default function Login() {
             <Form onSubmit = { handleSubmit }>
                 <Form.Group className="mb-3">
                     <Form.Label>{Login_Page.EMAIL}</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" value={email} onChange = { handleEmailChange }/>
+                    <Form.Control type="email" placeholder = {Login_Page.PLACEHOLDER_EMAIL} value={email} onChange = { handleEmailChange }/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>{Login_Page.PASSWORD}</Form.Label>
-                    <Form.Control type= "password" placeholder = "Enter Password" value={password} onChange = { handlePasswordChange }/>
+                    <Form.Control type= "password" placeholder = {Login_Page.PLACEHOLDER_PASSWORD} value={password} onChange = { handlePasswordChange }/>
                 </Form.Group>
                 <div className="submission">
                     <Button variant="primary" type="submit">{Login_Page.LOGIN}</Button>

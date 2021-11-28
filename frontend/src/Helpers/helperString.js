@@ -33,18 +33,11 @@ export const DrinksMenu_Page = {
     SEARCH: "Search",
     RESET: "Reset",
     ADD: "Add Drinks Item",
-
-    ADD_DRINK:"Add New Drink Item",
-    NAME: "Drink Name",
-    DESCRIPTION: "Drink Description",
-    PRICE: "Price",
-    CATEGORY: "Drink Category",
-    LEVEL:"Alcohol Percentage Level",
-    STOCK_QUANTITY: "Stock Quantity",
-    IMAGE: "Image Data",
-    SUBMIT: "Add New Drink",
-    CANCEL: "Cancel",
-    DRINK_IMAGE:"Drink Image"
+    SELECT_CATEGORY: "Select Category",
+    SELECT_ALCOHOL_LEVEL: "Select Alcohol Level",
+    PLACEHOLDER_SEARCH: "Search Drink Name",
+    CATEGORY: "category",
+    LEVEL: "level"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -56,20 +49,13 @@ export const FoodMenu_Page = {
     ADD: "Add Food Item",
     VEG: "Vegetarian",
     NON_VEG: "Non-Vegetarian",
-
-    ADD_FOOD:"Add New Food Item",
-    NAME: "Food Name",
-    DESCRIPTION: "Food Description",
-    PRICE: "Price",
-    CATEGORY: "Food Category",
-    CUISINE: "Food Cuisine",
-    PREFERENCE: "Food Preference",
-    STOCK_QUANTITY: "Stock Quantity",
-    INGREDIENTS: "Food Ingredients",
-    IMAGE: "Image Data",
-    SUBMIT: "Add New Food",
-    CANCEL: "Cancel",
-    FOOD_IMAGE: "Food Image"
+    SELECT_CATEGORY: "Select Category",
+    SELECT_CUISINE: "Select Cuisine",
+    SELECT_PREFERENCE: "Select Preference",
+    PLACEHOLDER_SEARCH: "Search Drink Name",
+    CATEGORY: "category",
+    CUISINE: "cuisine",
+    PREFERENCE: "preference"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -105,7 +91,10 @@ export const Login_Page = {
     EMAIL: "Email Address",
     PASSWORD: "Password",
     LOGIN: "LogIn",
-    MESSAGE: "Do Not have an Account? Create One"
+    MESSAGE: "Do Not have an Account? Create One",
+    PLACEHOLDER_EMAIL: "name@example.com",
+    PLACEHOLDER_PASSWORD: "Enter Password"
+
 
 }
 
@@ -120,7 +109,15 @@ export const Register_Page = {
     PASSWORD: "Password",
     CONFIRM: "Confirm Password",
     REGISTER: "Register User",
-    MESSAGE: "Already have an Account? Login Now"
+    MESSAGE: "Already have an Account? Login Now",
+
+    PLACEHOLDER_REGISTER_NAME: "Enter Name",
+    PLACEHOLDER_EMAIL: "name@example.com",
+    PLACEHOLDER_MOBILE: "Enter Mobile Number",
+    PLACEHOLDER_ADDRESS: "Enter Address",
+    PLACEHOLDER_PASSWORD: "Enter Password",
+    PLACEHOLDER_CONFIRM_PASSWORD: "Confirm Password"
+
 
 }
 
@@ -136,13 +133,15 @@ export const Menu_Page = {
 
 export const Card_Item_Page = {
     ADD: "Add to Cart",
-    EDIT: "Edit"
+    EDIT: "Edit",
+    ADMIN_MESSAGE: "Not Visible to Customers",
+    ITEM_PRICE: "Item Price: $"
 
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
-export const Add_Food_Page = {
+export const Add_Edit_Food_Page = {
     EDIT_FOOD: "Update Food Item",
     ADD_FOOD:"Add New Food Item",
     NAME: "Food Name",
@@ -158,12 +157,22 @@ export const Add_Food_Page = {
     SUBMIT_EDIT: "Update Food",
     CANCEL: "Cancel",
     FOOD_IMAGE: "Food Image",
-    DELETE: "Delete Food Item"
+    DELETE: "Delete Food Item",
+
+    PLACEHOLDER_FOOD_NAME: "Enter Food Name",
+    PLACEHOLDER_FOOD_DESCRIPTION: "Enter Food Description",
+    PLACEHOLDER_FOOD_PRICE: "Enter Food Price",
+    PLACEHOLDER_FOOD_CATEGORY: "Enter Food Category",
+    PLACEHOLDER_FOOD_CUISINE: "Enter Food Cuisine",
+    PLACEHOLDER_FOOD_PREFERENCE: "Enter Food Preference",
+    PLACEHOLDER_FOOD_INGREDIENTS: "Enter Food Ingredients",
+    PLACEHOLDER_FOOD_STOCK_QUANTITY: "Enter Food Stock Quantity",
+    PLACEHOLDER_FOOD_DELETED: "Food Item Deleted?",
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
-export const Add_Drink_Page = {
+export const Add_Edit_Drink_Page = {
     EDIT_DRINK:"Update Drink Item",
     ADD_DRINK:"Add New Drink Item",
     NAME: "Drink Name",
@@ -177,5 +186,51 @@ export const Add_Drink_Page = {
     SUBMIT_EDIT: "Update Drink",
     CANCEL: "Cancel",
     DRINK_IMAGE:"Drink Image",
-    DELETE: "Delete Drink Item"
+    DELETE: "Delete Drink Item",
+
+    PLACEHOLDER_DRINK_NAME: "Enter Drink Name",
+    PLACEHOLDER_DRINK_DESCRIPTION: "Enter Drink Description",
+    PLACEHOLDER_DRINK_PRICE: "Enter Drink Price",
+    PLACEHOLDER_DRINK_CATEGORY: "Enter Drink Category",
+    PLACEHOLDER_DRINK_ALCOHOL_PERCENTAGE: "Enter Drink Alcohol Percentage",
+    PLACEHOLDER_DRINK_STOCK_QUANTITY: "Enter Drink Stock Quantity",
+    PLACEHOLDER_DRINK_DELETED: "Drink Item Deleted?",
 }
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const Cart_Items = {
+    TITLE: "Cart Items",
+    NAME: "Name",
+    PRICE: "Price",
+    QUANTITIY: "Quantity Ordered",
+    QUANTITIY_STRING: "Quantity",
+    EDIT_COLUMN: "Modify",
+    REMOVE: "Remove",
+    UPDATE_QUANTITY: "Update Quantities",
+    REMOVE_ITEMS: "Remove Items",
+    PLACE_ORDER: "Place Order",
+
+}
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const Cart_Quantity = {
+    UPDATE: "Update",
+    ADD: "+",
+    SUBTRACT: "-",
+    CLOSE: "X",
+    ADD_STRING: "Add"
+}
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const Order_List_Page = {
+    TITLE: "Order ",
+    NAME: "Item Name",
+    PRICE: "Item Price",
+    QUANTITIY: "Quantity Ordered",
+    TOTAL_PRICE: "Total Price: $"
+}
+
+// --------------------------------------------------------------------------------------------------------------------------------

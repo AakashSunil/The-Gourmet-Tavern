@@ -10,6 +10,7 @@ export const MyOrders = () => {
     const dispatch = useDispatch();
 
     const [orderList,setOrderList] = useState(orders_list)
+    
     // useEffect(() => {
     //     getOrders(dispatch, token);
     // },[orderList])
@@ -20,10 +21,10 @@ export const MyOrders = () => {
     }
 
     return (
-        <div>
-            {
-                loop_items(orderList)
-            }
-        </div>
+        <>
+        {
+            loop_items(orderList)
+        }
+        </>
     )
 }

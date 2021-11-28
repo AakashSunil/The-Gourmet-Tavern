@@ -82,57 +82,57 @@ export default function FoodMenuList() {
     return (
         <div>
             <div className="Searching">
-            <div className="content">
-                <h1>{FoodMenu_Page.HEADING}</h1>
-            </div>
-            <div className="form_css_menu">
-                <Form onSubmit = { handleSubmit }>
-                    <Row className="g-1" lg>
-                        <Col md>
-                            <FloatingLabel controlId="floatingSelectGrid" label="Category">
-                                <Form.Select aria-label="Floating label select example" value = { category_filter } onChange = { (e) => setCategoryFilter(e.target.value) }>
-                                    <option>Select Category</option>
-                                    {dropdown_populate(food_menu_item,"category")}
-                                </Form.Select>
-                            </FloatingLabel>
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="floatingSelectGrid" label="Cuisine">
-                                <Form.Select aria-label="Floating label select example" value={ cuisine_filter } onChange = { (e) => setCuisineFilter(e.target.value) }>
-                                    <option>Select Cuisine</option>
-                                    {dropdown_populate(food_menu_item,"cuisine")}
-                                </Form.Select>
-                            </FloatingLabel>
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="floatingSelectGrid" label="Preference">
-                                <Form.Select aria-label="Floating label select example" value={ preference_filter } onChange = { (e) => setPreferenceFilter(e.target.value) }>
-                                    <option>Select Preference</option>
-                                    {dropdown_populate(food_menu_item,"preference")}
-                                </Form.Select>
-                            </FloatingLabel>
-                        </Col>
-                        <Col md>
-                            <FloatingLabel controlId="floatingInputGrid" label="Search">
-                                <Form.Control type="text" placeholder="Search Dish Name" value={search} onChange = { (e) => { setSearch(e.target.value) }} />
-                            </FloatingLabel>
-                        </Col>
-                        <Col md className="button_align">
-                            <div className="search_reset">
-                                <Col md>
-                                    <Button variant="primary" type="submit" size="lg" >
-                                        {FoodMenu_Page.SEARCH}
-                                    </Button>
-                                </Col>
-                                <Col md>
-                                    <Button variant="primary" type="submit" size="lg">
-                                        {FoodMenu_Page.RESET}
-                                    </Button>
-                                </Col>
-                            </div>
-                        </Col>
-                    </Row>
-                </Form>
+                <div className="content">
+                    <h1>{FoodMenu_Page.HEADING}</h1>
+                </div>
+                <div className="form_css_menu">
+                    <Form onSubmit = { handleSubmit }>
+                        <Row className="g-1" lg>
+                            <Col md>
+                                <FloatingLabel label="Category">
+                                    <Form.Select value = { category_filter } onChange = { (e) => setCategoryFilter(e.target.value) }>
+                                        <option>{FoodMenu_Page.SELECT_CATEGORY}</option>
+                                        {dropdown_populate(food_menu_item, FoodMenu_Page.CATEGORY)}
+                                    </Form.Select>
+                                </FloatingLabel>
+                            </Col>
+                            <Col md>
+                                <FloatingLabel label="Cuisine">
+                                    <Form.Select value={ cuisine_filter } onChange = { (e) => setCuisineFilter(e.target.value) }>
+                                        <option>{FoodMenu_Page.SELECT_CUISINE}</option>
+                                        {dropdown_populate(food_menu_item,FoodMenu_Page.CUISINE)}
+                                    </Form.Select>
+                                </FloatingLabel>
+                            </Col>
+                            <Col md>
+                                <FloatingLabel label="Preference">
+                                    <Form.Select value={ preference_filter } onChange = { (e) => setPreferenceFilter(e.target.value) }>
+                                        <option>{FoodMenu_Page.SELECT_PREFERENCE}</option>
+                                        {dropdown_populate(food_menu_item,FoodMenu_Page.PREFERENCE)}
+                                    </Form.Select>
+                                </FloatingLabel>
+                            </Col>
+                            <Col md>
+                                <FloatingLabel label="Search">
+                                    <Form.Control type="text" placeholder = {FoodMenu_Page.PLACEHOLDER_SEARCH} value={search} onChange = { (e) => { setSearch(e.target.value) }} />
+                                </FloatingLabel>
+                            </Col>
+                            <Col md className="button_align">
+                                <div className="search_reset">
+                                    <Col md>
+                                        <Button variant="primary" type="submit" size="lg" >
+                                            {FoodMenu_Page.SEARCH}
+                                        </Button>
+                                    </Col>
+                                    <Col md>
+                                        <Button variant="primary" type="submit" size="lg">
+                                            {FoodMenu_Page.RESET}
+                                        </Button>
+                                    </Col>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Form>
                 </div>
             </div>
             {isAuthenticated? isAdmin?

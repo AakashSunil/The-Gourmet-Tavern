@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Modal, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { DrinksMenu_Page } from '../Helpers/helperString';
+import { Add_Drink_Page } from '../Helpers/helperString';
 
 export const AddDrinkItem = () => {
 
@@ -34,14 +34,13 @@ export const AddDrinkItem = () => {
             imageData: imageData
         }
         console.log(drink_item);
-
         setOpen(false)
     }
 
     const getBase64 = (file) => {
         return new Promise((resolve) => {
           let baseURL = "";
-          // Make new FileReader
+
           let reader = new FileReader();
     
           reader.readAsDataURL(file);
@@ -65,48 +64,48 @@ export const AddDrinkItem = () => {
                 backdrop="static"
                 keyboard={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{DrinksMenu_Page.ADD_DRINK}</Modal.Title>
+                    <Modal.Title>{Add_Drink_Page.ADD_DRINK}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit = { handleDrinkAdd }>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.NAME}</Form.Label>
-                            <Form.Control type="name" placeholder="Enter Drink Name" value={name} onChange = { (e) => setName(e.target.value) } />
+                            <Form.Label>{Add_Drink_Page.NAME}</Form.Label>
+                            <Form.Control type="name" placeholder = {Add_Drink_Page.PLACEHOLDER_DRINK_NAME} value={name} onChange = { (e) => setName(e.target.value) } />
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.DRINK_IMAGE}</Form.Label>
+                            <Form.Label>{Add_Drink_Page.DRINK_IMAGE}</Form.Label>
                             <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.DESCRIPTION}</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="Enter Drink Description" value={description} onChange = { (e) => setDescription(e.target.value) }/>
+                            <Form.Label>{Add_Drink_Page.DESCRIPTION}</Form.Label>
+                            <Form.Control as="textarea" rows={3} placeholder = {Add_Drink_Page.PLACEHOLDER_DRINK_DESCRIPTION} value={description} onChange = { (e) => setDescription(e.target.value) }/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.PRICE}</Form.Label>
-                            <Form.Control type="number" placeholder="Enter Price" value={price} onChange = { (e) => setPrice(e.target.value) }/>
+                            <Form.Label>{Add_Drink_Page.PRICE}</Form.Label>
+                            <Form.Control type="number" placeholder = {Add_Drink_Page.PLACEHOLDER_DRINK_PRICE} value={price} onChange = { (e) => setPrice(e.target.value) }/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.CATEGORY}</Form.Label>
-                            <Form.Control type = "text" placeholder="Enter Category" value={category} onChange = { (e) => setCategory(e.target.value) }/>
+                            <Form.Label>{Add_Drink_Page.CATEGORY}</Form.Label>
+                            <Form.Control type = "text" placeholder = {Add_Drink_Page.PLACEHOLDER_DRINK_CATEGORY} value={category} onChange = { (e) => setCategory(e.target.value) }/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.LEVEL}</Form.Label>
-                            <Form.Control type= "text" placeholder = "Enter Alcohol Percentage" value={level} onChange = { (e) => setLevel(e.target.value) }/>
+                            <Form.Label>{Add_Drink_Page.LEVEL}</Form.Label>
+                            <Form.Control type= "text" placeholder = {Add_Drink_Page.PLACEHOLDER_DRINK_ALCOHOL_PERCENTAGE} value={level} onChange = { (e) => setLevel(e.target.value) }/>
                         </Form.Group>
                         <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.STOCK_QUANTITY}</Form.Label>
-                            <Form.Control type= "number" placeholder = "Enter Stock Quantity" value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
+                            <Form.Label>{Add_Drink_Page.STOCK_QUANTITY}</Form.Label>
+                            <Form.Control type= "number" placeholder = {Add_Drink_Page.PLACEHOLDER_DRINK_STOCK_QUANTITY} value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <div key={`default-checkbox`} className="mb-3">
-                                <Form.Check type="checkbox" id={`default-checkbox`} label={`Drink Item Deleted?`} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
+                                <Form.Check type="checkbox" id={`default-checkbox`} label={Add_Drink_Page.PLACEHOLDER_DRINK_DELETED} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
                             </div>
                         </Form.Group>      
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleDrinkClose}>{DrinksMenu_Page.CANCEL}</Button>
-                    <Button variant="primary" onClick={handleDrinkAdd}>{DrinksMenu_Page.SUBMIT}</Button>
+                    <Button variant="secondary" onClick={handleDrinkClose}>{Add_Drink_Page.CANCEL}</Button>
+                    <Button variant="primary" onClick={handleDrinkAdd}>{Add_Drink_Page.SUBMIT}</Button>
                 </Modal.Footer>
             </Modal>
     )
