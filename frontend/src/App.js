@@ -20,9 +20,10 @@ function App() {
   const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    loadUser(dispatch, token);  
-  }, [dispatch,token]);
+  // useEffect(() => {
+  //   console.log('s');
+  //   loadUser(dispatch, token);  
+  // }, []);
 
 
   return (

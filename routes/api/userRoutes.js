@@ -63,6 +63,7 @@ const savedUser = await user.save();
 res.header("auth-token",token);
 res.send({user : {_id : savedUser._id, name, isAdmin : savedUser.isAdmin}});
 } catch(err) {
+    console.log(err);
 res.status(400).send({"message" : "Error during validation"});
 }
 });

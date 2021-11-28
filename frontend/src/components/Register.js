@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import { setError, signUpUser } from '../actions';
 import { Register_Page } from '../Helpers/helperString';
 import './components.css'
+import { useSelector, useDispatch } from 'react-redux';
+
 export default function Register() {
+
+    const error = useSelector(state => state.error);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+    const dispatch = useDispatch();
 
     const history = useHistory()
     
+    const [msg, setMsg] = useState(null);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirm, setPasswordConfirm] = useState('');
-    // const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -26,8 +35,37 @@ export default function Register() {
             password: password,
             password_confirm: password_confirm
         }
+
         console.log(user);
-        history.push('/')
+        signUpUser(dispatch, name.trim(), email.trim(), phone.trim(), password.trim(), address.trim());
+        // if(!name.trim() || !email.trim() || !phone.trim() || !password.trim() || address.trim()) {
+
+        //     setError(dispatch, "All fields are required", 400, 'REGISTRATION_FAILURE');
+        // } 
+        // //check if password meets all requirements
+        // else if(!password.trim().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+
+        //     const message = "Password should be minimum of 8 characters & should include atleast 1 lowercase, 1 uppercase, 1 digit & 1 special character";
+        //     setError(dispatch, message, 400, 'REGISTRATION_FAILURE');
+        // }
+        // //check if phone number meets all requirements 
+        // else if(!phone.trim().match(/^[0-9]*$/) || !(phone.trim().length === 10)) {
+
+        //     setError(dispatch ,"please enter a valid phone number", 400, 'REGISTRATION_FAILURE');
+        // }
+        // //check if name meets all requirements 
+        // else if(!name.trim().match(/^[a-zA-Z\s]*$/)) {
+
+        //     setError(dispatch, "Name should contain only letters", 400, 'REGISTRATION_FAILURE');
+        // }
+        // else if(name.trim().length < 3) {
+
+        //     setError(dispatch, "Name should contain atleast 3 characters", 400, 'REGISTRATION_FAILURE');
+        // }
+        // //if all fields are valid
+        // else {
+        // }
+        // history.push('/')
     }
 
     return(

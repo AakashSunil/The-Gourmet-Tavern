@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const setError = (dispatch, msg, status, id) => {
     dispatch({
         type : 'SET_ERROR',
@@ -12,10 +13,12 @@ export const setError = (dispatch, msg, status, id) => {
 }
 
 
-export const signUpUser = (dispatch, name, email, phnno, password) => {
+export const signUpUser = (dispatch, name, email, phone, password, address) => {
 
-    axios.post('/user/register',{name, email, phnno, password})
+    axios.post('/user/register',{name, email, phone, password, address})
         .then(res => {
+            console.log(res);
+            
             dispatch({
                 type : 'CLEAR_ERROR'
             });
@@ -81,8 +84,10 @@ export const loadUser = (dispatch, token) => {
 
     const headers = getConfig(token).header;
 
+    console.log(headers);
     axios.get('/user', {headers : headers})
         .then(res => {
+            console.log(res);
             dispatch({
                 type : 'CLEAR_ERROR'
             });
