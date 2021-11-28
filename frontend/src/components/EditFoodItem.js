@@ -1,28 +1,35 @@
-import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
-import { Form, Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { Form, Modal, Button } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
 import { Add_Food_Page } from '../Helpers/helperString';
 
 export const EditFoodItem = () => {
+    
+    const location = useLocation();
+    const {item} = location.state;
 
     const history = useHistory();
     const [show, setShow] = useState(true);
 
-    const [name,setName] = useState('')
-    const [description,setDescription] = useState('')
-    const [price,setPrice] = useState('')
-    const [isDeleted,setDeleted] = useState(false)
-    const [category,setCategory] = useState('')
-    const [cuisine,setCuisine] = useState('')
-    const [preference,setPreference] = useState('')
-    const [ingredients,setIngredients] = useState('')
-    const [stockQuantity,setStockQuantity] = useState('')
-    const [imageData,setImageData] = useState('')
+    const [name,setName] = useState(item.name)
+    const [description,setDescription] = useState(item.description)
+    const [price,setPrice] = useState(item.price)
+    const [isDeleted,setDeleted] = useState(item.isDeleted)
+    const [category,setCategory] = useState(item.category)
+    const [cuisine,setCuisine] = useState(item.cuisine)
+    const [preference,setPreference] = useState(item.preference)
+    const [ingredients,setIngredients] = useState(item.ingredients)
+    const [stockQuantity,setStockQuantity] = useState(item.stockQuantity)
+    const [imageData,setImageData] = useState(item.image)
 
     const handleClose = () => {
         history.push('/foodMenu')
         setShow(false);
+    }
+
+    const handleDelete = () => {
+        history.push('/foodMenu')
+        setShow(false)
     }
 
     const handleSubmit = () => {
@@ -74,7 +81,7 @@ export const EditFoodItem = () => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{Add_Food_Page.ADD}</Modal.Title>
+          <Modal.Title>{Add_Food_Page.EDIT_FOOD}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form onSubmit = { handleSubmit }>
@@ -116,14 +123,15 @@ export const EditFoodItem = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <div key={`default-checkbox`} className="mb-3">
-                        <Form.Check type="checkbox" id={`default-checkbox`} label={`Food Item Deleted?`} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
+                        <Form.Check type="checkbox" id={`default-checkbox`} label={`Food Item Deleted?`} defaultChecked={isDeleted} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
                     </div>
                 </Form.Group>              
             </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>{Add_Food_Page.CANCEL}</Button>
-          <Button variant="primary" onClick={handleSubmit}>{Add_Food_Page.SUBMIT}</Button>
+          <Button variant="primary" onClick={handleSubmit}>{Add_Food_Page.SUBMIT_EDIT}</Button>
+          <Button variant="primary" onClick={handleDelete}>{Add_Food_Page.DELETE}</Button>
         </Modal.Footer>
       </Modal>
     </>

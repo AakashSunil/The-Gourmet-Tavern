@@ -83,6 +83,7 @@ export const Header_NavBar = {
     REGISTER: "Sign Up / Register",
     LOGIN: "Log In",
     ORDER: "My Orders",
+    CART: "My Cart",
     LOGOUT: "Logout"
 }
 
@@ -142,7 +143,8 @@ export const Card_Item_Page = {
 // --------------------------------------------------------------------------------------------------------------------------------
 
 export const Add_Food_Page = {
-    ADD:"Add New Food Item",
+    EDIT_FOOD: "Update Food Item",
+    ADD_FOOD:"Add New Food Item",
     NAME: "Food Name",
     DESCRIPTION: "Food Description",
     PRICE: "Price",
@@ -153,8 +155,27 @@ export const Add_Food_Page = {
     INGREDIENTS: "Food Ingredients",
     IMAGE: "Image Data",
     SUBMIT: "Add New Food",
+    SUBMIT_EDIT: "Update Food",
     CANCEL: "Cancel",
-    FOOD_IMAGE: "Food Image"
+    FOOD_IMAGE: "Food Image",
+    DELETE: "Delete Food Item"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
+
+export const Add_Drink_Page = {
+    EDIT_DRINK:"Update Drink Item",
+    ADD_DRINK:"Add New Drink Item",
+    NAME: "Drink Name",
+    DESCRIPTION: "Drink Description",
+    PRICE: "Price",
+    CATEGORY: "Drink Category",
+    LEVEL:"Alcohol Percentage Level",
+    STOCK_QUANTITY: "Stock Quantity",
+    IMAGE: "Image Data",
+    SUBMIT: "Add New Drink",
+    SUBMIT_EDIT: "Update Drink",
+    CANCEL: "Cancel",
+    DRINK_IMAGE:"Drink Image",
+    DELETE: "Delete Drink Item"
+}

@@ -1,28 +1,35 @@
-import Button from '@restart/ui/esm/Button';
-import React, { useEffect, useState } from 'react';
-import { Form, Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import React, { useState } from 'react';
+import { Form, Modal, Button } from 'react-bootstrap';
+import { useHistory, useLocation } from 'react-router';
 import { Add_Drink_Page } from '../Helpers/helperString';
 
 export const EditDrinkItem = () => {
 
+    const location = useLocation();
+    const {item} = location.state;
+
+    console.log(item);
     const history = useHistory();
     const [show, setShow] = useState(true);
 
-    const [name,setName] = useState('')
-    const [description,setDescription] = useState('')
-    const [price,setPrice] = useState('')
-    const [isDeleted,setDeleted] = useState(false)
-    const [category,setCategory] = useState('')
-    const [level,setLevel] = useState('')
-    const [stockQuantity,setStockQuantity] = useState('')
-    const [imageData,setImageData] = useState('')
+    const [name,setName] = useState(item.name)
+    const [description,setDescription] = useState(item.description)
+    const [price,setPrice] = useState(item.price)
+    const [isDeleted,setDeleted] = useState(item.isDeleted)
+    const [category,setCategory] = useState(item.category)
+    const [level,setLevel] = useState(item.level)
+    const [stockQuantity,setStockQuantity] = useState(item.stockQuantity)
+    const [imageData,setImageData] = useState(item.image)
 
     const handleClose = () => {
         history.push('/drinksMenu')
         setShow(false);
     }
 
+    const handleDelete = () => {
+      history.push('/drinksMenu')
+      setShow(false)
+    }
     const handleSubmit = () => {
         const drink_item = {
             name:name,
@@ -63,12 +70,8 @@ export const EditDrinkItem = () => {
         getBase64(e.target.files[0])
     }
 
-    useEffect(()=>{
-        
-    })
   return (
     <>
-
       <Modal
         show={show}
         onHide={handleClose}
@@ -76,7 +79,7 @@ export const EditDrinkItem = () => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>{Add_Drink_Page.ADD}</Modal.Title>
+          <Modal.Title>{Add_Drink_Page.EDIT_DRINK}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form onSubmit = { handleSubmit }>
@@ -110,7 +113,7 @@ export const EditDrinkItem = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <div key={`default-checkbox`} className="mb-3">
-                        <Form.Check type="checkbox" id={`default-checkbox`} label={`Drink Item Deleted?`} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
+                        <Form.Check type="checkbox" id={`default-checkbox`} label={`Drink Item Deleted?`} defaultChecked={isDeleted} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
                     </div>
                 </Form.Group>
                 
@@ -119,7 +122,8 @@ export const EditDrinkItem = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>{Add_Drink_Page.CANCEL}</Button>
-          <Button variant="primary" onClick={handleSubmit}>{Add_Drink_Page.SUBMIT}</Button>
+          <Button variant="primary" onClick={handleSubmit}>{Add_Drink_Page.SUBMIT_EDIT}</Button>
+          <Button variant="primary" onClick={handleDelete}>{Add_Drink_Page.DELETE}</Button>
         </Modal.Footer>
       </Modal>
     </>

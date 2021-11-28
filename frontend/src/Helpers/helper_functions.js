@@ -1,6 +1,8 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import CardItem from "../components/CardItem";
+import { CartList } from "../components/CartList";
+import { OrderList } from "../components/OrderList";
 
 
 export const dropdown_populate = (items,type) => {
@@ -47,7 +49,7 @@ export const pagination = (items,page_no) => {
 
 }
 
-export const grid_create = (items,item_blank) => {
+export const grid_create = (items,item_blank,isAdmin) => {
         let i = 0;
         let limit = 3;
         const rows = [...Array( Math.ceil(items.length / limit) )];
@@ -66,12 +68,34 @@ export const grid_create = (items,item_blank) => {
             <Row className="card_align" key={idx_row}>
             
             { row.map( (product,idx) => (
+                
                 <Col md key={idx}>
-                    {!product.isDeleted && <CardItem item = {product} key={idx} /> }
+                    {isAdmin === true? 
+                    product.name !== "" && <CardItem item = {product} key={idx} isAdmin={isAdmin}/>
+                    :
+                    !product.isDeleted && <CardItem item = {product} key={idx} isAdmin={isAdmin} /> }
                 </Col>
                 )
             )}
             </Row> ));
 
         return content
+}
+
+export const order_list_create = (items) => {
+    
+        let productRows = items;
+        const content = productRows.map((row, idx_row) => (
+            
+            <Row key={idx_row}>
+                <OrderList item = {row}/>
+            </Row> ));
+
+        return content
+}
+
+export const cart_list_create = (items) => {
+        
+        return(<CartList item = {items}/>)
+            
 }

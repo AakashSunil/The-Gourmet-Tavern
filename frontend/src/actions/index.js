@@ -13,11 +13,10 @@ export const setError = (dispatch, msg, status, id) => {
 }
 
 
-export const signUpUser = (dispatch, name, email, phone, password, address) => {
+export const signUpUser = (dispatch, name, email, phone, password, address, history) => {
 
     axios.post('/user/register',{name, email, phone, password, address})
         .then(res => {
-            console.log(res);
             
             dispatch({
                 type : 'CLEAR_ERROR'
@@ -28,6 +27,8 @@ export const signUpUser = (dispatch, name, email, phone, password, address) => {
                     token : res.headers['auth-token']
                 }
             });
+            history.push('/');
+
         })
         .catch(err => {
             setError(dispatch, err.response.data.message, err.response.status, 'REGISTRATION_FAILURE');
@@ -37,7 +38,7 @@ export const signUpUser = (dispatch, name, email, phone, password, address) => {
         })
 }
 
-export const signInUser = (dispatch, email, password) => {
+export const signInUser = (dispatch, email, password, history) => {
 
     axios.post('/user/login',{email, password})
         .then(res => {
@@ -50,6 +51,7 @@ export const signInUser = (dispatch, email, password) => {
                     token : res.headers['auth-token']
                 }
             });
+            history.push('/')
         })
         .catch(err => {
             setError(dispatch, err.response.data.message, err.response.status, 'LOGIN_FAILURE');

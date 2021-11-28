@@ -29,13 +29,11 @@ export default function Login() {
     };
 
     const handleSubmit = e => {
-        console.log("Login Button");
         e.preventDefault()
         if(!email.trim() || !password.trim()) {
             setError(dispatch, "All fields are required", 400, 'LOGIN_FAILURE');
         } else {
-            signInUser(dispatch, email, password);
-            history.push('/')
+            signInUser(dispatch, email, password,history);
         } 
     }
 

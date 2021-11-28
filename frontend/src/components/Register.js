@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {Form, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { Link, } from 'react-router-dom';
-import { setError, signUpUser } from '../actions';
+import { signUpUser } from '../actions';
 import { Register_Page } from '../Helpers/helperString';
 import './components.css'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export default function Register() {
-
-    const error = useSelector(state => state.error);
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
     const dispatch = useDispatch();
 
@@ -37,7 +34,7 @@ export default function Register() {
         }
 
         console.log(user);
-        signUpUser(dispatch, name.trim(), email.trim(), phone.trim(), password.trim(), address.trim());
+        signUpUser(dispatch, name.trim(), email.trim(), phone.trim(), password.trim(), address.trim(), history);
         // if(!name.trim() || !email.trim() || !phone.trim() || !password.trim() || address.trim()) {
 
         //     setError(dispatch, "All fields are required", 400, 'REGISTRATION_FAILURE');

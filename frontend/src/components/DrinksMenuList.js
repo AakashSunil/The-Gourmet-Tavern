@@ -1,11 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { Button, Col, FloatingLabel, Form, Modal, Row } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import React, { useState } from 'react'
+import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { DrinksMenu_Page } from '../Helpers/helperString';
 import { drinks_menu_item } from '../Helpers/menu';
 import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function DrinksMenuList() {
+    
+    const isUser = useSelector(state => state.auth.user);
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
+    let isAdmin;
+    isUser===null?isAdmin=false:isAdmin=isUser.isAdmin
 
     const item_filter = (page_number,page_size) => {
         console.log(page_number);
@@ -34,9 +41,6 @@ export default function DrinksMenuList() {
         return buttons
     }
 
-    
-
-
     const handlePage = (ele) => {
         setPage(ele)
         setItems(item_filter(ele,6))
@@ -56,78 +60,26 @@ export default function DrinksMenuList() {
             stockQuantity: 0,
         }
         
-        let card_grid = grid_create(items,item_blank)
+        let card_grid = grid_create(items,item_blank,isAdmin)
         return card_grid
     }
 
-    const isAdmin = true;
-    const history = useHistory()
+
 
     const [search, setSearch] = useState('');
     const [category_filter, setCategoryFilter] = useState('');
     const [level_filter, setLevelFilter] = useState('');
-    const [isOpen, setOpen] = useState(false);
-    
-
-    const [name,setName] = useState('')
-    const [description,setDescription] = useState('')
-    const [price,setPrice] = useState('')
-    const [isDeleted,setDeleted] = useState(false)
-    const [category,setCategory] = useState('')
-    const [level,setLevel] = useState('')
-    const [stockQuantity,setStockQuantity] = useState('')
-    const [imageData,setImageData] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault();
         const search_filter = {
             search:search,
-            category:category,
-            level:level,
+            category:category_filter,
+            level:level_filter,
         }
         console.log(search_filter);
     }
-
-    const handleDrinkClose = () => {
-        setOpen(false);
-    }
-
-    const handleDrinkAdd = e => {
-        const drink_item = {
-            name:name,
-            description: description,
-            price:price,
-            isDeleted: isDeleted,
-            category: category,
-            level: level,
-            stockQuantity:stockQuantity,
-            imageData: imageData
-        }
-        console.log(drink_item);
-        history.push("/drinksMenu")
-        setOpen(false)
-    }
-
-    const getBase64 = (file) => {
-        return new Promise((resolve) => {
-          let baseURL = "";
-          // Make new FileReader
-          let reader = new FileReader();
     
-          reader.readAsDataURL(file);
-    
-          reader.onload = () => {
-            baseURL = reader.result;
-            setImageData(baseURL)
-            resolve(baseURL);
-          };
-        });
-      };
-
-    const handleFileInput = (e) => {
-        getBase64(e.target.files[0])
-    }
-
     return (
         <div>
             <div className="content">
@@ -174,12 +126,14 @@ export default function DrinksMenuList() {
                     </Row>
                 </Form>
             </div>
-            {isAdmin?
+            {isAuthenticated? isAdmin?
                 <div className="card_align">
-                    <Button variant="primary" type="submit" size="lg" onClick={()=>setOpen(true)}>
+                    <Link to="/addDrinks"><Button variant="primary" type="submit" size="lg">
                         {DrinksMenu_Page.ADD}
-                    </Button>
+                    </Button></Link>
                 </div>
+                :
+                null
                 :
                 null
             }
@@ -194,56 +148,7 @@ export default function DrinksMenuList() {
                 page_no_loop(drinks_menu_item.length,6)
             }    
             </div>
-            <Modal
-                show={isOpen}
-                onHide={handleDrinkClose}
-                backdrop="static"
-                keyboard={false}>
-                <Modal.Header closeButton>
-                    <Modal.Title>{DrinksMenu_Page.ADD_DRINK}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form onSubmit = { handleDrinkAdd }>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.NAME}</Form.Label>
-                            <Form.Control type="name" placeholder="Enter Drink Name" value={name} onChange = { (e) => setName(e.target.value) } />
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.DRINK_IMAGE}</Form.Label>
-                            <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.DESCRIPTION}</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="Enter Drink Description" value={description} onChange = { (e) => setDescription(e.target.value) }/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.PRICE}</Form.Label>
-                            <Form.Control type="number" placeholder="Enter Price" value={price} onChange = { (e) => setPrice(e.target.value) }/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.CATEGORY}</Form.Label>
-                            <Form.Control type = "text" placeholder="Enter Category" value={category} onChange = { (e) => setCategory(e.target.value) }/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.LEVEL}</Form.Label>
-                            <Form.Control type= "text" placeholder = "Enter Alcohol Percentage" value={level} onChange = { (e) => setLevel(e.target.value) }/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>{DrinksMenu_Page.STOCK_QUANTITY}</Form.Label>
-                            <Form.Control type= "number" placeholder = "Enter Stock Quantity" value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <div key={`default-checkbox`} className="mb-3">
-                                <Form.Check type="checkbox" id={`default-checkbox`} label={`Drink Item Deleted?`} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
-                            </div>
-                        </Form.Group>      
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleDrinkClose}>{DrinksMenu_Page.CANCEL}</Button>
-                    <Button variant="primary" onClick={handleDrinkAdd}>{DrinksMenu_Page.SUBMIT}</Button>
-                </Modal.Footer>
-            </Modal>
+            
         </div>
     )
 }

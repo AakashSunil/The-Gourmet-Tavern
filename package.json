@@ -19,7 +19,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node server.js", 
-    "client": "cd frontend && npm run build && serve -s build",
+    "client": "cd frontend && npm start",
     "start": "concurrently \"npm run dev\" \"npm run client\" "
 
   },
