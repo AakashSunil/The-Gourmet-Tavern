@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap';
-import { Add_Food_Page } from '../Helpers/helperString';
+import { Add_Edit_Food_Page } from '../Helpers/helperString';
 import { useHistory } from 'react-router';
 
 export const AddFoodItem = () => {
@@ -70,56 +70,56 @@ export const AddFoodItem = () => {
             keyboard={false}
         >
             <Modal.Header closeButton>
-                <Modal.Title>{Add_Food_Page.ADD_FOOD}</Modal.Title>
+                <Modal.Title>{Add_Edit_Food_Page.ADD_FOOD}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit = { handleFoodAdd }>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.NAME}</Form.Label>
-                        <Form.Control type="name" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_NAME} value={name} onChange = { (e) => setName(e.target.value) } />
+                        <Form.Label>{Add_Edit_Food_Page.NAME}</Form.Label>
+                        <Form.Control type="name" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_NAME} value={name} onChange = { (e) => setName(e.target.value) } />
                     </Form.Group>
                     <Form.Group controlId="formFile" className="mb-3">
-                        <Form.Label>{Add_Food_Page.FOOD_IMAGE}</Form.Label>
+                        <Form.Label>{Add_Edit_Food_Page.FOOD_IMAGE}</Form.Label>
                         <Form.Control type="file" onChange={(e) => handleFileInput(e)}/>
                     </Form.Group>  
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.DESCRIPTION}</Form.Label>
-                        <Form.Control as="textarea" rows={3} placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_DESCRIPTION} value={description} onChange = { (e) => setDescription(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.DESCRIPTION}</Form.Label>
+                        <Form.Control as="textarea" rows={3} placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_DESCRIPTION} value={description} onChange = { (e) => setDescription(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.PRICE}</Form.Label>
-                        <Form.Control type="number" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_PRICE} value={price} onChange = { (e) => setPrice(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.PRICE}</Form.Label>
+                        <Form.Control type="number" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_PRICE} value={price} onChange = { (e) => setPrice(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.CATEGORY}</Form.Label>
-                        <Form.Control type = "text" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_CATEGORY} value={category} onChange = { (e) => setCategory(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.CATEGORY}</Form.Label>
+                        <Form.Control type = "text" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_CATEGORY} value={category} onChange = { (e) => setCategory(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.CUISINE}</Form.Label>
-                        <Form.Control type = "text" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_CUISINE} value={cuisine} onChange = { (e) => setCuisine(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.CUISINE}</Form.Label>
+                        <Form.Control type = "text" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_CUISINE} value={cuisine} onChange = { (e) => setCuisine(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.PREFERENCE}</Form.Label>
-                        <Form.Control type = "text" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_PREFERENCE} value={preference} onChange = { (e) => setPreference(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.PREFERENCE}</Form.Label>
+                        <Form.Control type = "text" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_PREFERENCE} value={preference} onChange = { (e) => setPreference(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.INGREDIENTS}</Form.Label>
-                        <Form.Control type = "text" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_INGREDIENTS} value={ingredients} onChange = { (e) => setIngredients(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.INGREDIENTS}</Form.Label>
+                        <Form.Control type = "text" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_INGREDIENTS} value={ingredients} onChange = { (e) => setIngredients(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
-                        <Form.Label>{Add_Food_Page.STOCK_QUANTITY}</Form.Label>
-                        <Form.Control type= "number" placeholder = {Add_Food_Page.PLACEHOLDER_FOOD_STOCK_QUANTITY} value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
+                        <Form.Label>{Add_Edit_Food_Page.STOCK_QUANTITY}</Form.Label>
+                        <Form.Control type= "number" placeholder = {Add_Edit_Food_Page.PLACEHOLDER_FOOD_STOCK_QUANTITY} value={stockQuantity} onChange = { (e) => setStockQuantity(e.target.value) }/>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <div key={`default-checkbox`} className="mb-3">
-                            <Form.Check type="checkbox" id={`default-checkbox`} label={Add_Food_Page.PLACEHOLDER_FOOD_DELETED} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
+                            <Form.Check type="checkbox" id={`default-checkbox`} label={Add_Edit_Food_Page.PLACEHOLDER_FOOD_DELETED} value={isDeleted} onChange = { (e) => setDeleted(!isDeleted)}/>
                         </div>
                     </Form.Group>              
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleFoodClose}>{Add_Food_Page.CANCEL}</Button>
-                <Button variant="primary" onClick={handleFoodAdd}>{Add_Food_Page.SUBMIT}</Button>
+                <Button variant="secondary" onClick={handleFoodClose}>{Add_Edit_Food_Page.CANCEL}</Button>
+                <Button variant="primary" onClick={handleFoodAdd}>{Add_Edit_Food_Page.SUBMIT}</Button>
             </Modal.Footer>
         </Modal>
     )
