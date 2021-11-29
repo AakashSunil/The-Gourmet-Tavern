@@ -45,11 +45,13 @@ export const dropdown_populate = (items,type) => {
     
     return options
 }
-export const pagination = (items,page_no) => {
 
-}
+export const grid_create = (items,item_blank,isAdmin, type) => {
 
-export const grid_create = (items,item_blank,isAdmin) => {
+    let content;
+
+    if(items.length !== 0)
+    {
         let i = 0;
         let limit = 3;
         const rows = [...Array( Math.ceil(items.length / limit) )];
@@ -63,13 +65,13 @@ export const grid_create = (items,item_blank,isAdmin) => {
             }
             return productRows
         })
-        const content = productRows.map((row, idx_row) => (
+        content = productRows.map((row, idx_row) => (
             
             <Row className="card_align" key={idx_row}>
             
             { row.map( (product,idx) => (
                 
-                <Col md key={idx}>
+                <Col lg={true} key={idx}>
                     {isAdmin === true? 
                     product.name !== "" && <CardItem item = {product} key={idx} isAdmin={isAdmin}/>
                     :
@@ -80,6 +82,17 @@ export const grid_create = (items,item_blank,isAdmin) => {
             </Row> ));
 
         return content
+    }
+    else {
+        content = <h1>{
+                        type==="Drinks"?
+                        "The Bar is Currently Closed. Please Come Back another Day!! Sorry for the Inconvenience"
+                        : 
+                        "The Restaurant is Currently Closed. Please Come Back another Day!! Sorry for the Inconvenience"
+                    }</h1>
+        return content
+    }
+        
 }
 
 export const order_list_create = (items) => {
@@ -87,9 +100,7 @@ export const order_list_create = (items) => {
         let productRows = items;
         const content = productRows.map((row, idx_row) => (
             
-            <Row key={idx_row}>
-                <OrderList item = {row}/>
-            </Row> ));
+                <OrderList item = {row}/>))
 
         return content
 }
@@ -98,4 +109,30 @@ export const cart_list_create = (items) => {
         
         return(<CartList item = {items}/>)
             
+}
+
+export const item_sort = (item_list) => {
+    item_list.sort(function(x, y) {
+        return (x.isDeleted - y.isDeleted)
+    })
+}
+
+export const item_filter = (items, page_number,page_size) => {
+    item_sort(items)
+    if(items.length < page_size) {
+        page_number = 1
+    }
+    let filtered = items.slice((page_number - 1) * page_size, page_number * page_size)
+    return filtered
+}
+
+export const itemPerPage = (items) => {
+    let i = 3;
+    let itemPerPage_array = [];
+
+    while( i <= items.length) {
+        itemPerPage_array.push(i);
+        i += 3 
+    }
+    return itemPerPage_array
 }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
+import { Button, Col, Dropdown, FloatingLabel, Form, Pagination, Row } from 'react-bootstrap';
 import { DrinksMenu_Page } from '../Helpers/helperString';
 import { drinks_menu_item } from '../Helpers/menu';
-import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
+import { dropdown_populate, grid_create, itemPerPage, item_filter } from '../Helpers/helper_functions';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -14,34 +14,55 @@ export default function DrinksMenuList() {
     let isAdmin;
     isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
 
-    const item_filter = (page_number,page_size) => {
-        let filtered = drinks_menu_item.slice((page_number - 1) * page_size, page_number * page_size)
-        return filtered
+    
+
+    const [page,setPage] = useState(1);
+    const [totalList,setList] = useState(drinks_menu_item);
+    const [pageItemLimitArray,setPageItemListArray] = useState(itemPerPage(totalList));
+    const [pageItemLimit,setPageItemList] = useState(6);
+    const [items,setItems] = useState(item_filter(totalList,page,pageItemLimit));
+    
+    
+    const handlePage = (ele) => {
+        setPage(ele)
+        setItems(item_filter(totalList,ele,pageItemLimit))
     }
-    
-    const [page,setPage] = useState(null);
-    const [items,setItems] = useState(item_filter(1,6));
-    
+
+    const handleItemPerPage = (ele) => {
+        setPageItemList(ele)
+        setItems(item_filter(totalList,page,ele))
+    }
+
     const page_no_loop = (size,limit) => {
         let page_array =[]
         let pages = Math.ceil(size/limit)
-        if(pages <= 9) {
-            for(let i = 0;i < pages;i++){
-                page_array.push(i+1);
-           }
+        for(let i = 0; i < pages; i++){
+            page_array.push(i+1);
         }
-        else {
 
-        }
-        const buttons = page_array.map((ele,idx) => {
-            return <Button key={idx} onClick={() => handlePage(ele)}>{ele}</Button>
-        })
+        const buttons = 
+        <>
+            <Pagination>
+                <Pagination.First disabled={page===1?true:false} onClick = {() => handlePage(1)}/>
+                <Pagination.Prev disabled={(page-1) < 1?true:false} onClick = {() => handlePage(page-1)}/>
+                {page_array.map((ele,idx) => {
+                    return <Pagination.Item active={ele===page?true:false} onClick={() => handlePage(ele)}>{ele}</Pagination.Item>
+                })}
+                <Pagination.Next disabled={(page+1) > page_array.length?true:false} onClick = {() => handlePage(page+1)}/>
+                <Pagination.Last disabled={page===page_array.length?true:false} onClick = {() => handlePage(page_array.length)}/>
+            </Pagination>
+            <Dropdown>
+                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" >
+                    {pageItemLimit}{DrinksMenu_Page.ITEMS_PER_PAGE}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {pageItemLimitArray.map((ele) => {
+                        return <Dropdown.Item onClick={()=>handleItemPerPage(ele)}>{ele}</Dropdown.Item>
+                    })}
+                </Dropdown.Menu>
+            </Dropdown> 
+        </>
         return buttons
-    }
-
-    const handlePage = (ele) => {
-        setPage(ele)
-        setItems(item_filter(ele,6))
     }
     
     const item_loop = (items) => {
@@ -56,7 +77,7 @@ export default function DrinksMenuList() {
             level: "",
             stockQuantity: 0,
         }       
-        let card_grid = grid_create(items,item_blank,isAdmin)
+        let card_grid = grid_create(items,item_blank,isAdmin,"Drinks")
         return card_grid
     }
 
@@ -138,7 +159,7 @@ export default function DrinksMenuList() {
             </div>
             <div className="pagination_align">
             {
-                page_no_loop(drinks_menu_item.length,6)
+                page_no_loop(drinks_menu_item.length,pageItemLimit)
             }    
             </div>            
         </div>

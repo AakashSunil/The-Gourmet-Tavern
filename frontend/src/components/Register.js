@@ -13,14 +13,14 @@ export default function Register() {
 
     const history = useHistory()
     
-    const [msg, setMsg] = useState(null);
+    // const [msg, setMsg] = useState(null);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [password_confirm, setPasswordConfirm] = useState('');
-    const [errors, setErrors] = useState({});
+    // const [errors, setErrors] = useState({});
 
     const handleSubmit = e => {
         e.preventDefault()

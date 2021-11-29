@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react'
+// import { useDispatch, useSelector } from 'react-redux';
 import { order_list_create } from '../Helpers/helper_functions';
 import { orders_list } from '../Helpers/orders';
 
 
 export const MyOrders = () => {
 
-    const token = useSelector(state => state.auth.token);
-    const dispatch = useDispatch();
+    // const token = useSelector(state => state.auth.token);
+    // const dispatch = useDispatch();
 
     const [orderList,setOrderList] = useState(orders_list)
     

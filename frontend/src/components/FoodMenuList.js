@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
+import { Button, Col, Dropdown, FloatingLabel, Form, Pagination, Row } from 'react-bootstrap';
 import { FoodMenu_Page } from '../Helpers/helperString';
 import { food_menu_item } from '../Helpers/menu';
-import { dropdown_populate, grid_create } from '../Helpers/helper_functions';
+import { dropdown_populate, grid_create, itemPerPage, item_filter } from '../Helpers/helper_functions';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -13,32 +13,54 @@ export default function FoodMenuList() {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
     let isAdmin;
-    isUser===null?isAdmin=false:isAdmin=isUser.isAdmin
+    isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
 
-    const item_filter = (page_number,page_size) => {
-        console.log(page_number);
-        let filtered = food_menu_item.slice((page_number - 1) * page_size, page_number * page_size)
-        console.log(filtered);
-        return filtered
-    }
-
-    const [page,setPage] = useState(null);
-    const [items,setItems] = useState(item_filter(1,6));
+    const [page,setPage] = useState(1);
+    const [totalList,setList] = useState(food_menu_item);
+    const [pageItemLimitArray,setPageItemListArray] = useState(itemPerPage(totalList));
+    const [pageItemLimit,setPageItemList] = useState(6);
+    const [items,setItems] = useState(item_filter(totalList,page,6));
     
-    const page_no_loop = (size,limit) => {
-        let page_array =[]
-        for(let i = 0;i < Math.ceil(size/limit);i++){
-             page_array.push(i+1);
-        }
-        const buttons = page_array.map((ele,idx) => (
-            <Button key={idx} onClick={() => handlePage(ele)}>{ele}</Button>
-        ))
-        return buttons
-    }
-
     const handlePage = (ele) => {
         setPage(ele)
-        setItems(item_filter(ele,6))
+        setItems(item_filter(totalList,ele,pageItemLimit))
+    }
+
+    const handleItemPerPage = (ele) => {
+        setPageItemList(ele)
+        setItems(item_filter(totalList,page,ele))
+    }
+
+    const page_no_loop = (size,limit) => {
+        let page_array =[]
+        let pages = Math.ceil(size/limit)
+        for(let i = 0; i < pages; i++){
+            page_array.push(i+1);
+        }
+
+        const buttons = 
+        <>
+            <Pagination>
+                <Pagination.First disabled={page===1?true:false} onClick = {() => handlePage(1)}/>
+                <Pagination.Prev disabled={(page-1) < 1?true:false} onClick = {() => handlePage(page-1)}/>
+                {page_array.map((ele,idx) => {
+                    return <Pagination.Item active={ele===page?true:false} onClick={() => handlePage(ele)}>{ele}</Pagination.Item>
+                })}
+                <Pagination.Next disabled={(page+1) > page_array.length?true:false} onClick = {() => handlePage(page+1)}/>
+                <Pagination.Last disabled={page===page_array.length?true:false} onClick = {() => handlePage(page_array.length)}/>
+            </Pagination>
+            <Dropdown>
+                <Dropdown.Toggle split variant="success" id="dropdown-split-basic" >
+                    {pageItemLimit}{FoodMenu_Page.ITEMS_PER_PAGE}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    {pageItemLimitArray.map((ele) => {
+                        return <Dropdown.Item onClick={()=>handleItemPerPage(ele)}>{ele}</Dropdown.Item>
+                    })}
+                </Dropdown.Menu>
+            </Dropdown> 
+        </>
+        return buttons
     }
     
     const item_loop = (items) => {
@@ -56,7 +78,7 @@ export default function FoodMenuList() {
             ingredients: ""
         }
         
-        let card_grid = grid_create(items,item_blank,isAdmin)
+        let card_grid = grid_create(items,item_blank,isAdmin,"Food")
         return card_grid
     }
     
@@ -65,7 +87,6 @@ export default function FoodMenuList() {
     const [cuisine_filter, setCuisineFilter] = useState('');
     const [preference_filter, setPreferenceFilter] = useState('');
     
-
     const handleSubmit = e => {
         e.preventDefault();
         const search_filter = {
@@ -76,8 +97,6 @@ export default function FoodMenuList() {
         }
         console.log(search_filter);
     }
-
-    
 
     return (
         <div>
@@ -153,7 +172,7 @@ export default function FoodMenuList() {
             </div>
             <div className="pagination_align">
             {
-                page_no_loop(food_menu_item.length,6)
+                page_no_loop(food_menu_item.length,pageItemLimit)
             }    
             </div>
         </div>

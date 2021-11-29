@@ -37,7 +37,8 @@ export const DrinksMenu_Page = {
     SELECT_ALCOHOL_LEVEL: "Select Alcohol Level",
     PLACEHOLDER_SEARCH: "Search Drink Name",
     CATEGORY: "category",
-    LEVEL: "level"
+    LEVEL: "level",
+    ITEMS_PER_PAGE: " Items per Page"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +56,8 @@ export const FoodMenu_Page = {
     PLACEHOLDER_SEARCH: "Search Drink Name",
     CATEGORY: "category",
     CUISINE: "cuisine",
-    PREFERENCE: "preference"
+    PREFERENCE: "preference",
+    ITEMS_PER_PAGE: " Items per Page"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------
