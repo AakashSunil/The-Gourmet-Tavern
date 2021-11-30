@@ -13,13 +13,12 @@ The Server and Client will run on different ports but with the Proxy Setup on th
 
 Both the following Methods are Run form the Outermost package.json File Level.
 
-# Method 1 - Run the Client and Server in Development Mode
+Method 1 - Run the Client and Server in Development Mode
     
 #   npm start
-
     This will Start Both Server and Client using Package "concurrently" and defined "custom scripts" that will be run.
 
-# Method 2 - Run the Server and A Build Version of the Client
+Method 2 - Run the Server and A Build Version of the Client
 
 #   npm run build
 
