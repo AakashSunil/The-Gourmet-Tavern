@@ -16,6 +16,7 @@ router.get('/',(req, res) => {
 
     //Building the filter criteria
     if(category) {
+
         search.category = category.trim();
     }
     //if both minimum & maximum price values are provided
@@ -87,7 +88,7 @@ router.get('/:id/images', async (req, res) => {
 });
 
 
-const upload = multer({
+/*const upload = multer({
     limits : {
         fileSize : 1000000
     },
@@ -97,13 +98,13 @@ const upload = multer({
         }
         cb(undefined, true);
     }   
-});
+});*/
 
 
 // @route   POST /products/add
 // @desc    Add new products to the database
 // @access  Admin
-router.post('/add', auth , upload.single('images'),async (req, res) => {
+router.post('/add', auth /*, upload.single('images')*/,async (req, res) => {
     //check if authenticated user is Admin or not.
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
     //check if product already exists.
@@ -115,7 +116,9 @@ router.post('/add', auth , upload.single('images'),async (req, res) => {
     //set Quantity
     const qty = parseFloat(req.body.qty);
     //set binary file for image
-    const image = await sharp(req.file.buffer).resize({ width : 250, height : 250 }).png().toBuffer();
+    //const image = await sharp(req.file.buffer).resize({ width : 250, height : 250 }).png().toBuffer();
+
+    const image = req.body.image;
 
     //save product to database
     try {
@@ -141,7 +144,7 @@ router.post('/add', auth , upload.single('images'),async (req, res) => {
 // @route   PUT /products/:id
 // @desc    Update any details of the product.
 // @access  Admin
-router.put('/:id', auth, upload.single('images'), async (req, res) => {
+router.put('/:id', auth, /*upload.single('images')*/, async (req, res) => {
     //check if authenticated user is Admin or not.
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
     //Find the product
@@ -150,7 +153,7 @@ router.put('/:id', auth, upload.single('images'), async (req, res) => {
 
     //Extract values to be updated from body 
     let newValues = {};
-    const {productName, description, category, price, qty, cuisine, preference, alcoholLevel} = req.body;
+    const {productName, description, category, price, qty, cuisine, preference, alcoholLevel, image} = req.body;
     if(productName) {
         const check = await Products.findOne({productName : productName.trim()});
         
@@ -180,14 +183,17 @@ router.put('/:id', auth, upload.single('images'), async (req, res) => {
     if(alcoholLevel) {
         newValues.alcoholLevel = alcoholLevel;
     }
+    if(image) {
+        newValues.image = image;
+    }
     
     //look for updates related to images
-    newValues.image = product.image;
+/*    newValues.image = product.image;
     if(req.file) { // if there is a file to update
 
         const buffer = await sharp(req.file.buffer).resize({ width : 250, height : 250 }).png().toBuffer();
         newValues.image = buffer; 
-    } 
+    } */
     
     //update the product
     try {

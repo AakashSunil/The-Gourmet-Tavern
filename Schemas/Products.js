@@ -40,7 +40,7 @@ const productsSchema = new mongoose.Schema({
         min : 0
     },
     image : {
-        type : Buffer,
+        type : String,
         required : true
     },
     cuisine : {
