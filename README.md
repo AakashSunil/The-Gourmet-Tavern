@@ -20,10 +20,11 @@ Both the following Methods are Run form the Outermost package.json File Level.
     
 #   npm run build
     Run the Server and A Build Version of the Client
-    In this method a build folder for the frontend will be created which will then need to be Served to the Browser. 
-    All the required steps for this setup have been declared as part of the scripts to be run for the project.
+    In this method, a build folder for the frontend will be created.
+    This will then need to be Served to the Browser. 
+    All the required steps for this setup have been declared as part of the Custom Scripts.
     
-    The Build Version will be Served at a Particular Link which should be seen in the Terminal/Output. 
+    The Build will be Served at a Particular Link which should be seen in the Terminal/Output. 
 
 The Setup will include the following features 
 Browser View Features - End User
