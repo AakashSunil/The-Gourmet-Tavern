@@ -15,13 +15,13 @@ Both the following Methods are Run form the Outermost package.json File Level.
 
 # Method 1 - Run the Client and Server in Development Mode
     
-    npm start
+#   npm start
 
     This will Start Both Server and Client using Package "concurrently" and defined "custom scripts" that will be run.
 
 # Method 2 - Run the Server and A Build Version of the Client
 
-    npm run build
+#   npm run build
 
     Like the earlier method, both Server and Client will be Started using the "concurrently package" and "custom scripts".
     But, in this version a build folder will be created which will then need to be Served to the Browser. 
@@ -33,6 +33,7 @@ Both the following Methods are Run form the Outermost package.json File Level.
 The Setup will include the following features 
 
 Browser View Features - End User
+
     Customers Features
         1. Registration and Login System
         2. Menu Display - Food and Drinks
