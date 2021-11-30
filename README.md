@@ -1,36 +1,31 @@
 # The-Gourmet-Tavern
 
 A React Application for a Restaurant and Bar Setup.
-
-
-To Run the Setup there are two methods - But Before that modules need to be installed for both Frontend and Backend
-The Project has been setup to install both from one location
+    
+    To Run the Setup there are two methods
+    But before that, modules need to be installed for both Frontend and Backend
+    The Project has been setup to install both from one location
 
 #   npm run setup
 
-After the modules get installed - Both the Frontend and Backend need to be run.
-The Server and Client will run on different ports but with the Proxy Setup on the Client Side - the API URL's will be correctly called.
+    After the modules get installed - Both the Frontend and Backend need to be run.
+    The Server and Client will usually run on different ports. 
+    With the Proxy Setup on the Client Side - the API URL's will be correctly redirected to the required Port.
 
 Both the following Methods are Run form the Outermost package.json File Level.
-
-Method 1 - Run the Client and Server in Development Mode
     
 #   npm start
-    This will Start Both Server and Client using Package "concurrently" and defined "custom scripts" that will be run.
-
-Method 2 - Run the Server and A Build Version of the Client
-
+    Run the Client and Server in Development Mode
+    Achieved Using package "concurrently" and defined "custom scripts".
+    
 #   npm run build
-
-    Like the earlier method, both Server and Client will be Started using the "concurrently package" and "custom scripts".
-    But, in this version a build folder will be created which will then need to be Served to the Browser. 
+    Run the Server and A Build Version of the Client
+    In this method a build folder for the frontend will be created which will then need to be Served to the Browser. 
     All the required steps for this setup have been declared as part of the scripts to be run for the project.
-
+    
     The Build Version will be Served at a Particular Link which should be seen in the Terminal/Output. 
-    The Client Side will be Deployed on that Particular Link.
 
 The Setup will include the following features 
-
 Browser View Features - End User
 
     Customers Features
