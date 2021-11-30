@@ -27,17 +27,16 @@ Both the following Methods are Run form the Outermost package.json File Level.
     The Build will be Served at a Particular Link which should be seen in the Terminal/Output. 
 
 #   Project Features
-The Setup will include the following features 
-Browser View Features - End User
+The Setup will include the following Features
 
-    Customers Features
+    Customers Features - End User
         1. Registration and Login System
         2. Menu Display - Food and Drinks
         3. About and Contact Pages
         4. Ordering System
         5. Active Cart System
 
-    Administration Features
+    Administration Features - End User
         1. Same Features as that of a Customer 
         2. CRUD Operations for the Items
             a. Add Items - Food and Drink
