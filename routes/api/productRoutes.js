@@ -144,7 +144,7 @@ router.post('/add', auth /*, upload.single('images')*/,async (req, res) => {
 // @route   PUT /products/:id
 // @desc    Update any details of the product.
 // @access  Admin
-router.put('/:id', auth, /*upload.single('images')*/, async (req, res) => {
+router.put('/:id', auth /*upload.single('images')*/, async (req, res) => {
     //check if authenticated user is Admin or not.
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
     //Find the product
