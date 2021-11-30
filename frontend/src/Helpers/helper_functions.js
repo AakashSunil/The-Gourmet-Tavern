@@ -136,3 +136,22 @@ export const itemPerPage = (items) => {
     }
     return itemPerPage_array
 }
+
+export const getBase64 = (file) => {
+    return new Promise((resolve) => {
+        let fileInfo;
+        let baseURL = "";
+        
+        let reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = () => {
+
+            baseURL = reader.result;
+            resolve(baseURL);
+        };
+        console.log(fileInfo);
+        return baseURL
+    });
+  };

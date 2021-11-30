@@ -9,7 +9,7 @@ export const cart_items = [
         category:"Main Course",
         cuisine: "Indian",
         preference: "Vegetarian",
-        stockQuantity: 100,
+        stockQuantity: 10,
         ingredients: "Baby Corn, Ghee, Red Chillies, Garlic, Cinnamon, Fenugreek Seeds, Cumin Seeds, Coriander Seeds, Tamamrind Paste, Curd(Yogurt), Lemon Juice, Turmeric Powder, Chilli Powder ",
         quantity:3
     },

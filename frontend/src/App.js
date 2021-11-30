@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 import {BrowserRouter as Router, Route}  from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -14,7 +14,7 @@ import Contact from './components/Contact';
 import Menu from './components/Menu';
 import { MyOrders } from './components/MyOrders';
 import { AddDrinkItem } from './components/AddDrinkItem';
-import { loadUser } from './actions';
+// import { loadUser } from './actions';
 import { MyCart } from './components/MyCart';
 import { AddFoodItem } from './components/AddFoodItem';
 import { EditFoodItem } from './components/EditFoodItem';
@@ -22,12 +22,12 @@ import { EditDrinkItem } from './components/EditDrinkItem';
 
 function App() {
 
-  const token = useSelector(state => state.auth.token);
-  const dispatch = useDispatch();
+  // const token = useSelector(state => state.auth.token);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    loadUser(dispatch, token);  
-  }, [dispatch,token]);
+  // useEffect(() => {
+  //   loadUser(dispatch, token);  
+  // }, [dispatch,token]);
 
 
   return (
