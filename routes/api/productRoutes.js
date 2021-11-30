@@ -36,6 +36,10 @@ router.get('/',(req, res) => {
         search.alcoholLevel = alcoholLevel.trim();
     }
 
+    if(productType) {
+        search.productType = productType.trim();
+    }
+
 /*    if(minprice && maxprice) {
         search.price = {$gte : parseFloat(minprice), $lte : parseFloat(maxprice)};
     }
@@ -55,7 +59,7 @@ router.get('/',(req, res) => {
     search.isDeleted = false;
 
     //filter based on given criteria
-    Products.find(search, '-image',
+    Products.find(search,
         function(err, result) {
             if(err) {
                 return res.status(400).send({"message" : "Error during querying"});
@@ -63,9 +67,9 @@ router.get('/',(req, res) => {
             const start = parseInt(skip);
             const end = start + parseInt(limit);
             if(result.length < end) {
-                return res.send({length: result.length, result : result.slice(start, result.length)});
+                return res.send({length: result.length, products : result.slice(start, result.length)});
             }
-            return res.send({length: result.length, result : result.slice(start, end)});
+            return res.send({length: result.length, products : result.slice(start, end)});
         });       
 });
 
@@ -104,7 +108,7 @@ router.get('/:id/images', async (req, res) => {
 // @route   POST /products/add
 // @desc    Add new products to the database
 // @access  Admin
-router.post('/add', auth /*, upload.single('images')*/,async (req, res) => {
+router.post('/add', auth , async (req, res) => {
     //check if authenticated user is Admin or not.
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
     //check if product already exists.
@@ -144,7 +148,7 @@ router.post('/add', auth /*, upload.single('images')*/,async (req, res) => {
 // @route   PUT /products/:id
 // @desc    Update any details of the product.
 // @access  Admin
-router.put('/:id', auth, /*upload.single('images')*/, async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     //check if authenticated user is Admin or not.
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
     //Find the product
@@ -197,11 +201,15 @@ router.put('/:id', auth, /*upload.single('images')*/, async (req, res) => {
     
     //update the product
     try {
-        await product.updateOne({$set : newValues});
-        res.send({"message" : "success"});
+          await product.updateOne({$set : newValues});
+          
      } catch(err) {
          res.status(500).send({"message" : "error while updating"});
     }
+
+    let updatedProduct = await Products.findById(req.params.id);
+    res.send(updatedProduct);
+
 }, (error, req, res, next) => {
     res.status(400).send({"message" : error.message});
 });
@@ -227,6 +235,7 @@ router.delete('/:id', auth ,async (req, res) => {
         res.send(product);
 
     } catch(err) {
+        console.log(err);
         res.status(500).send({"message" : "error while deleting"});
     }
 });
