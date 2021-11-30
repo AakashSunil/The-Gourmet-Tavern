@@ -94,6 +94,8 @@ export const Login_Page = {
     PASSWORD: "Password",
     LOGIN: "LogIn",
     MESSAGE: "Do Not have an Account? Create One",
+    FAILURE: "Login Failure",
+
     PLACEHOLDER_EMAIL: "name@example.com",
     PLACEHOLDER_PASSWORD: "Enter Password"
 
@@ -112,6 +114,7 @@ export const Register_Page = {
     CONFIRM: "Confirm Password",
     REGISTER: "Register User",
     MESSAGE: "Already have an Account? Login Now",
+    FAILURE: "Registration Failure",
 
     PLACEHOLDER_REGISTER_NAME: "Enter Name",
     PLACEHOLDER_EMAIL: "name@example.com",
@@ -222,7 +225,11 @@ export const Cart_Quantity = {
     ADD: "+",
     SUBTRACT: "-",
     CLOSE: "X",
-    ADD_STRING: "Add"
+    ADD_STRING: "Add",
+    QUANTITIY_ERROR_HEADING: "Quantity Error",
+    MIN_QUANTITIY_ERROR_MSG: "Cannot futher remove any Quantity of the Item. Please Select the Remove Option for this Item to remove from the Cart",
+    MAX_QUANTITIY_ERROR_MSG: "Cannot Add the Entered Quantity for the Item. Setting the Quantity value to the Maximum Available Quantity of the Product in Stock",
+    QUANTITIY_ERROR_MSG: "Cannot Add More Items. Will Exceed the Current Available Stock"
 }
 
 // --------------------------------------------------------------------------------------------------------------------------------

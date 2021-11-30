@@ -37,7 +37,7 @@ const Header = () => {
                         <Nav.Link href="/contact">{Header_NavBar.CONTACT}</Nav.Link>
 
                     </Nav>
-                    {((token && isAuthenticated === null) || (isAuthenticated))?
+                    {((token && isAuthenticated) || (isAuthenticated))?
                         <Nav>
                             {
                                 <>
