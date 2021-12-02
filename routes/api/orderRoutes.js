@@ -3,6 +3,8 @@ const auth = require('../../middleware/auth');
 const {Orders} = require('../../Schemas/Orders');
 const {Users} = require('../../Schemas/Users');
 const {Products} = require('../../Schemas/Products');
+const {Cart} = require('../../Schemas/Cart');
+
 
 // @route   GET /orders
 // @desc    get all the orders of the user
@@ -28,7 +30,11 @@ router.get('/', auth ,async (req, res) => {
 router.post('/add', auth ,async (req, res) => {
 
     //extract data
-    const {cart, user, orderType} = req.body;
+    const {orderType} = req.body;
+    const user = req.user;
+    //console.log("user id in order api: " + user._id);
+    const cart = await Cart.findOne({customerID : user._id});
+    //console.log("cart: " + cart)
 
     //check if any required data is missing
     if(!user || !user._id) { return res.status(400).send({"message" : "Details of user placing order is required"}); }
@@ -40,20 +46,21 @@ router.post('/add', auth ,async (req, res) => {
     let productList = [];
     for(let item of cart.items) {
 
-        const check = await Products.findById(item._id);
-        if(!check) { return res.status(400).send({"message" : "Invalid product in cart!"}); }
-        if(parseFloat(item.qty) > check.qty) 
+        const inventoryProduct = await Products.findById(item.productID);
+        if(!inventoryProduct) { return res.status(400).send({"message" : "Invalid product in cart!"}); }
+        if(parseFloat(item.qty) > inventoryProduct.qty) 
         { 
-            if(check.qty == 0) {
+            if(inventoryProduct.qty == 0) {
                 return res.status(400).send({
-                    "message" : `Sorry! ${check.productName} is Currently unavailable`
+                    "message" : `Sorry! ${inventoryProduct.productName} is Currently unavailable`
                 })
             }
             return res.status(400).send({"message" : 
-                `Not enough Quantity of ${check.productName} available,
-                Only ${check.qty} left in stock`}); }
+                `Not enough Quantity of ${inventoryProduct.productName} available,
+                Only ${inventoryProduct.qty} left in stock`}); 
+        }
 
-        productList.push({productID : item._id, name : item.productName, qty : item.qty, price : item.price});
+        productList.push({productID : item.productID, name : item.name, qty : item.qty, price : item.price});
     }
 
     // cart.items.map(item => {
@@ -67,18 +74,20 @@ router.post('/add', auth ,async (req, res) => {
             items : productList, 
             orderType : orderType,
             bookingTime : Date.now(),
-            totalBill : parseFloat(cart.total)
+            totalBill : parseFloat(cart.totalBill)
         });
         await order.save();
         
         //update qty here.
         for(let item of cart.items) {
 
-            const product = await Products.findById(item._id);
+            const product = await Products.findById(item.productID);
             product.qty = product.qty - parseFloat(item.qty);
             await product.save();
         }
         
+        const temp = await Cart.deleteOne({customerID : user._id});
+        console.log("cart after deleting:" + temp);
         res.send(order);
 
     } catch(err) {

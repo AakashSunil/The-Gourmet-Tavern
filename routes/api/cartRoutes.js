@@ -44,36 +44,51 @@ router.delete('/delete', auth ,async (req, res) => {
      const {product} = req.body;
      const user = req.user;
     try {
-       const cart = await Cart.find({customerID : user._id}); 
+       const cart = await Cart.findOne({customerID : user._id}); 
 
          //if product not found.
         if(!cart) {
             return res.status(404).send({"message" : "cart not found"});
         }
         
-        const deleteQuery = {"items" : {"productID" : product.id}};
-        await cart.updateOne({"_id" : cart._id}, {"$pull" :deleteQuery}, { safe: true, multi:true }, 
-               function(err, obj){
-            if(err) {
-                console.log(err);
-                return res.status(500).send({"message" : "error while deleting items"});
-            } 
+        // const deleteQuery = {"items" : {"productID" : product.id}};
+        // await cart.updateOne({"_id" : cart._id}, {"$pull" :deleteQuery}, { safe: true, multi:true }, 
+        //        function(err, obj){
+        //     if(err) {
+        //         console.log(err);
+        //         return res.status(500).send({"message" : "error while deleting items"});
+        //     } 
 
-        });
-        await cart.save();
-        return res.status(200).send({"message" : "delted items successfully"});
-
-        // Cart.deleteOne(, {customerID : req.user._id}, function (err) {
-        //     if(err) console.log(err);
-        //     console.log("Successful deletion");
-        //     res.status(200).send({"message" : "cart deleted sucessfully"});
         // });
+      
+       let deleteProductQty;
+       let deleteProductPrice;
+       for(let item of cart.items) {
+          if(item.productID == product.id) {
+             deleteProductQty = item.qty;
+             deleteProductPrice = item.price;
+          }
+       }
 
-        // //implementing soft-delete
-        // product.isDeleted = true;
-        // await product.save();
-        // //if successfully deleted.
-        // res.send(product);
+       const temp = await Cart.updateOne( 
+            { "_id" : cart._id} , 
+            { "$pull" : { "items" : { "productID" :  product.id } } } , 
+            { "multi" : true }  
+        );
+       
+
+        console.log(temp);
+        let newValues = {};
+        newValues.totalBill = parseFloat(cart.totalBill) - 
+           (parseInt(deleteProductQty) * parseFloat(deleteProductPrice));
+       console.log(newValues);
+        await cart.updateOne({$set : newValues});
+        
+
+        const updatedCart = await Cart.findOne({customerID : user._id}); 
+
+        //await cart.save();
+        return res.send({items : updatedCart.items, totalBill : updatedCart.totalBill});
 
     } catch(err) {
         console.log(err);
@@ -164,10 +179,10 @@ router.post('/add', auth ,async (req, res) => {
     
     if(previousCart != null && previousCart != undefined) {
 
-        console.log("cart items already present for this user");
-        console.log(previousCart);
+        // console.log("cart items already present for this user");
+        // console.log(previousCart);
         cartProducts = previousCart.items;
-        console.log(cartProducts);
+       // console.log(cartProducts);
         //check if this productId already exists in cart
         for(let item of cartProducts) {
           if(item.productID == product.id) {
@@ -211,20 +226,7 @@ router.post('/add', auth ,async (req, res) => {
         }
     }
 
-    
 
-     
-    
-
-    // cartProduct.productID = product.id;
-    // cartProduct.name = product.name;
-    // cartProduct.qty = product.qty;
-    // cartProduct.price = product.price;
-
-    // cartProducts.push({productID : product.id, name : product.name, qty : product.qty, price : product.price});
-    
-
-       //save cart to database
    
 });
 
