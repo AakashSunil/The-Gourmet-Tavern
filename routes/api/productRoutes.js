@@ -119,7 +119,7 @@ router.post('/add', auth , async (req, res) => {
     //set price
     const price = parseFloat(req.body.price);
     //set Quantity
-    const qty = parseFloat(req.body.quantity);
+    const quantity = parseFloat(req.body.quantity);
     //set binary file for image
     //const image = await sharp(req.file.buffer).resize({ width : 250, height : 250 }).png().toBuffer();
 
@@ -130,7 +130,7 @@ router.post('/add', auth , async (req, res) => {
         const products = new Products({
             ...req.body,
             price,
-            qty,
+            quantity,
             image
         });
         await products.save();
@@ -158,7 +158,7 @@ router.put('/:id', auth, async (req, res) => {
 
     //Extract values to be updated from body 
     let newValues = {};
-    const {productName, description, category, price, qty, cuisine, preference, alcoholLevel, image} = req.body;
+    const {productName, description, category, price, quantity, cuisine, preference, alcoholLevel, image} = req.body;
     if(productName) {
         const check = await Products.findOne({productName : productName.trim()});
         
@@ -176,8 +176,8 @@ router.put('/:id', auth, async (req, res) => {
     if(price) {
         newValues.price = parseFloat(price);
     }
-    if(qty) {
-        newValues.qty = parseFloat(qty);
+    if(quantity) {
+        newValues.quantity = parseFloat(quantity);
     }
     if(cuisine) {
         newValues.cuisine = cuisine;
