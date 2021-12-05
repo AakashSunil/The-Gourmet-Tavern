@@ -48,19 +48,19 @@ router.post('/add', auth ,async (req, res) => {
 
         const inventoryProduct = await Products.findById(item.productID);
         if(!inventoryProduct) { return res.status(400).send({"message" : "Invalid product in cart!"}); }
-        if(parseFloat(item.qty) > inventoryProduct.qty) 
+        if(parseFloat(item.quantity) > inventoryProduct.quantity) 
         { 
-            if(inventoryProduct.qty == 0) {
+            if(inventoryProduct.quantity == 0) {
                 return res.status(400).send({
                     "message" : `Sorry! ${inventoryProduct.productName} is Currently unavailable`
                 })
             }
             return res.status(400).send({"message" : 
                 `Not enough Quantity of ${inventoryProduct.productName} available,
-                Only ${inventoryProduct.qty} left in stock`}); 
+                Only ${inventoryProduct.quantity} left in stock`}); 
         }
 
-        productList.push({productID : item.productID, name : item.name, qty : item.qty, price : item.price});
+        productList.push({productID : item.productID, name : item.name, quantity : item.quantity, price : item.price});
     }
 
     // cart.items.map(item => {
@@ -78,11 +78,11 @@ router.post('/add', auth ,async (req, res) => {
         });
         await order.save();
         
-        //update qty here.
+        //update quantity here.
         for(let item of cart.items) {
 
             const product = await Products.findById(item.productID);
-            product.qty = product.qty - parseFloat(item.qty);
+            product.quantity = product.quantity - parseFloat(item.quantity);
             await product.save();
         }
         
