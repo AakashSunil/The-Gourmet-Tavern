@@ -12,11 +12,11 @@ import {
 import {
   dropdown_populate,
   grid_create,
-} from "../../../Helpers/helperFunctions";
+} from "../../../helpers/helperFunctions";
 import {
   Add_Edit_Food_Page,
   FoodMenu_Page,
-} from "../../../Helpers/helperString";
+} from "../../../helpers/helperString";
 import AddFoodItem from "./AddFoodItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addFood } from "../../../store/actions/productActions";
@@ -24,12 +24,12 @@ import { addFood } from "../../../store/actions/productActions";
 
 const FoodMenuList = (props) => {
 
-  const isUser = useSelector(state => state.auth.user);
+  // const isUser = useSelector(state => state.auth.user);
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   // const token = localStorage.getItem('token');
 
-  let isAdmin;
-  isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
+  // let isAdmin;
+  // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
   
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');

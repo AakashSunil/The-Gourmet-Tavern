@@ -13,22 +13,22 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   dropdown_populate,
   grid_create,
-} from "../../../Helpers/helperFunctions";
+} from "../../../helpers/helperFunctions";
 import {
   Add_Edit_Drink_Page,
   DrinksMenu_Page,
-} from "../../../Helpers/helperString";
+} from "../../../helpers/helperString";
 import { addDrink } from "../../../store/actions/productActions";
 import AddDrinkItem from "./AddDrinkItem";
 
 const DrinksMenuList = (props) => {
 
-  const isUser = useSelector(state => state.auth.user);
+  // const isUser = useSelector(state => state.auth.user);
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   // const token = localStorage.getItem('token');
 
-  let isAdmin;
-  isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
+  // let isAdmin;
+  // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
 
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
@@ -130,7 +130,7 @@ const DrinksMenuList = (props) => {
   };
 
   const handleAddClose = () => {
-    console.log("close");
+    // console.log("close");
     setAddOpen(false);
   };
 
