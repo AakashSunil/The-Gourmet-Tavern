@@ -8,6 +8,8 @@ import DrinksMenuList from "../drinks/DrinksMenuList";
 import FoodMenuList from "../food/FoodMenuList";
 const Menu = (props) => {
 
+  const error = useSelector(state => state.error)
+
   const isUser = useSelector(state => state.auth.user);
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
@@ -18,14 +20,28 @@ const Menu = (props) => {
   const menu_items = useSelector((state) => state.product)
   let food_menu = props.type === "food" ? true : false;
 
+  const [msg, setMsg] = useState(null);
+  const [msgtype, setMsgType] = useState(null);
   const [page, setPage] = useState(1);
   const [pageItemLimit, setPageItemList] = useState(6);
   let items = item_filter(menu_items, page, pageItemLimit);
 
   useEffect(() => {
+    if(error){
+      if(error.id === 'GET_ITEM_FAILURE') {
+        setMsg(error.msg.msg);
+        setMsgType(error.msg.type)
+      }
+    }
+    else {
+      dispatch({
+        type : 'CLEAR_ERROR'
+    });
     food_menu?
     dispatch(getProducts("food",0,50,"","","","")):
-    dispatch(getProducts("drink",0,50,"","","",""))
+    dispatch(getProducts("drink",0,50,"","","",""))  
+    }
+    
   },[dispatch,food_menu])
 
   let pageItemLimitArray = itemPerPage(menu_items);
