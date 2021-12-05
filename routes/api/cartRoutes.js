@@ -65,7 +65,7 @@ router.delete('/delete', auth ,async (req, res) => {
        let deleteProductPrice;
        for(let item of cart.items) {
           if(item.productID == product.id) {
-             deleteProductQty = item.qty;
+             deleteProductQty = item.quantity;
              deleteProductPrice = item.price;
           }
        }
@@ -124,9 +124,9 @@ router.put('/update', auth ,async (req, res) => {
         for(let item of cartProducts) {
           if(item.productID == product.id) {
              isProductPresent = true;
-             curBill = curBill - (parseInt(item.qty) * parseFloat(item.price));
-             curBill = curBill + (parseInt(product.qty) * parseFloat(product.price));
-             item.qty = product.qty;
+             curBill = curBill - (parseInt(item.quantity) * parseFloat(item.price));
+             curBill = curBill + (parseInt(product.quantity) * parseFloat(product.price));
+             item.quantity = product.quantity;
              break;
           }
         }
@@ -190,8 +190,8 @@ router.post('/add', auth ,async (req, res) => {
           }
         }
 
-        cartProducts.push({productID : product.id, name : product.name, qty : product.qty, price : product.price});       
-        totalBill = parseFloat(previousCart.totalBill) + (parseInt(product.qty) * parseFloat(product.price));
+        cartProducts.push({productID : product.id, name : product.name, quantity : product.quantity, price : product.price});       
+        totalBill = parseFloat(previousCart.totalBill) + (parseInt(product.quantity) * parseFloat(product.price));
         
          const filterQuery = {customerID : user._id};
          const updateQuery = {items : cartProducts, totalBill : parseFloat(totalBill)};
@@ -207,8 +207,8 @@ router.post('/add', auth ,async (req, res) => {
        }
     } else {
 
-        cartProducts.push({productID : product.id, name : product.name, qty : product.qty, price : product.price});
-        totalBill = parseInt(product.qty) * parseFloat(product.price);
+        cartProducts.push({productID : product.id, name : product.name, quantity : product.quantity, price : product.price});
+        totalBill = parseInt(product.quantity) * parseFloat(product.price);
 
 
         try {

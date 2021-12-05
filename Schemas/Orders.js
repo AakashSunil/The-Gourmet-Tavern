@@ -18,7 +18,7 @@ const ordersSchema = new mongoose.Schema({
             type : String,
             required : true
         },
-        qty : {
+        quantity : {
             type : Number,
             min : 1,
             required : true
