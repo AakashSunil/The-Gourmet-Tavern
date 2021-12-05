@@ -10,8 +10,8 @@ import FoodMenuList from "../food/FoodMenuList";
 const Menu = (props) => {
 
   const error = useSelector(state => state.error)
+  const isUser = useSelector(state => state.auth.user===undefined?null:state.auth.user);
 
-  const isUser = useSelector(state => state.auth.user);
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   let isAdmin;
