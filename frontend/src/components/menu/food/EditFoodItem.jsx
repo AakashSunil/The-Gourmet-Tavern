@@ -22,7 +22,7 @@ const EditFoodItem = (props) => {
   const [cuisine, setCuisine] = useState(item.cuisine);
   const [preference, setPreference] = useState(item.preference);
   const [ingredients, setIngredients] = useState(item.ingredients);
-  const [stockQuantity, setStockQuantity] = useState(item.stockQuantity);
+  const [stockQuantity, setStockQuantity] = useState(item.quantity);
   const [imageData, setImageData] = useState(item.image);
 
   const handleFileInput = (e) => {
@@ -41,7 +41,7 @@ const EditFoodItem = (props) => {
           cuisine:cuisine,
           preference:preference,
           ingredients:ingredients,
-          stockQuantity:stockQuantity,
+          quantity:stockQuantity,
           imageData: imageData
       }
       console.log(food_item);

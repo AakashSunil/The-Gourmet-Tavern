@@ -38,7 +38,7 @@ const EditDrinkItem = (props) => {
       isDeleted: isDeleted,
       category: category,
       level: level,
-      stockQuantity:stockQuantity,
+      quantity:stockQuantity,
       imageData: imageData
   }
   console.log(drink_item);
