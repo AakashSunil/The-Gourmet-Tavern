@@ -52,7 +52,7 @@ address,
 console.log('jwt:' + process.env.SECRET_TOKEN);
 const token = jwt.sign({_id : user._id},'houseofveg');
 
-
+console.log(token);
 
 
 user.sessionId = token;

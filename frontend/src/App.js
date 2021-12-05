@@ -1,56 +1,57 @@
-import React from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-import {BrowserRouter as Router, Route}  from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
-import Home from './components/Home';
-import Login from './components/Login';
-import About from './components/About';
-import Footer from './components/Footer';
-import FoodMenuList from './components/FoodMenuList';
-import DrinksMenuList from './components/DrinksMenuList';
-import Register from './components/Register';
-import Contact from './components/Contact';
-import Menu from './components/Menu';
-import { MyOrders } from './components/MyOrders';
-import { AddDrinkItem } from './components/AddDrinkItem';
-// import { loadUser } from './actions';
-import { MyCart } from './components/MyCart';
-import { AddFoodItem } from './components/AddFoodItem';
-import { EditFoodItem } from './components/EditFoodItem';
-import { EditDrinkItem } from './components/EditDrinkItem';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Home from "./components/main/Home";
+import LogIn from "./components/auth/LogIn";
+import Register from "./components/auth/Register";
+import NavBar from "./components/navbar/NavBar";
+import Footer from "./components/navbar/Footer";
+import About from "./components/main/About";
+import Contact from "./components/main/Contact";
+import Menu from "./components/menu/common/Menu";
+import MyOrdersPage from "./components/orders/MyOrdersPage";
+import MyCartPage from "./components/cart/MyCartPage";
 
 function App() {
-
-  // const token = useSelector(state => state.auth.token);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   loadUser(dispatch, token);  
-  // }, [dispatch,token]);
-
-
   return (
-    <Router>
-        <Header />
+    <>
+      <Router>
+        <NavBar />
         <div className="App">
-            <Route exact path='/'><Home /></Route>
-            <Route exact path='/login'><Login /></Route>
-            <Route exact path='/register'><Register /></Route>
-            <Route exact path='/about'><About /></Route>
-            <Route exact path='/contact'><Contact /></Route>
-            <Route exact path='/Menu'><Menu /></Route>
-            <Route exact path='/foodMenu'><FoodMenuList /></Route>
-            <Route exact path='/drinksMenu'><DrinksMenuList /></Route>
-            <Route exact path='/addDrinks'><AddDrinkItem /></Route>
-            <Route exact path='/editDrinks'><EditDrinkItem /></Route>
-            <Route exact path='/addFood'><AddFoodItem /></Route>
-            <Route exact path='/editFood'><EditFoodItem /></Route>
-            <Route exact path='/myOrders'><MyOrders /></Route>
-            <Route exact path='/myCart'><MyCart /></Route>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <LogIn />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/about">
+              <About />
+            </Route>
+            <Route exact path="/contact">
+              <Contact />
+            </Route>
+            <Route exact path="/foodMenu">
+              <Menu type={"food"} />
+            </Route>
+            <Route exact path="/drinksMenu">
+              <Menu type={"drink"} />
+            </Route>
+            <Route exact path="/myOrders">
+              <MyOrdersPage />
+            </Route>
+            <Route exact path="/myCart">
+              <MyCartPage />
+            </Route>
+          </Switch>
         </div>
         <Footer />
-    </Router>
+      </Router>
+    </>
   );
 }
 
