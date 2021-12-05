@@ -245,13 +245,13 @@ const EditFoodItem = (props) => {
             />
           </div>
         </Form.Group>
-        <Button variant="secondary" onClick={() => props.close}>
+        <Button variant="secondary" onClick={() => props.close()}>
           {Add_Edit_Food_Page.CANCEL}
         </Button>
         <Button variant="primary" onClick={() => handleSubmit()}>
           {Add_Edit_Food_Page.SUBMIT_EDIT}
         </Button>
-        <Button variant="primary" onClick={() => props.delete}>
+        <Button variant="primary" onClick={() => props.delete()}>
           {Add_Edit_Food_Page.DELETE}
         </Button>
       </Form>
