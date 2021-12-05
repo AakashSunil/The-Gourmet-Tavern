@@ -112,13 +112,14 @@ router.post('/add', auth , async (req, res) => {
     //check if authenticated user is Admin or not.
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
     //check if product already exists.
+    //console.log(req.body);
     const check = await Products.findOne({productName : req.body.productName.trim()});
     if(check) { return res.status(400).send({"message" : "Product already exists"}); }
 
     //set price
     const price = parseFloat(req.body.price);
     //set Quantity
-    const qty = parseFloat(req.body.qty);
+    const qty = parseFloat(req.body.quantity);
     //set binary file for image
     //const image = await sharp(req.file.buffer).resize({ width : 250, height : 250 }).png().toBuffer();
 
@@ -134,7 +135,7 @@ router.post('/add', auth , async (req, res) => {
         });
         await products.save();
         let result = products.toObject();
-        delete result.image; 
+        //delete result.image; 
         res.send(result);
     } catch(err) {
          res.status(500).send("Error while saving!");

@@ -26,7 +26,7 @@ export const getProducts = (type, skip, limit, search, category, cuisine, prefer
 
 export const addFood = (food_item, token) => {
     return (dispatch, getState) => {
-        axios.post('/products/add', {food_item},{headers: getConfig(token).header})
+        axios.post('/products/add', food_item,{headers: getConfig(token).header})
         .then( res => {
             console.log(res);
             dispatch({
