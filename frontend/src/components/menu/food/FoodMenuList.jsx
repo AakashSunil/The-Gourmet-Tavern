@@ -106,7 +106,7 @@ const FoodMenuList = (props) => {
       cuisine: "",
       preference: "",
       quantity: 0,
-      ingredients: "",
+      // ingredients: "",
     };
 
     let card_grid = grid_create(items_list, item_blank, admin_privilege, isAuthenticated, "Food");

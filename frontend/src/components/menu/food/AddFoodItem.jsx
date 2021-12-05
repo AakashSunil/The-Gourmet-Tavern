@@ -162,7 +162,7 @@ const AddFoodItem = (props) => {
           />
           <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3">
+        {/* <Form.Group className="mb-3">
           <Form.Label>{Add_Edit_Food_Page.INGREDIENTS}</Form.Label>
           <Form.Control
             type="text"
@@ -176,7 +176,7 @@ const AddFoodItem = (props) => {
             }
           />
           <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group className="mb-3">
           <Form.Label>{Add_Edit_Food_Page.STOCK_QUANTITY}</Form.Label>
           <Form.Control
