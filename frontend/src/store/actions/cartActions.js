@@ -24,7 +24,7 @@ export const getCartItems = (token) => {
 
 export const addToCart = (product,token) => {
     return (dispatch) => {
-        axios.post(`/cart/add`,{product},{headers: getConfig(token).header})
+        axios.post(`/cart/add`,product,{headers: getConfig(token).header})
         .then(res => {
             console.log(res);
             dispatch({
@@ -45,7 +45,7 @@ export const addToCart = (product,token) => {
 
 export const updateCart = (product,token) => {
     return (dispatch) => {
-        axios.put(`/cart/update`,{product},{headers: getConfig(token).header})
+        axios.put(`/cart/update`,product,{headers: getConfig(token).header})
         .then(res => {
             console.log(res);
             dispatch({
@@ -66,7 +66,7 @@ export const updateCart = (product,token) => {
 
 export const deleteFromCart = (product,token) => {
     return (dispatch) => {
-        axios.patch(`/cart/delete`,{product, headers: getConfig(token).header})
+        axios.patch(`/cart/delete`,product, {headers: getConfig(token).header})
         .then(res => {
             console.log(res);
             dispatch({
