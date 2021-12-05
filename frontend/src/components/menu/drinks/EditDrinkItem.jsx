@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getBase64 } from "../../../Helpers/helperFunctions";
-import { Add_Edit_Drink_Page } from "../../../Helpers/helperString";
+import { getBase64 } from "../../../helpers/helperFunctions";
+import { Add_Edit_Drink_Page } from "../../../helpers/helperString";
 import { setError } from "../../../store/actions/commonActions";
 
 const EditDrinkItem = (props) => {
@@ -82,23 +82,30 @@ const EditDrinkItem = (props) => {
     form_validation()
   };
 
-//   useEffect( () => {
-//     if(error.id === 'EDIT_FORM_FAILURE') {
-//         setMsg(error.msg.msg);
-//         setMsgType(error.msg.type)
-//     }
-//     if(error.id === 'EDIT_FAILURE') {
-//         setMsg(error.msg);
-//         setMsgType("API")
-//     }
+  useEffect( () => {
+    if(error.status !== null){
+      if(error.id === 'EDIT_FORM_FAILURE') {
+          setMsg(error.msg.msg);
+          setMsgType(error.msg.type)
+      }
+      if(error.id === 'EDIT_FAILURE') {
+          setMsg(error.msg);
+          setMsgType("API")
+      }
+    }
+    else {
+      dispatch({
+        type : 'CLEAR_ERROR'
+    });
+    }
     
     
-// }, [error, isAuthenticated] )
+}, [error, isAuthenticated] )
 
 
   return (
     <>
-      {msgtype === "API" && (
+      {msgtype !== null && (
         <Alert color="danger" variant={"danger"}>
           {msg}
         </Alert>

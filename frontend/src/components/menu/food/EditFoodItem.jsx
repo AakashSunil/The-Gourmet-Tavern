@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import { Add_Edit_Food_Page } from "../../../Helpers/helperString";
-import { getBase64 } from "../../../Helpers/helperFunctions";
+import { Add_Edit_Food_Page } from "../../../helpers/helperString";
+import { getBase64 } from "../../../helpers/helperFunctions";
 import { setError } from "../../../store/actions/commonActions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -80,9 +80,30 @@ const EditFoodItem = (props) => {
     form_validation()
   };
 
+  useEffect( () => {
+    if(error.status !== null){
+      if(error.id === 'EDIT_FORM_FAILURE') {
+          setMsg(error.msg.msg);
+          setMsgType(error.msg.type)
+      }
+      if(error.id === 'EDIT_FAILURE') {
+          setMsg(error.msg);
+          setMsgType("API")
+      }
+    }
+    else {
+      dispatch({
+        type : 'CLEAR_ERROR'
+    });
+    }
+    
+    
+    
+}, [error, isAuthenticated] )
+
   return (
     <>
-      {msgtype === "API" && (
+      {msgtype !== null && (
         <Alert color="danger" variant={"danger"}>
           {msg}
         </Alert>

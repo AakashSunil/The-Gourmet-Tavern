@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { order_list_create } from "../../Helpers/helperFunctions";
-import { orders_list } from "../../Helpers/orders";
+import { order_list_create } from "../../helpers/helperFunctions";
+// import { orders_list } from "../../helpers/orders";
 import { getOrders } from "../../store/actions/orderActions";
 
 const MyOrdersPage = () => {
 
   const error = useSelector(state => state.error)
-  const isUser = useSelector(state => state.auth.user);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  // const isUser = useSelector(state => state.auth.user);
+  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const token = localStorage.getItem('token');
 
-  let isAdmin;
-  isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
+  // let isAdmin;
+  // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
 
   const dispatch = useDispatch();
   const order_items = useSelector((state) => state.order)
@@ -28,22 +29,33 @@ const MyOrdersPage = () => {
   };
 
   useEffect(() => {
-    if(error){
-      if(error.id === 'GET_ORDER_FAILURE') {
-        setMsg(error.msg.msg);
-        setMsgType(error.msg.type)
-      }
-    }
-    else {
-      dispatch({
-        type : 'CLEAR_ERROR'
-    });
+    // if(error.status !== null){
+    //   if(error.id === 'GET_ORDER_FAILURE') {
+    //     setMsg(error.msg.msg);
+    //     setMsgType(error.msg.type)
+    //   }
+    //   else {
+    //     dispatch({
+    //       type : 'CLEAR_ERROR'
+    //   });
+    //   }
+    // }
+    // else {
+    //   dispatch({
+    //     type : 'CLEAR_ERROR'
+    // });
+    // dispatch(getOrders(token))
+
+    // }
     dispatch(getOrders(token))
 
-    }
   },[dispatch,token])
 
-  return <>{loop_items(orderList)}</>;
+  return <>{msgtype !== null && (
+    <Alert color="danger" variant={"danger"}>
+      {msg}
+    </Alert>
+  )}{loop_items(orderList)}</>;
 };
 
 export default MyOrdersPage;

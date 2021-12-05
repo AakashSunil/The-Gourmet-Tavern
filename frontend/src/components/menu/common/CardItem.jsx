@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, Card, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import {
   Add_Edit_Drink_Page,
   Add_Edit_Food_Page,
   Card_Item_Page,
-} from "../../../Helpers/helperString";
+} from "../../../helpers/helperString";
 import { addToCart } from "../../../store/actions/cartActions";
 import { deleteProduct, editProduct } from "../../../store/actions/productActions";
 import EditDrinkItem from "../drinks/EditDrinkItem";
@@ -18,7 +18,7 @@ const CardItem = (props) => {
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
 
-  const history = useHistory();
+  // const history = useHistory();
   const [showButton, setShowButton] = useState(true);
 
   const [showEdit, setEdit] = useState(false);

@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Form, Button } from "react-bootstrap";
-import { getBase64 } from "../../../Helpers/helperFunctions";
-import { Add_Edit_Food_Page } from "../../../Helpers/helperString";
+import { useSelector } from "react-redux";
+import { getBase64 } from "../../../helpers/helperFunctions";
+import { Add_Edit_Food_Page } from "../../../helpers/helperString";
 
 const AddFoodItem = (props) => {
+
+  const error = useSelector(state => state.error);
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const [msgtype, setMsgType] = useState(null);
   const [msg, setMsg] = useState(null);
   const [name, setName] = useState("");
@@ -39,9 +43,24 @@ const AddFoodItem = (props) => {
     }
     props.add(food_item)
   };
+
+  useEffect( () => {
+
+    if(error.id === 'ADD_FORM_FAILURE') {
+        setMsg(error.msg.msg);
+        setMsgType(error.msg.type)
+    }
+    if(error.id === 'ADD_FAILURE') {
+        setMsg(error.msg);
+        setMsgType("API")
+    }
+    
+    
+    
+}, [error, isAuthenticated] )
   return (
     <>
-      {msgtype === "API" && (
+      {msgtype !== null && (
         <Alert color="danger" variant={"danger"}>
           {msg}
         </Alert>

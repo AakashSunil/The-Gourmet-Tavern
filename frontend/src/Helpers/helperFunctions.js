@@ -3,7 +3,6 @@ import { Col, Row } from "react-bootstrap";
 import CardItem from "../components/menu/common/CardItem";
 import CartList from "../components/cart/CartList";
 import OrderList from "../components/orders/OrderList";
-// import { OrderList } from "../components/OrderList";
 
 export const dropdown_populate = (items, type) => {
   let cat = new Set();
@@ -80,7 +79,6 @@ export const dropdown_populate = (items, type) => {
 
 export const grid_create = (items, item_blank, isAdmin, isAuthenticated, type) => {
   let content;
-  console.log(items);
   if (items.length !== 0) {
     let i = 0;
     let limit = 3;
@@ -164,7 +162,6 @@ export const item_sort = (item_list) => {
 };
 
 export const item_filter = (items, page_number, page_size) => {
-  console.log(items);
   item_sort(items);
   if (items.length < page_size) {
     page_number = 1;
@@ -185,13 +182,11 @@ export const itemPerPage = (items) => {
     i += 3;
   }
   
-  console.log(itemPerPage_array);
   return itemPerPage_array;
 };
 
 export const getBase64 = (file) => {
   return new Promise((resolve) => {
-    let fileInfo;
     let baseURL = "";
 
     let reader = new FileReader();
@@ -199,11 +194,9 @@ export const getBase64 = (file) => {
     reader.readAsDataURL(file);
 
     reader.onload = (e) => {
-      // console.log(e.target.result);
       baseURL = e.target.result;
       resolve(baseURL);
     };
-    // console.log(baseURL);
     return baseURL;
   });
 };

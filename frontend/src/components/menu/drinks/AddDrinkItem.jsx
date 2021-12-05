@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Alert, Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { getBase64 } from "../../../Helpers/helperFunctions";
-import { Add_Edit_Drink_Page } from "../../../Helpers/helperString";
+import { useDispatch, useSelector } from "react-redux";
+import { getBase64 } from "../../../helpers/helperFunctions";
+import { Add_Edit_Drink_Page } from "../../../helpers/helperString";
 import { setError } from "../../../store/actions/commonActions";
 
 const AddDrinkItem = (props) => {
+
+
+  const error = useSelector(state => state.error);
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const [msgtype, setMsgType] = useState(null);
   const [msg, setMsg] = useState(null);
   const [name, setName] = useState("");
@@ -74,9 +78,23 @@ const AddDrinkItem = (props) => {
   const handleDrinkAdd = () => {
     form_validation();
   };
+
+  useEffect( () => {
+    if(error.id === 'ADD_FORM_FAILURE') {
+        setMsg(error.msg.msg);
+        setMsgType(error.msg.type)
+    }
+    if(error.id === 'ADD_FAILURE') {
+        setMsg(error.msg);
+        setMsgType("API")
+    }
+    
+    
+}, [error, isAuthenticated] )
+
   return (
     <>
-      {msgtype === "API" && (
+      {msgtype !== null && (
         <Alert color="danger" variant={"danger"}>
           {msg}
         </Alert>

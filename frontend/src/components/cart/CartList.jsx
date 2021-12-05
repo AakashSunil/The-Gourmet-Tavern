@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, Table, Button, Modal, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { Cart_Items } from "../../Helpers/helperString";
+import { Cart_Items } from "../../helpers/helperString";
 import { updateCart } from "../../store/actions/cartActions";
 import CartQuantity from "./CartQuantity";
 

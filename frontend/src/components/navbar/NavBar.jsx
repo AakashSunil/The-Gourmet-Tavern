@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { Header_NavBar } from "../../Helpers/helperString";
+import { Header_NavBar } from "../../helpers/helperString";
 import { logoutUser } from "../../store/actions/authActions";
 
 import "../components.css";
