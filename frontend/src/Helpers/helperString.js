@@ -3,7 +3,7 @@
 export const about_page = {
   ABOUT_US: "About Us",
   ABOUT_US_DESCRIPTION:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "Gourmet Tavern is an upscale, fast-casual restaurant concept - one of the fastest growing segments in the restaurant industry. The first Gourmet Tavern’s Cafe was built in 1983 in San Angelo, Texas. In 1995, Bobby D. Cox purchased the brand with its five locations. Today, Rosa’s Cafe has expanded to more than 45 company-owned restaurants with locations in North, Central and West Texas. There is one company-owned Gourmet Tavern’s Café in Hobbs, NM and an independently owned Gourmet Tavern’s Café in Temecula, California.The signature products at Gourmet Tavern’s Cafe are the beef and Chicken Snitzel, marinated and grilled to perfection over real West Texas mesquite wood giving them their distinct flavor. Other popular menu items include Vanilla Panna Cotta, Custard T-cup, sour cream chicken enchiladas, taco salads, burritos, tostadas, tamales and made-from-scratch tortillas and sopapillas. The complimentary salsa bar includes fresh pico de gallo and salsas of different seasonings to top off any meal with a mouth-watering zest. Boasting the attributes of most full-service, sit-down food restaurants, Gourmet Tavern’s Cafe is unique in having an online delivery system to complement their experience in this modern day masterpiece. Whether dining in or using the online delivery, customers can be assured that their service will be incredibly fast and delicious.",
 };
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -20,10 +20,10 @@ export const contact_page = {
   SATURDAY: "Saturday:   11:30 AM - 10:30 PM",
   SUNDAY: "Sunday:   11:30 AM - 09:30 PM",
   HEADING_ADDRESS: "ADDRESS",
-  ADDRESS_LINE_1: "9999 N. Greenville Ave, Suite #999 ,",
+  ADDRESS_LINE_1: "7379 N. Greenville Ave, Suite #3628 ,",
   ADDRESS_LINE_2: "Richardson, TX - 75081",
-  PHONE: "Phone:  (999) 999-9999",
-  EMAIL: "Email: dummy.richardson@gmail.com",
+  PHONE: "Phone:  (881) 252-2894",
+  EMAIL: "Email: thegourmettavern@gmail.com",
 };
 
 // --------------------------------------------------------------------------------------------------------------------------------

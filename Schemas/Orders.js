@@ -33,12 +33,7 @@ const ordersSchema = new mongoose.Schema({
         type : String,
         required : true,
         trim : true,
-        lowercase : true,
-        validate(value) {
-            if(!(value === 'dinein' || value === 'pickup')) {
-                throw new Error("Invalid order type");
-            }
-        }
+        lowercase : true
     },
     bookingTime : {
         type : Date,
