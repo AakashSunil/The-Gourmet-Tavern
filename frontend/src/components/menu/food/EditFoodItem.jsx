@@ -21,7 +21,7 @@ const EditFoodItem = (props) => {
   const [category, setCategory] = useState(item.category);
   const [cuisine, setCuisine] = useState(item.cuisine);
   const [preference, setPreference] = useState(item.preference);
-  const [ingredients, setIngredients] = useState(item.ingredients);
+  // const [ingredients, setIngredients] = useState(item.ingredients);
   const [stockQuantity, setStockQuantity] = useState(item.quantity);
   const [imageData, setImageData] = useState(item.image);
 
@@ -40,13 +40,12 @@ const EditFoodItem = (props) => {
           category: category,
           cuisine:cuisine,
           preference:preference,
-          ingredients:ingredients,
           quantity:stockQuantity,
           imageData: imageData
       }
       console.log(food_item);
 
-      if(name.trim().length === 0 || description.trim().length === 0 || String(price).trim().length === 0 || category.trim().length === 0 || cuisine.trim().length === 0 || preference.trim().length === 0 || ingredients.trim().length === 0 || String(stockQuantity).trim().length === 0 || imageData.trim().length === 0) {
+      if(name.trim().length === 0 || description.trim().length === 0 || String(price).trim().length === 0 || category.trim().length === 0 || cuisine.trim().length === 0 || preference.trim().length === 0 ||  String(stockQuantity).trim().length === 0 || imageData.trim().length === 0) {
           setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'EDIT_FORM_FAILURE');
       }
 
@@ -205,7 +204,7 @@ const EditFoodItem = (props) => {
           />
           <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3">
+        {/* <Form.Group className="mb-3">
           <Form.Label>{Add_Edit_Food_Page.INGREDIENTS}</Form.Label>
           <Form.Control
             type="text"
@@ -219,7 +218,7 @@ const EditFoodItem = (props) => {
             }
           />
           <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group className="mb-3">
           <Form.Label>{Add_Edit_Food_Page.STOCK_QUANTITY}</Form.Label>
           <Form.Control
