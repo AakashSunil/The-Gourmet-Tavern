@@ -128,19 +128,34 @@ export const grid_create = (items, item_blank, isAdmin, isAuthenticated, type) =
 
 export const order_list_create = (items) => {
   let productRows = items;
-  const content = productRows.map((row, idx_row) => (
-    <OrderList item={row} />
-    // <></>
-  ));
+  let content;
+  if(productRows.length === 0) {
+    content = <><h1>No Orders Available</h1></>
+  }
+  else {
+    content = productRows.map((row, idx_row) => (
+      <OrderList item={row} />
+    ));
+  }
+  
 
   return content;
 };
 
 export const cart_list_create = (items) => {
-  return (
-    <CartList item={items} />
-    // <></>
-  );
+
+  let productRows = items;
+  let content;
+  if(productRows.length === 0) {
+    content = <><h1>No Items in the Cart</h1></>
+  }
+  else {
+    content = productRows.map((row, idx_row) => (
+      <CartList item={items} />
+    ));
+  }
+  
+  return content
 };
 
 export const item_sort = (item_list) => {

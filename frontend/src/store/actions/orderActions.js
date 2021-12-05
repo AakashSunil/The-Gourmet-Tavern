@@ -21,3 +21,25 @@ export const getOrders = (token) => {
         })
     }
 }
+
+export const addOrders = (token) => {
+    return (dispatch) => {
+        axios.get(`/orders/add`,{headers: getConfig(token).header})
+        .then(res => {
+            // console.log(res);
+            dispatch({
+                type : 'CLEAR_ERROR'
+            })
+
+            dispatch({
+                type : 'GET_ORDERS',
+                payload : res.data
+            })
+            
+        })
+        .catch(err => {
+            setError(dispatch, err.response.data.message, err.response.status, 'GET_ORDER_FAILURE');
+        })
+    }
+}
+

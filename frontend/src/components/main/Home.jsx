@@ -1,5 +1,5 @@
 import React from "react";
-import { Home_Page } from "../../helpers/HelperString";
+import { Home_Page } from "../../Helpers/helperString";
 import "../components.css";
 const Home = () => {
   return (

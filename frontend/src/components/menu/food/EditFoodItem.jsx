@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-import { Add_Edit_Food_Page } from "../../../helpers/HelperString";
-import { getBase64 } from "../../../helpers/helperFunctions";
+import { Add_Edit_Food_Page } from "../../../Helpers/helperString";
+import { getBase64 } from "../../../Helpers/helperFunctions";
 import { setError } from "../../../store/actions/commonActions";
 import { useDispatch, useSelector } from "react-redux";
 

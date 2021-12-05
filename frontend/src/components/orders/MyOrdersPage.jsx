@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { order_list_create } from "../../helpers/helperFunctions";
-import { orders_list } from "../../helpers/orders";
+import { order_list_create } from "../../Helpers/helperFunctions";
+import { orders_list } from "../../Helpers/orders";
 import { getOrders } from "../../store/actions/orderActions";
 
 const MyOrdersPage = () => {

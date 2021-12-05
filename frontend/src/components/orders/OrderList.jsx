@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Table } from "react-bootstrap";
-import { Order_List_Page } from "../../helpers/HelperString";
+import { Order_List_Page } from "../../Helpers/helperString";
 
 const OrderList = (props) => {
   const { item } = props;

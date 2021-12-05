@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
-import { Cart_Quantity } from "../../../helpers/HelperString";
+import { Cart_Quantity } from "../../../Helpers/helperString";
 const Quantity = (props) => {
   const { items } = props;
 
@@ -68,7 +68,7 @@ const Quantity = (props) => {
         >
           {Cart_Quantity.ADD}
         </Button>
-        <Button onClick={() => props.add()} className="quantity">
+        <Button onClick={() => props.add(quantity)} className="quantity">
           {Cart_Quantity.ADD_STRING}
         </Button>
         <Button onClick={() => props.close()} className="quantity">

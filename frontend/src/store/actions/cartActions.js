@@ -21,3 +21,24 @@ export const getCartItems = (token) => {
         })
     }
 }
+
+export const addToCart = (product,token) => {
+    return (dispatch) => {
+        axios.post(`/cart/add`,{product, headers: getConfig(token).header})
+        .then(res => {
+            console.log(res);
+            dispatch({
+                type : 'CLEAR_ERROR'
+            })
+
+            dispatch({
+                type : 'ADD_TO_CART_ITEMS',
+                payload : res.data
+            })
+            
+        })
+        .catch(err => {
+            setError(dispatch, err.response.data.message, err.response.status, 'ADD_TO_CART_ITEMS_FAILURE');
+        })
+    }
+}

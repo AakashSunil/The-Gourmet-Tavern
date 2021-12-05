@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { cart_list_create } from "../../helpers/helperFunctions";
-import { cart_items } from "../../helpers/cart";
+import { cart_list_create } from "../../Helpers/helperFunctions";
+import { cart_items } from "../../Helpers/cart";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "../../store/actions/cartActions";
 

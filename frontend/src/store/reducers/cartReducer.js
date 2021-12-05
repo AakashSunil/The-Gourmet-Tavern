@@ -4,6 +4,9 @@ const cartReducer = (state = [], action) => {
     case "GET_CART_ITEMS":
     return action.payload;
     
+    case "ADD_TO_CART_ITEMS":
+    return action.payload;
+    
     default:
     return [...state];
 

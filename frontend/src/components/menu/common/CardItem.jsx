@@ -6,7 +6,8 @@ import {
   Add_Edit_Drink_Page,
   Add_Edit_Food_Page,
   Card_Item_Page,
-} from "../../../helpers/HelperString";
+} from "../../../Helpers/helperString";
+import { addToCart } from "../../../store/actions/cartActions";
 import { deleteProduct, editProduct } from "../../../store/actions/productActions";
 import EditDrinkItem from "../drinks/EditDrinkItem";
 import EditFoodItem from "../food/EditFoodItem";
@@ -26,9 +27,24 @@ const CardItem = (props) => {
 
   const { item } = props;
 
-  const handleClick = (e) => {
+  const handleAdd = (e) => {
+
+    const item_to_cart = {
+      product:{
+        id: item._id,
+        name: item.productName,
+        quantity: e,
+        price: item.price
+      }
+    }
+    console.log(item_to_cart);
+    dispatch(addToCart(item_to_cart,token))
     setShowButton(!showButton);
   };
+
+  const handleClick = () => {
+    setShowButton(!showButton);
+  }
 
   const handleEditOpen = () => {
     setEdit(true);
@@ -112,7 +128,7 @@ const CardItem = (props) => {
               <Quantity
                 items={item}
                 close={() => handleClick()}
-                add={() => handleClick()}
+                add={(val) => handleAdd(val)}
               />
             )}
           </div>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getBase64 } from "../../../helpers/helperFunctions";
-import { Add_Edit_Drink_Page } from "../../../helpers/HelperString";
+import { getBase64 } from "../../../Helpers/helperFunctions";
+import { Add_Edit_Drink_Page } from "../../../Helpers/helperString";
 import { setError } from "../../../store/actions/commonActions";
 
 const EditDrinkItem = (props) => {

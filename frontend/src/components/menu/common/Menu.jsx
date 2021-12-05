@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { itemPerPage, item_filter } from "../../../helpers/helperFunctions";
-import { drinks_menu_item, food_menu_item } from "../../../helpers/menu";
+import { itemPerPage, item_filter } from "../../../Helpers/helperFunctions";
+import { drinks_menu_item, food_menu_item } from "../../../Helpers/menu";
 import { getProducts } from "../../../store/actions/productActions";
 import DrinksMenuList from "../drinks/DrinksMenuList";
 import FoodMenuList from "../food/FoodMenuList";

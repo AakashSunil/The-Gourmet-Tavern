@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Table, Button, Modal, Form } from "react-bootstrap";
-import { Cart_Items } from "../../helpers/HelperString";
+import { Cart_Items } from "../../Helpers/helperString";
 import CartQuantity from "./CartQuantity";
 
 const CartList = (props) => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Form, Button } from "react-bootstrap";
-import { getBase64 } from "../../../helpers/helperFunctions";
-import { Add_Edit_Food_Page } from "../../../helpers/HelperString";
+import { getBase64 } from "../../../Helpers/helperFunctions";
+import { Add_Edit_Food_Page } from "../../../Helpers/helperString";
 
 const AddFoodItem = (props) => {
   const [msgtype, setMsgType] = useState(null);

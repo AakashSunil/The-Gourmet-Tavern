@@ -5,8 +5,8 @@ const app = express();
 const products = require('./routes/api/productRoutes');
 const orders = require('./routes/api/orderRoutes');
 const user = require('./routes/api/userRoutes');
-const food = require('./routes/api/foodRoutes');
-const drinks = require('./routes/api/drinkRoutes');
+// const food = require('./routes/api/foodRoutes');
+// const drinks = require('./routes/api/drinkRoutes');
 const cart = require('./routes/api/cartRoutes');
 const publicPath = path.join(__dirname, 'frontend', 'build');
 const port = process.env.PORT || 5000;
@@ -22,8 +22,8 @@ app.use(express.json());
 app.use('/user', user);
 app.use('/products', products);
 app.use('/orders', orders);
-app.use('/food', food);
-app.use('/drinks', drinks);
+// app.use('/food', food);
+// app.use('/drinks', drinks);
 app.use('/cart', cart);
 
 
