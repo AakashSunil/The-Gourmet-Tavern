@@ -26,7 +26,7 @@ export const getProducts = (type, skip, limit, search, category, cuisine, prefer
 
 export const addFood = (food_item, token) => {
     return (dispatch, getState) => {
-        axios.post('/products/add', {food_item,headers: getConfig(token).header})
+        axios.post('/products/add', {food_item},{headers: getConfig(token).header})
         .then( res => {
             console.log(res);
             dispatch({
@@ -42,7 +42,7 @@ export const addFood = (food_item, token) => {
 
 export const addDrink = (drink_item, token) => {
     return (dispatch, getState) => {
-        axios.post('/products/add', {drink_item,headers: getConfig(token).header})
+        axios.post('/products/add', {drink_item},{headers: getConfig(token).header})
         .then( res => {
             console.log(res);
             dispatch({
@@ -58,7 +58,7 @@ export const addDrink = (drink_item, token) => {
 
 export const editProduct = (id, item, token) => {
     return (dispatch, getState) => {
-        axios.patch(`/products/${id}`, {item, headers: getConfig(token).header})
+        axios.patch(`/products/${id}`, {item},{headers: getConfig(token).header})
         .then( res => {
             console.log(res,"aaaa");
             dispatch({

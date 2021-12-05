@@ -22,9 +22,9 @@ export const getOrders = (token) => {
     }
 }
 
-export const addOrders = (token) => {
+export const addOrders = (order,token) => {
     return (dispatch) => {
-        axios.get(`/orders/add`,{headers: getConfig(token).header})
+        axios.get(`/orders/add`,{order},{headers: getConfig(token).header})
         .then(res => {
             // console.log(res);
             dispatch({

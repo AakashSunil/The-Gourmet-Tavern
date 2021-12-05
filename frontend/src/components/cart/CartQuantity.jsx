@@ -73,7 +73,7 @@ const CartQuantity = (props) => {
         >
           {Cart_Quantity.ADD}
         </Button>
-        <Button onClick={() => props.add()} className="quantity">
+        <Button onClick={() => props.add(quantity)} className="quantity">
           {Cart_Quantity.ADD_STRING}
         </Button>
         <Button onClick={() => props.close()} className="quantity">

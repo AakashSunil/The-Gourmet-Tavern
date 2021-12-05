@@ -150,9 +150,8 @@ export const cart_list_create = (items) => {
     content = <><h1>No Items in the Cart</h1></>
   }
   else {
-    content = productRows.map((row, idx_row) => (
-      <CartList item={items} />
-    ));
+    content = <CartList item={items} />
+
   }
   
   return content

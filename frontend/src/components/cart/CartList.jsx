@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Card, Table, Button, Modal, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Cart_Items } from "../../Helpers/helperString";
+import { updateCart } from "../../store/actions/cartActions";
 import CartQuantity from "./CartQuantity";
 
 const CartList = (props) => {
   const { item } = props;
+  const token = localStorage.getItem('token');
+
+  const dispatch = useDispatch();
 
   const [showQuantity, setShowQuantity] = useState(false);
   const [showRemove, setShowRemove] = useState(false);
@@ -17,12 +22,20 @@ const CartList = (props) => {
     setShowQuantity(!showQuantity);
   };
 
-  const handleSubmit = () => {
+  const openOrderType = () => {
     setShowModal(true);
   };
 
+  const handleSubmit = () => {
+
+  }
+
   const handleAdd = (item, quantity_modified) => {
+    console.log(item);
     item.quantity = quantity_modified;
+
+    dispatch(updateCart(item,token));
+    handleClick();
   };
   const changeButton = (type) => {
     console.log(type);
@@ -81,7 +94,7 @@ const CartList = (props) => {
                         <CartQuantity
                           items={item_detail}
                           close={() => handleClick()}
-                          add={(item, quantity) => handleAdd(item, quantity)}
+                          add={(quantity) => handleAdd(item_detail, quantity)}
                         />
                       )}
                       {showRemove && (
@@ -149,7 +162,7 @@ const CartList = (props) => {
             {Cart_Items.REMOVE_ITEMS}
           </Button>
         )}
-        <Button onClick={() => handleSubmit()}>{Cart_Items.ORDER_TYPE}</Button>
+        <Button onClick={() => openOrderType()}>{Cart_Items.ORDER_TYPE}</Button>
       </div>
     </>
   );
