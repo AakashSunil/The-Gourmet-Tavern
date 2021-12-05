@@ -6,6 +6,10 @@
     padding: 10px;
 }
 
+.team{
+  padding: 2%;
+}
+
 .justify_button {
     display: flex;
     flex-flow: row wrap;
