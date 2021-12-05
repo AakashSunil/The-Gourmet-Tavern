@@ -82,25 +82,25 @@ const EditDrinkItem = (props) => {
     form_validation()
   };
 
-  useEffect( () => {
-    if(error.status !== null){
-      if(error.id === 'EDIT_FORM_FAILURE') {
-          setMsg(error.msg.msg);
-          setMsgType(error.msg.type)
-      }
-      if(error.id === 'EDIT_FAILURE') {
-          setMsg(error.msg);
-          setMsgType("API")
-      }
-    }
-    else {
-      dispatch({
-        type : 'CLEAR_ERROR'
-    });
-    }
+//   useEffect( () => {
+//     if(error.status !== null){
+//       if(error.id === 'EDIT_FORM_FAILURE') {
+//           setMsg(error.msg.msg);
+//           setMsgType(error.msg.type)
+//       }
+//       if(error.id === 'EDIT_FAILURE') {
+//           setMsg(error.msg);
+//           setMsgType("API")
+//       }
+//     }
+//     else {
+//       dispatch({
+//         type : 'CLEAR_ERROR'
+//     });
+//     }
     
     
-}, [error, isAuthenticated] )
+// }, [error, isAuthenticated] )
 
 
   return (
