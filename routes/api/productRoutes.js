@@ -12,7 +12,7 @@ const {Products} = require('../../Schemas/Products');
 router.get('/',(req, res) => {
 
     let search = {};
-    const {productType, category, cuisine, preference, searchTerm, alcoholLevel, limit, skip} = req.query;
+    const {productType, category, cuisine, preference, searchTerm, level, limit, skip} = req.query;
 
     //Building the filter criteria
     if(category) {
@@ -32,8 +32,8 @@ router.get('/',(req, res) => {
         search.preference = preference.trim();
     }
 
-    if(alcoholLevel) {
-        search.alcoholLevel = alcoholLevel.trim();
+    if(level) {
+        search.level = level.trim();
     }
 
     if(productType) {
@@ -158,7 +158,7 @@ router.put('/:id', auth, async (req, res) => {
 
     //Extract values to be updated from body 
     let newValues = {};
-    const {productName, description, category, price, quantity, cuisine, preference, alcoholLevel, image} = req.body;
+    const {productName, description, category, price, quantity, cuisine, preference, level, image} = req.body;
     if(productName) {
         const check = await Products.findOne({productName : productName.trim()});
         
@@ -185,8 +185,8 @@ router.put('/:id', auth, async (req, res) => {
     if(preference) {
         newValues.preference = preference;
     }
-    if(alcoholLevel) {
-        newValues.alcoholLevel = alcoholLevel;
+    if(level) {
+        newValues.level = level;
     }
     if(image) {
         newValues.image = image;

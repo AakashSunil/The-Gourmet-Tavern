@@ -49,7 +49,7 @@ const productsSchema = new mongoose.Schema({
             type : String,
             required : false,
     },
-    alcoholLevel : {
+    level : {
         type : Number,
         required : false,
         min : 0
