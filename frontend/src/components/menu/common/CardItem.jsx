@@ -78,11 +78,14 @@ const CardItem = (props) => {
 
   const handleDeleteDrinkCall = (id) => {
     dispatch(deleteProduct(id,token))
+    handleEditClose();
 
   };
 
   const handleDeleteFoodCall = (id) => {
     dispatch(deleteProduct(id,token))
+    handleEditClose();
+
   };
   return (
     <>
@@ -136,7 +139,7 @@ const CardItem = (props) => {
       </Card>
       <Modal
         show={showEdit}
-        onHide={handleEditClose}
+        onHide={()=>handleEditClose()}
         backdrop="static"
         keyboard={false}
       >
@@ -150,7 +153,7 @@ const CardItem = (props) => {
         <Modal.Body>
           {showEditDrink && (
             <EditDrinkItem
-              delete={(val) => handleDeleteDrinkCall(item._id)}
+              delete={() => handleDeleteDrinkCall(item._id)}
               close={() => handleEditClose()}
               edit={(val) => handleEditDrinkCall(val,item._id)}
               item={item}
