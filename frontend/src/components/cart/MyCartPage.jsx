@@ -16,13 +16,15 @@ const MyCartPage = () => {
   // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
 
   const dispatch = useDispatch();
-  const cart_items_state = useSelector((state) => state.cart)
+  const cart_items_state = useSelector((state) => state.cart.length!==0?state.cart.items:[])
+  const cart_bill = useSelector((state) => state.cart.length!==0?state.cart.totalBill:[])
   const [msg, setMsg] = useState(null);
   const [msgtype, setMsgType] = useState(null);
   // let cartList = cart_items;
   let cartList = cart_items_state;
   const loop_items = (items) => {
-    const cart_items = cart_list_create(items);
+    console.log(items);
+    const cart_items = cart_list_create(items,cart_bill);
     return cart_items;
   };
 

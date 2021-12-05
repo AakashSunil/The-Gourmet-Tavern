@@ -7,6 +7,8 @@ import CartQuantity from "./CartQuantity";
 
 const CartList = (props) => {
   const { item } = props;
+  const { bill } = props;
+  
   const token = localStorage.getItem('token');
 
   const dispatch = useDispatch();
@@ -108,14 +110,6 @@ const CartList = (props) => {
               })}
             </tbody>
           </Table>
-          <Card.Title>
-            {Cart_Items.TOTAL_PRICE}
-            {item.total_price}
-          </Card.Title>
-          <Card.Title>
-            {Cart_Items.ORDER_TYPE_HEADING}
-            {item.orderType}
-          </Card.Title>
         </Card.Body>
 
       </Card>
@@ -151,6 +145,12 @@ const CartList = (props) => {
           </Modal.Footer>
         </Modal>
       }
+      <div className="cart_button_align">
+        <h2>
+            {Cart_Items.TOTAL_PRICE}
+            {bill}
+        </h2>
+      </div>
       <div className="cart_button_align">
         {!showQuantity && (
           <Button onClick={() => changeButton(Cart_Items.QUANTITIY_STRING)}>

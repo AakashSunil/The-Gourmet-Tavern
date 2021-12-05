@@ -215,7 +215,7 @@ export const Cart_Items = {
   ORDER_TYPE_HEADING: "Order Type",
   DINE_IN: "Dine In",
   DELIVERY: "Delivery",
-  TOTAL_PRICE: "Total Price",
+  TOTAL_PRICE: "Total Price:  $",
 };
 
 // --------------------------------------------------------------------------------------------------------------------------------

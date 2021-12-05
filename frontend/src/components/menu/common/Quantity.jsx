@@ -68,7 +68,7 @@ const Quantity = (props) => {
         >
           {Cart_Quantity.ADD}
         </Button>
-        <Button onClick={() => props.add(quantity)} className="quantity">
+        <Button onClick={() => props.add(quantity)} className="quantity" disabled={quantity === 0}>
           {Cart_Quantity.ADD_STRING}
         </Button>
         <Button onClick={() => props.close()} className="quantity">
