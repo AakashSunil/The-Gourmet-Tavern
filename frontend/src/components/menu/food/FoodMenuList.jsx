@@ -105,7 +105,7 @@ const FoodMenuList = (props) => {
       category: "",
       cuisine: "",
       preference: "",
-      stockQuantity: 0,
+      quantity: 0,
       ingredients: "",
     };
 

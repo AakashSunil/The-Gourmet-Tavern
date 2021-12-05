@@ -66,7 +66,7 @@ export const updateCart = (product,token) => {
 
 export const deleteFromCart = (product,token) => {
     return (dispatch) => {
-        axios.patch(`/cart/delete`,product, {headers: getConfig(token).header})
+        axios.put(`/cart/delete`,product, {headers: getConfig(token).header})
         .then(res => {
             console.log(res);
             dispatch({

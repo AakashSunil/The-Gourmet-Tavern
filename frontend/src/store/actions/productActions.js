@@ -58,7 +58,7 @@ export const addDrink = (drink_item, token) => {
 
 export const editProduct = (id, item, token) => {
     return (dispatch, getState) => {
-        axios.patch(`/products/${id}`, item,{headers: getConfig(token).header})
+        axios.put(`/products/${id}`, item,{headers: getConfig(token).header})
         .then( res => {
             console.log(res,"aaaa");
             dispatch({

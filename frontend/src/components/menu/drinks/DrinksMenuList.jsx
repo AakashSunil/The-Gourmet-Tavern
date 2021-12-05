@@ -103,7 +103,7 @@ const DrinksMenuList = (props) => {
       isDeleted: true,
       category: "",
       level: "",
-      stockQuantity: 0,
+      quantity: 0,
     };
     let card_grid = grid_create(items, item_blank, admin_privilege, isAuthenticated, "Drinks");
     return card_grid;
