@@ -134,6 +134,7 @@ const FoodMenuList = (props) => {
   const resetClick = (e) => {
     console.log("reset");
     e.preventDefault();
+    setSearch("")
     setCategoryFilter("")
     setCuisineFilter("")
     setPreferenceFilter("")

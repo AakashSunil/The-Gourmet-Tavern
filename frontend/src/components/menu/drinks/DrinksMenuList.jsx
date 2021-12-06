@@ -125,6 +125,7 @@ const DrinksMenuList = (props) => {
 
   const resetClick = (e) => {
     e.preventDefault();
+    setSearch("")
     setCategoryFilter("")
     setLevelFilter("")
     const search_filter = {
