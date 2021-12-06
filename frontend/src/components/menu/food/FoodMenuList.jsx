@@ -126,13 +126,11 @@ const FoodMenuList = (props) => {
       cuisine: cuisine_filter,
       preference: preference_filter,
     };
-    console.log(search_filter);
     props.search(search_filter)
 
   };
 
   const resetClick = (e) => {
-    console.log("reset");
     e.preventDefault();
     setSearch("")
     setCategoryFilter("")
@@ -154,7 +152,6 @@ const FoodMenuList = (props) => {
   };
 
   const handleAddClose = () => {
-    console.log("close");
     setAddOpen(false);
   };
 

@@ -23,7 +23,6 @@ const MyCartPage = () => {
   // let cartList = cart_items;
   let cartList = cart_items_state;
   const loop_items = (items) => {
-    console.log(items);
     const cart_items = cart_list_create(items,cart_bill);
     return cart_items;
   };

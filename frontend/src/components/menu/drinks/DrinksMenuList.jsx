@@ -143,7 +143,6 @@ const DrinksMenuList = (props) => {
   };
 
   const handleAddClose = () => {
-    // console.log("close");
     setAddOpen(false);
   };
 

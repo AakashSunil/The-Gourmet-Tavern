@@ -43,7 +43,6 @@ const EditFoodItem = (props) => {
           quantity:stockQuantity,
           imageData: imageData
       }
-      console.log(food_item);
 
       if(name.trim().length === 0 || description.trim().length === 0 || String(price).trim().length === 0 || category.trim().length === 0 || cuisine.trim().length === 0 || preference.trim().length === 0 ||  String(stockQuantity).trim().length === 0 || imageData.trim().length === 0) {
           setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'EDIT_FORM_FAILURE');

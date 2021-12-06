@@ -3,7 +3,6 @@ import { Alert, Modal, Button, Form } from "react-bootstrap";
 import { Cart_Quantity } from "../../helpers/helperString";
 
 const CartQuantity = (props) => {
-  console.log(props);
   const { items } = props;
 
   const [quantity, setQuantity] = useState(items.quantity);

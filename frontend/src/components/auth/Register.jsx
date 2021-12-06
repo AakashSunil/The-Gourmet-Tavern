@@ -27,7 +27,6 @@ const Register = () => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    console.log(error);
     if(error.id === 'REGISTRATION_FORM_FAILURE') {
         setMsg(error.msg.msg);
         setMsgType(error.msg.type);

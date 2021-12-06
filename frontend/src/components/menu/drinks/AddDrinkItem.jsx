@@ -41,7 +41,6 @@ const AddDrinkItem = (props) => {
           quantity:stockQuantity,
           imageData: imageData
       }
-      console.log(drink_item);
 
       if(name.trim().length === 0 || description.trim().length === 0 || price.trim().length === 0 || category.trim().length === 0 || level.trim().length === 0 || stockQuantity.trim().length === 0 || imageData.trim().length === 0) {
           setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'ADD_FORM_FAILURE');

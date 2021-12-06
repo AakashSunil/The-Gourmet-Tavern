@@ -11,12 +11,8 @@ const auth = async (req, res, next) => {
         //verify the token
         const decoded = jwt.verify(token, "houseofveg");
 
-        // console.log(decoded);
-        // console.log(token);
-        // console.log(decoded._id);
         //get the user
         const user = await Users.findOne({_id : decoded._id});
-        console.log(user);
         //if no user found
         if(!user) {
             return res.status(401).send({"message" : "Access Denied! Error during authentication"});

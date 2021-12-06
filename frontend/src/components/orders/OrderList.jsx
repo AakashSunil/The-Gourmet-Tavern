@@ -3,7 +3,6 @@ import { Card, Table } from "react-bootstrap";
 import { Order_List_Page } from "../../helpers/helperString";
 
 const OrderList = (props) => {
-  console.log(props);
   const { item } = props;
 
   return (

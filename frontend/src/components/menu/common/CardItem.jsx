@@ -37,7 +37,6 @@ const CardItem = (props) => {
         price: item.price
       }
     }
-    console.log(item_to_cart);
     dispatch(addToCart(item_to_cart,token))
     setShowButton(!showButton);
   };
@@ -64,14 +63,12 @@ const CardItem = (props) => {
   };
 
   const handleEditDrinkCall = (value,id) => {
-    // console.log(value,id);
     dispatch(editProduct(id,value,token))
     handleEditClose();
 
   };
 
   const handleEditFoodCall = (value,id) => {
-    // console.log(value,id);
     dispatch(editProduct(id,value,token))
     handleEditClose();
   };

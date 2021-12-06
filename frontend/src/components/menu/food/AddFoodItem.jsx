@@ -23,7 +23,6 @@ const AddFoodItem = (props) => {
 
   const handleFileInput = (e) => {
     getBase64(e.target.files[0]).then((data) => {
-      console.log(data);
       setImageData(data)
     })
   };

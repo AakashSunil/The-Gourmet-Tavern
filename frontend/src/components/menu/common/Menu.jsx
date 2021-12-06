@@ -42,27 +42,7 @@ const Menu = (props) => {
 
 
   useEffect(() => {
-    // if(error.status !== null){
-    //   if(error.id === 'GET_ITEM_FAILURE') {
-    //     setMsg(error.msg);
-    //     setMsgType(error.msg)
-    //   }
-    //   else {
-    //     dispatch({
-    //       type : 'CLEAR_ERROR'
-    //   });
-    //   }
-    // }
-    // else {
-    //   // console.log('dispatch');
     
-    // food_menu?
-    // dispatch(getProducts("food",0,50,"","","","")):
-    // dispatch(getProducts("drink",0,50,"","","",""))  
-    // }
-  //   dispatch({
-  //     type : 'CLEAR_ERROR'
-  // });
     search? food? dispatch(getProducts_Food("food",0,50,foodSearch,foodCategory,foodCuisine,foodPreference)): 
     dispatch(getProducts_Drink("drink",0,50,drinkSearch,drinkCategory,drinkLevel)): 
   food_menu?
@@ -79,7 +59,6 @@ const Menu = (props) => {
   };
 
   const handleItemPerPage = (ele) => {
-    // console.log(ele);
     setPage(1)
     setPageItemList(ele);
     items = item_filter(menu_items, page, ele);

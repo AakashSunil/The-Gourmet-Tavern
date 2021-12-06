@@ -41,7 +41,6 @@ const EditDrinkItem = (props) => {
       quantity:stockQuantity,
       imageData: imageData
   }
-  console.log(drink_item);
 
   if(name.trim().length === 0 || description.trim().length === 0 || String(price).trim().length === 0 || category.trim().length === 0 || level.trim().length === 0 || String(stockQuantity).trim().length === 0 || imageData.trim().length === 0) {
       setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'EDIT_FORM_FAILURE');
@@ -74,7 +73,6 @@ const EditDrinkItem = (props) => {
       // signUpUser(dispatch, name, email, phone, password, address, history);
       // setShow(false)
       // history.push('/drinksMenu');
-      console.log(drink_item);
       props.edit(drink_item)
   }    
   }

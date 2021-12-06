@@ -44,7 +44,6 @@ const CartList = (props) => {
     const order_type = {
       orderType: dine? Cart_Items.DELIVERY:Cart_Items.DINE_IN
     }
-    console.log(order_type);
     dispatch(addOrders(order_type,token,history))
     setShowModal(false);
     history.push("/myCart")
@@ -52,7 +51,6 @@ const CartList = (props) => {
   }
 
   const handleAdd = (quantity_modified,item) => {
-    console.log(item);
     
     item.quantity = quantity_modified;
     const product = {
@@ -78,7 +76,6 @@ const CartList = (props) => {
     setDine(!dine)
   }
   const changeButton = (type) => {
-    console.log(type);
     if (!(showQuantity || showRemove)) {
       if (type === "Quantity") {
         setShowQuantity(true);

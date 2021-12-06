@@ -6,7 +6,6 @@ export const getProducts_Food = (type, skip, limit, search, category, cuisine, p
     return (dispatch) => {
         axios.get(`/products?productType=${type}&skip=${skip}&limit=${limit}&searchTerm=${search}&category=${category}&cuisine=${cuisine}&preference=${preference}`)
         .then(res => {
-            console.log(res);
             dispatch({
                 type : 'CLEAR_ERROR'
             })
@@ -27,7 +26,6 @@ export const getProducts_Drink = (type, skip, limit, search, category, level) =>
     return (dispatch) => {
         axios.get(`/products?productType=${type}&skip=${skip}&limit=${limit}&searchTerm=${search}&category=${category}&level=${level}`)
         .then(res => {
-            // console.log(res);
             dispatch({
                 type : 'CLEAR_ERROR'
             })
@@ -49,7 +47,6 @@ export const addFood = (food_item, token) => {
     return (dispatch, getState) => {
         axios.post('/products/add', food_item,{headers: getConfig(token).header})
         .then( res => {
-            console.log(res);
             dispatch({
                 type: "ADD_FOOD",
                 payload:res.data
@@ -65,7 +62,6 @@ export const addDrink = (drink_item, token) => {
     return (dispatch, getState) => {
         axios.post('/products/add', drink_item,{headers: getConfig(token).header})
         .then( res => {
-            console.log(res);
             dispatch({
                 type: "ADD_DRINK",
                 payload:res.data
@@ -81,7 +77,6 @@ export const editProduct = (id, item, token) => {
     return (dispatch, getState) => {
         axios.put(`/products/${id}`, item,{headers: getConfig(token).header})
         .then( res => {
-            console.log(res,"aaaa");
             dispatch({
                 type: "EDIT_PRODUCT",
                 payload: res.data
@@ -98,7 +93,6 @@ export const deleteProduct = (id, token) => {
     return (dispatch, getState) => {
         axios.delete(`/products/${id}`,{headers: getConfig(token).header})
         .then( res => {
-            console.log(res);
             dispatch({
                 type: "DELETE_PRODUCT",
                 payload: res.data

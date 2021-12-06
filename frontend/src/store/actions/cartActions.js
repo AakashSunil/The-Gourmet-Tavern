@@ -5,7 +5,6 @@ export const getCartItems = (token) => {
     return (dispatch) => {
         axios.get(`/cart`,{headers: getConfig(token).header})
         .then(res => {
-            console.log(res);
             // dispatch({
             //     type : 'CLEAR_ERROR'
             // })
@@ -26,7 +25,6 @@ export const addToCart = (product,token) => {
     return (dispatch) => {
         axios.post(`/cart/add`,product,{headers: getConfig(token).header})
         .then(res => {
-            console.log(res);
             // dispatch({
             //     type : 'CLEAR_ERROR'
             // })
@@ -47,7 +45,6 @@ export const updateCart = (product,token) => {
     return (dispatch) => {
         axios.put(`/cart/update`,{product},{headers: getConfig(token).header})
         .then(res => {
-            console.log(res);
             // dispatch({
             //     type : 'CLEAR_ERROR'
             // })
@@ -59,7 +56,6 @@ export const updateCart = (product,token) => {
             
         })
         .catch(err => {
-            console.log(err);
             setError(dispatch, err.response.data.message, err.response.status, 'UPDATE_TO_CART_ITEMS_FAILURE');
         })
     }
@@ -67,12 +63,10 @@ export const updateCart = (product,token) => {
 
 export const deleteFromCart = (product,token) => {
     const headers = getConfig(token).header
-    console.log(product,token,headers);
 
     return (dispatch) => {
         axios.delete(`/cart/delete`, {headers: headers,data:{product}})
         .then(res => {
-            console.log(res);
             // dispatch({
             //     type : 'CLEAR_ERROR'
             // })

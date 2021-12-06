@@ -1,5 +1,4 @@
 const cartReducer = (state = [], action) => {
-  console.log(action);
   switch(action.type) {
     
     case "GET_CART_ITEMS":
