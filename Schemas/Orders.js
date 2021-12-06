@@ -1,7 +1,7 @@
 //Imports
 const mongoose = require('mongoose');
 
-//Create Orders Schema
+//Orders schema
 const ordersSchema = new mongoose.Schema({
     customerID : {
         type : String,
