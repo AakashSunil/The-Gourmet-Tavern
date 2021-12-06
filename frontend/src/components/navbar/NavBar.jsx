@@ -20,6 +20,7 @@ const NavBar = () => {
   const logOut_Procedure = () => {
 
     history.push('/')
+
     logoutUser(dispatch, user._id, token,history)
   }
   

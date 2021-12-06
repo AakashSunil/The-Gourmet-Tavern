@@ -51,7 +51,7 @@ export const signInUser = (dispatch, email, password, history) => {
         })
 }
 
-export const logoutUser = (dispatch, id, token) => {
+export const logoutUser = (dispatch, id, token,history) => {
 
     const headers = getConfig(token).header;
 
@@ -63,11 +63,13 @@ export const logoutUser = (dispatch, id, token) => {
             dispatch({
                 type : 'LOGOUT_SUCCESS'
             });
+
+
         })
-        .catch(err => {
-            setError(dispatch, err.response.data.message, err.response.status, 'LOGOUT_FAILURE');
-            dispatch({
-                type : 'LOGOUT_FAILURE'
-            });
-        })
+        // .catch(err => {
+        //     // setError(dispatch, err.response.data.message, err.response.status, 'LOGOUT_FAILURE');
+        //     dispatch({
+        //         type : 'LOGOUT_FAILURE'
+        //     });
+        // })
 }
