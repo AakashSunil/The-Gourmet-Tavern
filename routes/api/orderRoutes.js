@@ -6,9 +6,7 @@ const {Products} = require('../../Schemas/Products');
 const {Cart} = require('../../Schemas/Cart');
 
 
-// @route   GET /orders
-// @desc    get all the orders of the user
-// @access  Logged in User
+// Get order
 router.get('/', auth ,async (req, res) => {
 
     const user = await Users.findById(req.user._id);
@@ -24,25 +22,18 @@ router.get('/', auth ,async (req, res) => {
 
 });
 
-// @route   POST /orders/add
-// @desc    Add the final order to the database
-// @access  Logged in User
+// Place order
 router.post('/add', auth ,async (req, res) => {
 
-    //extract data
     const {orderType} = req.body;
     const user = req.user;
-    //console.log("user id in order api: " + user._id);
     const cart = await Cart.findOne({customerID : user._id});
-    //console.log("cart: " + cart)
 
-    //check if any required data is missing
     if(!user || !user._id) { return res.status(400).send({"message" : "Details of user placing order is required"}); }
     if(cart.items.length <= 0) { return res.status(400).send({"message" : "cart looks empty! cannot place order"}); }
     if(parseFloat(cart.total) < 0) { return res.status(400).send({"message" : "Total Amount must be a positive number"}); }
     if(!orderType) { return res.status(400).send({"message" : "please specify whether order is dinein or pickup"}); }
     
-    //verify productID's are valid or not & also enough quantity of product is available to place the order 
     let productList = [];
     for(let item of cart.items) {
 
@@ -63,11 +54,6 @@ router.post('/add', auth ,async (req, res) => {
         productList.push({productID : item.productID, name : item.name, quantity : item.quantity, price : item.price});
     }
 
-    // cart.items.map(item => {
-
-    // })
-
-    //save order to database
     try {
         const order = new Orders({
             customerID : user._id,
@@ -77,18 +63,14 @@ router.post('/add', auth ,async (req, res) => {
             totalBill : parseFloat(cart.totalBill)
         });
         await order.save();
-        console.log(cart);
-        //update quantity here.
         for(let item of cart.items) {
 
             const product = await Products.findById(item.productID);
-            console.log(product);
             product.quantity = parseInt(product.quantity) - parseInt(item.quantity);
             await product.save();
         }
         
         const temp = await Cart.deleteOne({customerID : user._id});
-        console.log("cart after deleting:" + temp);
         res.send(order);
 
     } catch(err) {
