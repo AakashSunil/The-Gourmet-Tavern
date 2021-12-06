@@ -6,9 +6,9 @@ export const getCartItems = (token) => {
         axios.get(`/cart`,{headers: getConfig(token).header})
         .then(res => {
             console.log(res);
-            dispatch({
-                type : 'CLEAR_ERROR'
-            })
+            // dispatch({
+            //     type : 'CLEAR_ERROR'
+            // })
 
             dispatch({
                 type : 'GET_CART_ITEMS',
@@ -16,9 +16,9 @@ export const getCartItems = (token) => {
             })
             
         })
-        .catch(err => {
-            setError(dispatch, err.response.data.message, err.response.status, 'GET_CART_ITEMS_FAILURE');
-        })
+        // .catch(err => {
+        //     setError(dispatch, err.response.data.message, err.response.status, 'GET_CART_ITEMS_FAILURE');
+        // })
     }
 }
 

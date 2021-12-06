@@ -3,6 +3,7 @@ import { Card, Table } from "react-bootstrap";
 import { Order_List_Page } from "../../helpers/helperString";
 
 const OrderList = (props) => {
+  console.log(props);
   const { item } = props;
 
   return (
@@ -10,7 +11,7 @@ const OrderList = (props) => {
       <Card className="list-align">
         <Card.Title variant="top">
           {Order_List_Page.TITLE}
-          {item.order_id}
+          {props.index + 1}
         </Card.Title>
         <Card.Body>
           <Table borderless={true}>
@@ -44,7 +45,7 @@ const OrderList = (props) => {
           </Table>
           <Card.Title>
             {Order_List_Page.TOTAL_PRICE}
-            {item.total_price}
+            {item.totalBill}
           </Card.Title>
           <Card.Title>
             {Order_List_Page.ORDER_TYPE}

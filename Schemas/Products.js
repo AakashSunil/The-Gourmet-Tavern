@@ -24,7 +24,6 @@ const productsSchema = new mongoose.Schema({
         type : String,
         required : true,
         trim : true,
-        lowercase : true,
         minlength : 3
     },
     price : {

@@ -77,12 +77,13 @@ router.post('/add', auth ,async (req, res) => {
             totalBill : parseFloat(cart.totalBill)
         });
         await order.save();
-        
+        console.log(cart);
         //update quantity here.
         for(let item of cart.items) {
 
             const product = await Products.findById(item.productID);
-            product.quantity = product.quantity - parseFloat(item.quantity);
+            console.log(product);
+            product.quantity = parseInt(product.quantity) - parseInt(item.quantity);
             await product.save();
         }
         

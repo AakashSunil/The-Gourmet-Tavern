@@ -11,7 +11,7 @@
     "isDeleted": false,
     "category": "Beer",
     "level": "5.2",
-    "stockQuantity": 100
+    "quantity": 100
   },
   {
     "_id": {
@@ -25,7 +25,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "14",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -39,7 +39,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "22",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -53,7 +53,7 @@
     "isDeleted": false,
     "category": "Wine",
     "level": "14.5",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -67,7 +67,7 @@
     "isDeleted": false,
     "category": "Wine",
     "level": "12",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -81,7 +81,7 @@
     "isDeleted": false,
     "category": "Beer",
     "level": "6.2",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -95,7 +95,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "33",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -109,7 +109,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "9",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -123,7 +123,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "5",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -137,7 +137,7 @@
     "isDeleted": false,
     "category": "Mocktail",
     "level": "0",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -151,7 +151,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "10",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -165,7 +165,7 @@
     "isDeleted": false,
     "category": "Cocktail",
     "level": "0",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -181,7 +181,7 @@
     "cuisine": "Indian",
     "preference": "Vegetarian",
     "ingredients": "Baby Corn, Ghee, Red Chillies, Garlic, Cinnamon, Fenugreek Seeds, Cumin Seeds, Coriander Seeds, Tamamrind Paste, Curd(Yogurt), Lemon Juice, Turmeric Powder, Chilli Powder",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -197,7 +197,7 @@
     "cuisine": "British",
     "preference": "Non-Vegetarian",
     "ingredients": "Pork/Chicken, Onions, Eggs, Bread Crumbs, Oil(if frying)",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -213,7 +213,7 @@
     "cuisine": "American",
     "preference": "Non-Vegetarian",
     "ingredients": "Sausages(Chicken/Pork), Eggs, Green Bell Pepper, Cheddar Cheese, Pepper, Onions, Oil",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -229,7 +229,7 @@
     "cuisine": "Italian",
     "preference": "Vegetarian",
     "ingredients": "Milk, Cream, Gelatin, Sugar, Vanilla Extract, Chocolate Syrup",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -245,7 +245,7 @@
     "cuisine": "German",
     "preference": "Non-Vegetarian",
     "ingredients": "Chicken Breast, Pepper, Chilli Powder, Rosemary, Thyme, Cornflour, Eggs, Breadcrumbs",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -261,7 +261,7 @@
     "cuisine": "Mediterranean",
     "preference": "Non-Vegetarian",
     "ingredients": "Eggs, Garlic, Butter, Yogurt(Curd), Oil, Red Chilli Oil, Water for Poaching",
-    "stockQuantity": 50
+    "quantity": 50
   },
   {
     "_id": {
@@ -277,6 +277,6 @@
     "cuisine": "Modern",
     "preference": "Vegetarian",
     "ingredients": "Milk, Vanilla Extract, Gelatin, Vanilla Ice-Cream, Sugar, Butter, Egg Whites, All-Purpose Flour",
-    "stockQuantity": 50
+    "quantity": 50
   }
 ]

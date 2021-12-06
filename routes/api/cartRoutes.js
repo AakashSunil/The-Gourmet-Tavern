@@ -15,8 +15,13 @@ router.get('/', auth ,async (req, res) => {
     //const user = await Users.findById(req.user._id);
     
      try {    
-        const cart = await Cart.findOne({customerID : req.user._id});     
-        res.send({items : cart.items, totalBill : cart.totalBill});
+        const cart = await Cart.findOne({customerID : req.user._id});
+        if(cart!== null){
+          res.send({items : cart.items, totalBill : cart.totalBill});
+        }
+        else {
+          res.send({items : [], totalBill : 0});
+        }
 
     } catch(err) {
         console.log(err);

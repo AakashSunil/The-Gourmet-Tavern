@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getCartItems } from './cartActions';
 import { getConfig, setError } from './commonActions';
 
 export const getOrders = (token) => {
@@ -22,7 +23,7 @@ export const getOrders = (token) => {
     }
 }
 
-export const addOrders = (order,token) => {
+export const addOrders = (order,token, history) => {
     return (dispatch) => {
         axios.post(`/orders/add`,order,{headers: getConfig(token).header})
         .then(res => {
@@ -33,11 +34,11 @@ export const addOrders = (order,token) => {
                 type : 'ADD_ORDERS',
                 payload : res.data
             })
-            
+            history.push('/')
         })
-        .catch(err => {
-            setError(dispatch, err.response.data.message, err.response.status, 'GET_ORDER_FAILURE');
-        })
+        // .catch(err => {
+        //     setError(dispatch, err.response.data.message, err.response.status, 'ADD_ORDER_FAILURE');
+        // })
     }
 }
 

@@ -4,8 +4,9 @@ import { about_page } from "../../helpers/helperString";
 const About = () => {
   return (
     <div>
+
+    <h4>{about_page.ABOUT_US}</h4>
     <div className="team">
-      <h4>{about_page.ABOUT_US}</h4>
       <img
             src="Aakash.jpg"
             alt="aakash"
@@ -24,8 +25,8 @@ const About = () => {
             width="200"
             height="225"
       ></img>
-      </div>
-      <p>{about_page.ABOUT_US_DESCRIPTION}</p>
+    </div>
+      <p className="about">{about_page.ABOUT_US_DESCRIPTION}</p>
     </div>
   );
 };

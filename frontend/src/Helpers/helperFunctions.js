@@ -132,7 +132,7 @@ export const order_list_create = (items) => {
   }
   else {
     content = productRows.map((row, idx_row) => (
-      <OrderList item={row} />
+      <OrderList item={row} index={idx_row}/>
     ));
   }
   

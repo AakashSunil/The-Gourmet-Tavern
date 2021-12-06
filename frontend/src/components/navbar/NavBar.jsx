@@ -17,6 +17,12 @@ const NavBar = () => {
 
   const history = useHistory();
   
+  const logOut_Procedure = () => {
+
+    history.push('/')
+    logoutUser(dispatch, user._id, token,history)
+  }
+  
   return (
     <>
       <div className="header">
@@ -48,7 +54,7 @@ const NavBar = () => {
                       <Nav.Link href="/myOrders">
                         {Header_NavBar.ORDER}
                       </Nav.Link>
-                      <Nav.Link onClick={()=>logoutUser(dispatch, user._id, token,history)}>{Header_NavBar.LOGOUT}</Nav.Link>
+                      <Nav.Link onClick={()=>logOut_Procedure()}>{Header_NavBar.LOGOUT}</Nav.Link>
                     </>
                   }
                 </Nav>

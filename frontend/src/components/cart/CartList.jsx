@@ -5,6 +5,8 @@ import { Cart_Items } from "../../helpers/helperString";
 import { deleteFromCart, updateCart } from "../../store/actions/cartActions";
 import { addOrders } from "../../store/actions/orderActions";
 import CartQuantity from "./CartQuantity";
+import { useHistory } from 'react-router';
+
 
 const CartList = (props) => {
   const { item } = props;
@@ -13,6 +15,7 @@ const CartList = (props) => {
   const token = localStorage.getItem('token');
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [showQuantity, setShowQuantity] = useState(false);
   const [showRemove, setShowRemove] = useState(false);
@@ -39,10 +42,13 @@ const CartList = (props) => {
 
   const handleSubmit = () => {
     const order_type = {
-      orderType: !dine? Cart_Items.DELIVERY:Cart_Items.DINE_IN
+      orderType: dine? Cart_Items.DELIVERY:Cart_Items.DINE_IN
     }
     console.log(order_type);
-    dispatch(addOrders(order_type,token))
+    dispatch(addOrders(order_type,token,history))
+    setShowModal(false);
+    history.push("/myCart")
+
   }
 
   const handleAdd = (quantity_modified,item) => {

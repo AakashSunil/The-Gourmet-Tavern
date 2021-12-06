@@ -13,16 +13,17 @@ router.get('/',(req, res) => {
 
     let search = {};
     const {productType, category, cuisine, preference, searchTerm, level, limit, skip} = req.query;
-
+    
+    console.log(category);
     //Building the filter criteria
     if(category) {
 
         search.category = category.trim();
     }
     //if both minimum & maximum price values are provided
-    if(category) {
-        search.category = category.trim();
-    }
+    // if(category) {
+    //     search.category = category.trim();
+    // }
 
     if(cuisine) {
         search.cuisine = cuisine.trim();
@@ -57,7 +58,7 @@ router.get('/',(req, res) => {
         search.productName = { $regex: searchTerm, $options: 'i'};
     }
     search.isDeleted = false;
-
+    console.log(search);
     //filter based on given criteria
     Products.find(search,
         function(err, result) {
