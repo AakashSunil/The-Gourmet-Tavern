@@ -3,6 +3,7 @@ import { Alert, Modal, Button, Form } from "react-bootstrap";
 import { Cart_Quantity } from "../../helpers/helperString";
 
 const CartQuantity = (props) => {
+  console.log(props);
   const { items } = props;
 
   const [quantity, setQuantity] = useState(items.quantity);
@@ -14,9 +15,9 @@ const CartQuantity = (props) => {
   };
 
   const handleQuantity = (value) => {
-    if (items.stockQuantity - value < 0) {
-      setShow(true);
-    }
+    // if (items.stockQuantity - value < 0) {
+    //   setShow(true);
+    // }
     setQuantity(value);
   };
   const handleChange = (change) => {

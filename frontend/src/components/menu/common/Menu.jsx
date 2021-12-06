@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { itemPerPage, item_filter } from "../../../helpers/helperFunctions";
 // import { drinks_menu_item, food_menu_item } from "../../../helpers/menu";
-import { getProducts } from "../../../store/actions/productActions";
+import { getProducts, getProducts_Drink, getProducts_Food } from "../../../store/actions/productActions";
 import DrinksMenuList from "../drinks/DrinksMenuList";
 import FoodMenuList from "../food/FoodMenuList";
 const Menu = (props) => {
@@ -25,7 +25,21 @@ const Menu = (props) => {
   const [msgtype, setMsgType] = useState(null);
   const [page, setPage] = useState(1);
   const [pageItemLimit, setPageItemList] = useState(6);
+  const [search, setSearch] = useState(false);
+  const [food, setFood] = useState(false);
+  const [drink, setDrink] = useState(false);
+
+  const [foodSearch, setFoodSearch] = useState("")
+  const [foodCategory, setFoodCategory] = useState("")
+  const [foodCuisine, setFoodCuisine] = useState("")
+  const [foodPreference, setFoodPreference] = useState("")
+
+  const [drinkSearch, setDrinkSearch] = useState("")
+  const [drinkCategory, setDrinkCategory] = useState("")
+  const [drinkLevel, setDrinkLevel] = useState("")
+
   let items = item_filter(menu_items, page, pageItemLimit);
+
 
   useEffect(() => {
     // if(error.status !== null){
@@ -46,14 +60,16 @@ const Menu = (props) => {
     // dispatch(getProducts("food",0,50,"","","","")):
     // dispatch(getProducts("drink",0,50,"","","",""))  
     // }
-    dispatch({
-      type : 'CLEAR_ERROR'
-  });
+  //   dispatch({
+  //     type : 'CLEAR_ERROR'
+  // });
+    search? food? dispatch(getProducts_Food("food",0,50,foodSearch,foodCategory,foodCuisine,foodPreference)): 
+    dispatch(getProducts_Drink("drink",0,50,drinkSearch,drinkCategory,drinkLevel)): 
   food_menu?
-    dispatch(getProducts("food",0,50,"","","","")):
-    dispatch(getProducts("drink",0,50,"","","",""))  
+    dispatch(getProducts_Food("food",0,50,"","","","")):
+    dispatch(getProducts_Drink("drink",0,50,"","","",""))  
     
-  },[dispatch,food_menu])
+  },[search,food,foodSearch,foodCategory,foodCuisine,foodPreference,drinkSearch,drinkCategory,drinkLevel])
 
   let pageItemLimitArray = itemPerPage(menu_items);
 
@@ -68,6 +84,25 @@ const Menu = (props) => {
     setPageItemList(ele);
     items = item_filter(menu_items, page, ele);
   };
+
+  const handleSearch_Food = (val) => {
+    setSearch(true)
+    setFood(true)
+    setFoodSearch(val.search)
+    setFoodCategory(val.category)
+    setFoodCuisine(val.cuisine)
+    setFoodPreference(val.preference)
+
+  }
+
+  const handleSearch_Drink = (val) => {
+    setSearch(true)
+    setFood(false)
+    setDrink(true)
+    setDrinkSearch(val.search)
+    setDrinkCategory(val.category)
+    setDrinkLevel(val.level)
+  }
 
 
   return (
@@ -88,6 +123,7 @@ const Menu = (props) => {
           page = {page}
           pageItemLimit = {pageItemLimit}
           pageItemLimitArray = {pageItemLimitArray}
+          search={(val)=>handleSearch_Food(val)}
         />
       ) : (
         <DrinksMenuList
@@ -100,6 +136,7 @@ const Menu = (props) => {
           page = {page}
           pageItemLimit = {pageItemLimit}
           pageItemLimitArray = {pageItemLimitArray}
+          search={(val)=>handleSearch_Drink(val)}
         />
       )}
     </>
