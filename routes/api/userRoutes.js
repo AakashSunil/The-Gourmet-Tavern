@@ -56,15 +56,10 @@ router.post('/register', async (req, res) => {
         address,
     });
 
-
-
-    console.log('jwt:' + process.env.SECRET_TOKEN);
+    const secretKey =  process.env.SECRET_TOKEN;
     const token = jwt.sign({
         _id: user._id
-    }, 'houseofveg');
-
-    console.log(token);
-
+    }, secretKey);
 
     user.sessionId = token;
     try {
@@ -112,11 +107,11 @@ router.post('/login', async (req, res) => {
         });
     }
 
-
-
+    const secretKey =  process.env.SECRET_TOKEN;
+    
     const token = jwt.sign({
         _id: user._id
-    }, 'houseofveg');
+    }, secretKey);
     user.sessionId = token;
     await user.save();
     res.header("auth-token", token);
@@ -132,7 +127,7 @@ router.post('/login', async (req, res) => {
 
 
 
-// Logout
+// User Logout
 router.post('/logout', auth, async (req, res) => {
     
     req.user.sessionId = "null";

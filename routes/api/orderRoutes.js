@@ -6,7 +6,7 @@ const {Products} = require('../../Schemas/Products');
 const {Cart} = require('../../Schemas/Cart');
 
 
-// Get order
+// Get All orders of user
 router.get('/', auth ,async (req, res) => {
 
     const user = await Users.findById(req.user._id);

@@ -5,11 +5,12 @@ const {Users} = require('../Schemas/Users');
 const auth = async (req, res, next) => {
     try {
         //get the token
+        const secretKey =  process.env.SECRET_TOKEN;
         const token = req.headers['auth-token'];
         //if token doesn't exists
         if(!token) { return res.status(401).send({"message" : "Unauthorized Access! please login or register"}); }
         //verify the token
-        const decoded = jwt.verify(token, "houseofveg");
+        const decoded = jwt.verify(token, secretKey);
 
         //get the user
         const user = await Users.findOne({_id : decoded._id});

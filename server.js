@@ -8,6 +8,8 @@ const user = require('./routes/api/userRoutes');
 // const food = require('./routes/api/foodRoutes');
 // const drinks = require('./routes/api/drinkRoutes');
 const cart = require('./routes/api/cartRoutes');
+const dotenv = require('dotenv');
+dotenv.config();
 const publicPath = path.join(__dirname, 'frontend', 'build');
 const port = process.env.PORT || 5000;
 

@@ -7,7 +7,7 @@ const {Cart} = require('../../Schemas/Cart');
 
 
 
-// Get cart
+// Get cart Items
 router.get('/', auth ,async (req, res) => {
     
      try {    
@@ -27,7 +27,7 @@ router.get('/', auth ,async (req, res) => {
 });
 
 
-
+//Delete cart Items
 router.delete('/delete', auth ,async (req, res) => {
     
      const {product} = req.body;
@@ -75,7 +75,7 @@ router.delete('/delete', auth ,async (req, res) => {
 
 
 
-// Update cart
+// Update cart Items
 router.put('/update', auth ,async (req, res) => {
        
     const {product} = req.body;
@@ -128,7 +128,7 @@ router.put('/update', auth ,async (req, res) => {
 
 
 
-// Add to cart
+// Add Items to cart
 router.post('/add', auth ,async (req, res) => {
 
     const {product} = req.body;

@@ -6,7 +6,7 @@ const auth = require('../../middleware/auth');
 const {Products} = require('../../Schemas/Products');
 
 
-// Get product
+// Get product details
 router.get('/',(req, res) => {
 
     let search = {};
@@ -54,7 +54,7 @@ router.get('/',(req, res) => {
 
 
 
-// Add product
+// Add product to inventory(Admin)
 router.post('/add', auth , async (req, res) => {
 
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
@@ -85,7 +85,7 @@ router.post('/add', auth , async (req, res) => {
 });
 
 
-// Update product
+// Update product details(Admin)
 router.put('/:id', auth, async (req, res) => {
 
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
@@ -142,7 +142,7 @@ router.put('/:id', auth, async (req, res) => {
 });
 
 
-// Delete product
+// Delete product(Admin)
 router.delete('/:id', auth ,async (req, res) => {
 
     if(!req.user.isAdmin) { return res.status(401).send({"message" : "Access denied!"}); }
