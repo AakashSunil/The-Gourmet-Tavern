@@ -6,6 +6,12 @@ A React Application for a Restaurant and Bar Setup.
     But before that, modules need to be installed for both Frontend and Backend
     The Project has been setup to install both from one location
 
+#  .env file
+    Create a .env file under the root folder and the following key value pair
+    SECRET_TOKEN=yoursecrettoken
+
+    This is used for authentication of the user
+
 #   npm run setup
 
     After the modules get installed - Both the Frontend and Backend need to be run.
