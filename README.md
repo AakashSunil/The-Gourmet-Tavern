@@ -7,7 +7,7 @@ A React Application for a Restaurant and Bar Setup.
     The Project has been setup to install both from one location
 
 #  .env file
-    Create a .env file under the root folder and the following key value pair
+    Create a .env file under the root folder with the following key value pair as content
     SECRET_TOKEN=yoursecrettoken
 
     This is used for authentication of the user
