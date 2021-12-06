@@ -211,7 +211,7 @@ export const Cart_Items = {
   UPDATE_QUANTITY: "Update Quantities",
   REMOVE_ITEMS: "Remove Items",
   PLACE_ORDER: "Place Order",
-  ORDER_TYPE: "Choose the Order Type",
+  ORDER_TYPE: "Choose the Order Type and Place Order",
   ORDER_TYPE_HEADING: "Order Type",
   DINE_IN: "Dine In",
   DELIVERY: "Delivery",

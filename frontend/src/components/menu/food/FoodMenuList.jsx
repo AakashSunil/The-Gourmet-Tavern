@@ -127,7 +127,24 @@ const FoodMenuList = (props) => {
       preference: preference_filter,
     };
     console.log(search_filter);
+    props.search(search_filter)
+
   };
+
+  const resetClick = (e) => {
+    console.log("reset");
+    e.preventDefault();
+    setCategoryFilter("")
+    setCuisineFilter("")
+    setPreferenceFilter("")
+    const reset_filter = {
+      search: "",
+      category: "",
+      cuisine: "",
+      preference: "",
+    };
+    props.search(reset_filter)
+  }
 
   const [addOpen, setAddOpen] = useState(false);
 
@@ -153,7 +170,7 @@ const FoodMenuList = (props) => {
           <h1>{FoodMenu_Page.HEADING}</h1>
         </div>
         <div className="form_css_menu">
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <Row className="g-1" lg>
               <Col md>
                 <FloatingLabel label="Category">
@@ -203,12 +220,12 @@ const FoodMenuList = (props) => {
               <Col md className="button_align">
                 <div className="search_reset">
                   <Col md>
-                    <Button variant="primary" type="submit" size="lg">
+                    <Button variant="primary" type="button" size="lg" onClick={(e) => handleSubmit(e)}>
                       {FoodMenu_Page.SEARCH}
                     </Button>
                   </Col>
                   <Col md>
-                    <Button variant="primary" type="submit" size="lg">
+                    <Button variant="primary" type="button" size="lg" onClick={(e)=> resetClick(e)}>
                       {FoodMenu_Page.RESET}
                     </Button>
                   </Col>

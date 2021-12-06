@@ -24,15 +24,13 @@ export const getOrders = (token) => {
 
 export const addOrders = (order,token) => {
     return (dispatch) => {
-        axios.get(`/orders/add`,order,{headers: getConfig(token).header})
+        axios.post(`/orders/add`,order,{headers: getConfig(token).header})
         .then(res => {
             // console.log(res);
+            // 
+            
             dispatch({
-                type : 'CLEAR_ERROR'
-            })
-
-            dispatch({
-                type : 'GET_ORDERS',
+                type : 'ADD_ORDERS',
                 payload : res.data
             })
             
