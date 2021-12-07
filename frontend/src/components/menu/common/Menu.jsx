@@ -8,6 +8,7 @@ import DrinksMenuList from "../drinks/DrinksMenuList";
 import FoodMenuList from "../food/FoodMenuList";
 
 const Menu = (props) => {
+  console.log(props);
 
   const isUser = useSelector(state => state.auth.user===undefined?null:state.auth.user);
 
@@ -18,6 +19,7 @@ const Menu = (props) => {
 
   const dispatch = useDispatch();
   const menu_items = useSelector((state) => state.product)
+  console.log(menu_items);
   let food_menu = props.type === "food" ? true : false;
 
   const [msg, setMsg] = useState(null);
@@ -40,7 +42,7 @@ const Menu = (props) => {
   let items = item_filter(menu_items, page, pageItemLimit);
 
   useEffect(() => {
-    
+
     search? food? dispatch(getProducts_Food("food",0,50,foodSearch,foodCategory,foodCuisine,foodPreference)): 
     dispatch(getProducts_Drink("drink",0,50,drinkSearch,drinkCategory,drinkLevel)): 
   food_menu?
