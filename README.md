@@ -1,23 +1,28 @@
 # The-Gourmet-Tavern
 
 A React Application for a Restaurant and Bar Setup.
-    
-    To Run the Setup there are two methods
-    But before that, modules need to be installed for both Frontend and Backend
-    The Project has been setup to install both from one location
+
+    The Project has been setup to install both from one location (Root Directory of the Project)
+
+    But Running the code, we need to run a run things, 
+        1. Environmental Variable needs to be created. 
+        2. Modules need to be installed for both Frontend and Backend.
 
 #  .env file
     Create a .env file under the root folder with the following key value pair as content
+    
     SECRET_TOKEN=yoursecrettoken
 
     This is used for authentication of the user
 
 #   npm run setup
 
-    After the modules get installed - Both the Frontend and Backend need to be run.
-    The Server and Client will usually run on different ports. 
-    With the Proxy Setup on the Client Side - the API URL's will be correctly redirected to the required Port.
+    Modules for both Frontend and Backend are installed with this command.
+    
 
+After the modules get installed - Both the Frontend and Backend need to be run.
+The Server and Client will usually run on different ports. 
+With the Proxy Setup on the Client Side - the API URL's will be correctly redirected to the required Port.
 Both the following Methods are Run form the Outermost package.json File Level.
     
 #   npm start

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { itemPerPage, item_filter } from "../../../helpers/helperFunctions";
+import { itemPerPage, item_filter } from "../../../helpers_section/helperFunctions";
 import { getProducts_Drink, getProducts_Food } from "../../../store/actions/productActions";
 import DrinksMenuList from "../drinks/DrinksMenuList";
 import FoodMenuList from "../food/FoodMenuList";

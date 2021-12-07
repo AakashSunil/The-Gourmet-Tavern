@@ -1,5 +1,5 @@
 import React from "react";
-import { about_page } from "../../helpers/helperString";
+import { about_page } from "../../helpers_section/helperString";
 
 const About = () => {
   return (

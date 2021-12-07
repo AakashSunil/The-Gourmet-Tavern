@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Form, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { getBase64 } from "../../../helpers/helperFunctions";
-import { Add_Edit_Food_Page } from "../../../helpers/helperString";
+import { getBase64 } from "../../../helpers_section/helperFunctions";
+import { Add_Edit_Food_Page } from "../../../helpers_section/helperString";
 
 const AddFoodItem = (props) => {
   const error = useSelector((state) => state.error);

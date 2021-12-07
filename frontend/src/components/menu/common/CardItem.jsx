@@ -5,7 +5,7 @@ import {
   Add_Edit_Drink_Page,
   Add_Edit_Food_Page,
   Card_Item_Page,
-} from "../../../helpers/helperString";
+} from "../../../helpers_section/helperString";
 import { addToCart } from "../../../store/actions/cartActions";
 import {
   deleteProduct,

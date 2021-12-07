@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { contact_page } from "../../helpers/helperString";
+import { contact_page } from "../../helpers_section/helperString";
 const Contact = () => {
   return (
     <div className="contact_page">

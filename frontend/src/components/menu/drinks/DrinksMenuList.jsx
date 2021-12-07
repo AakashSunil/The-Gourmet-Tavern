@@ -13,11 +13,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   dropdown_populate,
   grid_create,
-} from "../../../helpers/helperFunctions";
+} from "../../../helpers_section/helperFunctions";
 import {
   Add_Edit_Drink_Page,
   DrinksMenu_Page,
-} from "../../../helpers/helperString";
+} from "../../../helpers_section/helperString";
 import { addDrink } from "../../../store/actions/productActions";
 import AddDrinkItem from "./AddDrinkItem";
 

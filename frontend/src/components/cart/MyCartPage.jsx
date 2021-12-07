@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { cart_list_create } from "../../helpers/helperFunctions";
+import { cart_list_create } from "../../helpers_section/helperFunctions";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "../../store/actions/cartActions";
 import { Alert } from "react-bootstrap";

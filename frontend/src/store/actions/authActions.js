@@ -74,10 +74,10 @@ export const logoutUser = (dispatch, id, token, history) => {
       type: "CLEAR_ERROR",
     });
   })
-  // .catch(err => {
-  //   console.log(err);
-  //     dispatch({
-  //         type : 'LOGOUT_FAILURE'
-  //     });
-  // })
+  .catch(err => {
+    console.log(err);
+      dispatch({
+          type : 'LOGOUT_FAILURE'
+      });
+  })
 };

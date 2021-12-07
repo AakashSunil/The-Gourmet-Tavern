@@ -12,11 +12,11 @@ import {
 import {
   dropdown_populate,
   grid_create,
-} from "../../../helpers/helperFunctions";
+} from "../../../helpers_section/helperFunctions";
 import {
   Add_Edit_Food_Page,
   FoodMenu_Page,
-} from "../../../helpers/helperString";
+} from "../../../helpers_section/helperString";
 import AddFoodItem from "./AddFoodItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addFood } from "../../../store/actions/productActions";

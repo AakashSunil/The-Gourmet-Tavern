@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Login_Page } from "../../helpers/helperString";
+import { Login_Page } from "../../helpers_section/helperString";
 import { signInUser } from "../../store/actions/authActions";
 import { setError } from "../../store/actions/commonActions";
 import { useHistory } from "react-router";
