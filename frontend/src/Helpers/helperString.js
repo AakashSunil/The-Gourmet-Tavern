@@ -137,7 +137,7 @@ export const Card_Item_Page = {
   EDIT: "Edit",
   ADMIN_MESSAGE: "Not Visible to Customers",
   ITEM_PRICE: "Item Price: $",
-  AUTHENTICATE: "Log-In/Sign-Up to Order"
+  AUTHENTICATE: "Log-In/Sign-Up to Order",
 };
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -241,9 +241,20 @@ export const Order_List_Page = {
   TITLE: "Order ",
   NAME: "Item Name",
   PRICE: "Item Price",
-  QUANTITIY: "Quantity Ordered",
+  ORDER_QUANTITIY: "Quantity Ordered",
   TOTAL_PRICE: "Total Price: $",
-  ORDER_TYPE: "Order Type: "
+  ORDER_TYPE: "Order Type: ",
+};
+
+// --------------------------------------------------------------------------------------------------------------------------------
+
+export const helper_function_code = {
+  CONDITION: "Drinks",
+  BAR: "The Bar is Currently Closed. Please Come Back another Day!! Sorry for the Inconvenience",
+  RESTAURANT:
+    "The Restaurant is Currently Closed. Please Come Back another Day!! Sorry for the Inconvenience",
+  ORDERS: "No Orders Available",
+  CART: "No Items in the Cart",
 };
 
 // --------------------------------------------------------------------------------------------------------------------------------

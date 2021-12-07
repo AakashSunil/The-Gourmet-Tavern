@@ -21,18 +21,11 @@ import AddFoodItem from "./AddFoodItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addFood } from "../../../store/actions/productActions";
 
-
 const FoodMenuList = (props) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  // const isUser = useSelector(state => state.auth.user);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  // const token = localStorage.getItem('token');
-
-  // let isAdmin;
-  // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
-  
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   let admin_privilege = props.isAdmin;
   let authenticated = props.isAuthenticated;
@@ -109,7 +102,13 @@ const FoodMenuList = (props) => {
       // ingredients: "",
     };
 
-    let card_grid = grid_create(items_list, item_blank, admin_privilege, isAuthenticated, "Food");
+    let card_grid = grid_create(
+      items_list,
+      item_blank,
+      admin_privilege,
+      isAuthenticated,
+      "Food"
+    );
     return card_grid;
   };
 
@@ -126,24 +125,23 @@ const FoodMenuList = (props) => {
       cuisine: cuisine_filter,
       preference: preference_filter,
     };
-    props.search(search_filter)
-
+    props.search(search_filter);
   };
 
   const resetClick = (e) => {
     e.preventDefault();
-    setSearch("")
-    setCategoryFilter("")
-    setCuisineFilter("")
-    setPreferenceFilter("")
+    setSearch("");
+    setCategoryFilter("");
+    setCuisineFilter("");
+    setPreferenceFilter("");
     const reset_filter = {
       search: "",
       category: "",
       cuisine: "",
       preference: "",
     };
-    props.search(reset_filter)
-  }
+    props.search(reset_filter);
+  };
 
   const [addOpen, setAddOpen] = useState(false);
 
@@ -156,10 +154,9 @@ const FoodMenuList = (props) => {
   };
 
   const handleAddFoodSubmit = (value) => {
-    dispatch(addFood(value,token))
+    dispatch(addFood(value, token));
     setAddOpen(false);
   };
-
 
   return (
     <>
@@ -177,7 +174,10 @@ const FoodMenuList = (props) => {
                     onChange={(e) => setCategoryFilter(e.target.value)}
                   >
                     <option>{FoodMenu_Page.SELECT_CATEGORY}</option>
-                    {dropdown_populate(props.full_item_list, FoodMenu_Page.CATEGORY)}
+                    {dropdown_populate(
+                      props.full_item_list,
+                      FoodMenu_Page.CATEGORY
+                    )}
                   </Form.Select>
                 </FloatingLabel>
               </Col>
@@ -188,7 +188,10 @@ const FoodMenuList = (props) => {
                     onChange={(e) => setCuisineFilter(e.target.value)}
                   >
                     <option>{FoodMenu_Page.SELECT_CUISINE}</option>
-                    {dropdown_populate(props.full_item_list, FoodMenu_Page.CUISINE)}
+                    {dropdown_populate(
+                      props.full_item_list,
+                      FoodMenu_Page.CUISINE
+                    )}
                   </Form.Select>
                 </FloatingLabel>
               </Col>
@@ -199,7 +202,10 @@ const FoodMenuList = (props) => {
                     onChange={(e) => setPreferenceFilter(e.target.value)}
                   >
                     <option>{FoodMenu_Page.SELECT_PREFERENCE}</option>
-                    {dropdown_populate(props.full_item_list, FoodMenu_Page.PREFERENCE)}
+                    {dropdown_populate(
+                      props.full_item_list,
+                      FoodMenu_Page.PREFERENCE
+                    )}
                   </Form.Select>
                 </FloatingLabel>
               </Col>
@@ -218,12 +224,22 @@ const FoodMenuList = (props) => {
               <Col md className="button_align">
                 <div className="search_reset">
                   <Col md>
-                    <Button variant="primary" type="button" size="lg" onClick={(e) => handleSubmit(e)}>
+                    <Button
+                      variant="primary"
+                      type="button"
+                      size="lg"
+                      onClick={(e) => handleSubmit(e)}
+                    >
                       {FoodMenu_Page.SEARCH}
                     </Button>
                   </Col>
                   <Col md>
-                    <Button variant="primary" type="button" size="lg" onClick={(e)=> resetClick(e)}>
+                    <Button
+                      variant="primary"
+                      type="button"
+                      size="lg"
+                      onClick={(e) => resetClick(e)}
+                    >
                       {FoodMenu_Page.RESET}
                     </Button>
                   </Col>

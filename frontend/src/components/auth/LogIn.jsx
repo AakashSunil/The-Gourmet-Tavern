@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import { Login_Page } from "../../helpers/helperString";
 import { signInUser } from "../../store/actions/authActions";
 import { setError } from "../../store/actions/commonActions";
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 
 const LogIn = () => {
-
   const history = useHistory();
-  const error = useSelector(state => state.error);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const error = useSelector((state) => state.error);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const dispatch = useDispatch();
 
@@ -25,28 +24,33 @@ const LogIn = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!email.trim() || !password.trim()) {
-        setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'LOGIN_FORM_FAILURE');
+    if (!email.trim() || !password.trim()) {
+      setError(
+        dispatch,
+        { msg: "All Fields are Required", type: "All" },
+        400,
+        "LOGIN_FORM_FAILURE"
+      );
     } else {
-        signInUser(dispatch, email, password,history);
+      signInUser(dispatch, email, password, history);
     }
   };
 
-  useEffect( () => {
-    if(error.id === 'LOGIN_FORM_FAILURE') {
-        setMsg(error.msg.msg);
-        setMsgType(error.msg.type)
+  useEffect(() => {
+    if (error.id === "LOGIN_FORM_FAILURE") {
+      setMsg(error.msg.msg);
+      setMsgType(error.msg.type);
     }
-    if(error.id === 'LOGIN_FAILURE') {
-        setMsg(error.msg);
-        setShow(true)
+    if (error.id === "LOGIN_FAILURE") {
+      setMsg(error.msg);
+      setShow(true);
     }
-    if(isAuthenticated) {
-        dispatch({
-            type : 'CLEAR_ERROR'
-        });
+    if (isAuthenticated) {
+      dispatch({
+        type: "CLEAR_ERROR",
+      });
     }
-}, [dispatch, error, isAuthenticated] )
+  }, [dispatch, error, isAuthenticated]);
 
   return (
     <>

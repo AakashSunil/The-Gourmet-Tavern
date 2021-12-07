@@ -4,7 +4,6 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 const Footer = () => {
   return (
     <>
-      <div>
         <div className="clear"></div>
         <div className="footer">
           <Navbar bg="light">
@@ -20,7 +19,6 @@ const Footer = () => {
             </Container>
           </Navbar>
         </div>
-      </div>
     </>
   );
 };

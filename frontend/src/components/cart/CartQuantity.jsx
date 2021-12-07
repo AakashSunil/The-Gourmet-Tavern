@@ -14,11 +14,9 @@ const CartQuantity = (props) => {
   };
 
   const handleQuantity = (value) => {
-    // if (items.stockQuantity - value < 0) {
-    //   setShow(true);
-    // }
     setQuantity(value);
   };
+
   const handleChange = (change) => {
     let temp = quantity;
     if (change === Cart_Quantity.ADD) {
@@ -33,7 +31,6 @@ const CartQuantity = (props) => {
         setShow(true);
       }
     }
-
     setQuantity(temp);
   };
 

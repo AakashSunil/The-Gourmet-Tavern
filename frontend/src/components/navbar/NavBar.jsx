@@ -4,26 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Header_NavBar } from "../../helpers/helperString";
 import { logoutUser } from "../../store/actions/authActions";
-
 import "../components.css";
 
 const NavBar = () => {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const user = useSelector(state => state.auth.user);
-  // const order = useSelector(state => state.order);
-  const token = localStorage.getItem('token');
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
+  const token = localStorage.getItem("token");
 
   const dispatch = useDispatch();
 
   const history = useHistory();
-  
+
   const logOut_Procedure = () => {
+    history.push("/");
+    logoutUser(dispatch, user._id, token, history);
+  };
 
-    history.push('/')
-
-    logoutUser(dispatch, user._id, token,history)
-  }
-  
   return (
     <>
       <div className="header">
@@ -55,7 +51,9 @@ const NavBar = () => {
                       <Nav.Link href="/myOrders">
                         {Header_NavBar.ORDER}
                       </Nav.Link>
-                      <Nav.Link onClick={()=>logOut_Procedure()}>{Header_NavBar.LOGOUT}</Nav.Link>
+                      <Nav.Link onClick={() => logOut_Procedure()}>
+                        {Header_NavBar.LOGOUT}
+                      </Nav.Link>
                     </>
                   }
                 </Nav>

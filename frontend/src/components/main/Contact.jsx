@@ -10,10 +10,10 @@ const Contact = () => {
           <thead>
             <tr>
               <th>
-                <h4>{contact_page.HEADING_TIME}</h4>
+                <h5>{contact_page.HEADING_TIME}</h5>
               </th>
               <th>
-                <h4>{contact_page.HEADING_ADDRESS}</h4>
+                <h5>{contact_page.HEADING_ADDRESS}</h5>
               </th>
             </tr>
           </thead>
