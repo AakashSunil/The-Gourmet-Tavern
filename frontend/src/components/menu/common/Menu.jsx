@@ -3,13 +3,12 @@ import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { itemPerPage, item_filter } from "../../../helpers/helperFunctions";
-// import { drinks_menu_item, food_menu_item } from "../../../helpers/menu";
-import { getProducts, getProducts_Drink, getProducts_Food } from "../../../store/actions/productActions";
+import { getProducts_Drink, getProducts_Food } from "../../../store/actions/productActions";
 import DrinksMenuList from "../drinks/DrinksMenuList";
 import FoodMenuList from "../food/FoodMenuList";
+
 const Menu = (props) => {
 
-  const error = useSelector(state => state.error)
   const isUser = useSelector(state => state.auth.user===undefined?null:state.auth.user);
 
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
@@ -39,7 +38,6 @@ const Menu = (props) => {
   const [drinkLevel, setDrinkLevel] = useState("")
 
   let items = item_filter(menu_items, page, pageItemLimit);
-
 
   useEffect(() => {
     

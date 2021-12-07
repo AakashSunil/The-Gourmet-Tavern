@@ -3,15 +3,15 @@ import { Alert, Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Register_Page } from "../../helpers/helperString";
-import { useHistory } from 'react-router';
-import { signUpUser } from '../../store/actions/authActions';
-import { setError } from '../../store/actions/commonActions';
+import { useHistory } from "react-router";
+import { signUpUser } from "../../store/actions/authActions";
+import { setError } from "../../store/actions/commonActions";
 
 const Register = () => {
-  const error = useSelector(state => state.error);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const error = useSelector((state) => state.error);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const history = useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [msg, setMsg] = useState(null);
@@ -27,63 +27,103 @@ const Register = () => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    if(error.id === 'REGISTRATION_FORM_FAILURE') {
-        setMsg(error.msg.msg);
-        setMsgType(error.msg.type);
+    if (error.id === "REGISTRATION_FORM_FAILURE") {
+      setMsg(error.msg.msg);
+      setMsgType(error.msg.type);
     }
-    if(error.id === 'REGISTRATION_FAILURE') {
-        setMsg(error.msg)
-        setShow(true)
+    if (error.id === "REGISTRATION_FAILURE") {
+      setMsg(error.msg);
+      setShow(true);
     }
-    if(isAuthenticated) {
-        dispatch({
-            type : 'CLEAR_ERROR'
-        });
+    if (isAuthenticated) {
+      dispatch({
+        type: "CLEAR_ERROR",
+      });
     }
-},[dispatch,error,isAuthenticated,msg])
+  }, [dispatch, error, isAuthenticated, msg]);
 
   const form_validation = () => {
-
-    if(name.trim().length === 0 || email.trim().length === 0 || phone.trim().length === 0 || password.trim().length === 0 || address.trim().length === 0) {
-        setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'REGISTRATION_FORM_FAILURE');
-    } 
-    //check if name meets all requirements 
-    else if(!name.trim().match(/^[a-zA-Z\s]*$/)) {
-
-        setError(dispatch, {msg:"Name Should Contain Only Letters",type:"Name"}, 400, 'REGISTRATION_FORM_FAILURE');
+    if (
+      name.trim().length === 0 ||
+      email.trim().length === 0 ||
+      phone.trim().length === 0 ||
+      password.trim().length === 0 ||
+      address.trim().length === 0
+    ) {
+      setError(
+        dispatch,
+        { msg: "All Fields are Required", type: "All" },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
     }
-    else if(name.trim().length < 3) {
-
-        setError(dispatch, {msg:"Name Should Contain Atleast 3 Characters",type:"Name"}, 400, 'REGISTRATION_FORM_FAILURE');
+    //check if name meets all requirements
+    else if (!name.trim().match(/^[a-zA-Z\s]*$/)) {
+      setError(
+        dispatch,
+        { msg: "Name Should Contain Only Letters", type: "Name" },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
+    } else if (name.trim().length < 3) {
+      setError(
+        dispatch,
+        { msg: "Name Should Contain Atleast 3 Characters", type: "Name" },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
     }
 
-    //check if phone number meets all requirements 
-    else if(!phone.trim().match(/^[0-9]*$/) || !(phone.trim().length === 10)) {
-        setError(dispatch ,{msg:"Please Enter a Valid Phone Number",type:"Phone"}, 400, 'REGISTRATION_FORM_FAILURE');
-    }
-
-    else if(address.length > 200) {
-        setError(dispatch, {msg:"Address Length is too High. 200 Character Limit", type:"Address"}, 400, 'REGISTRATION_FORM_FAILURE');
-
+    //check if phone number meets all requirements
+    else if (!phone.trim().match(/^[0-9]*$/) || !(phone.trim().length === 10)) {
+      setError(
+        dispatch,
+        { msg: "Please Enter a Valid Phone Number", type: "Phone" },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
+    } else if (address.length > 200) {
+      setError(
+        dispatch,
+        {
+          msg: "Address Length is too High. 200 Character Limit",
+          type: "Address",
+        },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
     }
 
     //check if password meets all requirements
-    else if(!password.trim().match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+    else if (
+      !password
+        .trim()
+        .match(
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+        )
+    ) {
+      const message =
+        "Password should be Minimum of 8 Characters, Should Include atleast 1 Lowercase, 1 Uppercase, 1 Digit and 1 Special Character";
+      setError(
+        dispatch,
+        { msg: message, type: "Password" },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
+    } else if (password.trim() !== password_confirm.trim()) {
+      setError(
+        dispatch,
+        { msg: "Passwords Do Not Match", type: "Confirm_Password" },
+        400,
+        "REGISTRATION_FORM_FAILURE"
+      );
+    }
 
-        const message = "Password should be Minimum of 8 Characters, Should Include atleast 1 Lowercase, 1 Uppercase, 1 Digit and 1 Special Character";
-        setError(dispatch, {msg:message,type:"Password"}, 400, 'REGISTRATION_FORM_FAILURE');
-    }
-    
-    else if(password.trim() !== password_confirm.trim()) {
-        setError(dispatch, {msg:"Passwords Do Not Match", type:"Confirm_Password"}, 400, 'REGISTRATION_FORM_FAILURE');
-        
-    }
-            
     //if all fields are valid
     else {
-        signUpUser(dispatch, name, email, phone, password, address, history);
-    }    
-}
+      signUpUser(dispatch, name, email, phone, password, address, history);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -10,8 +10,6 @@ export const food_menu_item = [
     cuisine: "Indian",
     preference: "Vegetarian",
     stockQuantity: 10,
-    ingredients:
-      "Baby Corn, Ghee, Red Chillies, Garlic, Cinnamon, Fenugreek Seeds, Cumin Seeds, Coriander Seeds, Tamamrind Paste, Curd(Yogurt), Lemon Juice, Turmeric Powder, Chilli Powder ",
   },
   {
     image: "Scotch_Eggs.jpg",
@@ -24,7 +22,6 @@ export const food_menu_item = [
     cuisine: "British",
     preference: "Non-Vegetarian",
     stockQuantity: 150,
-    ingredients: "Pork/Chicken, Onions, Eggs, Bread Crumbs, Oil(if frying)",
   },
   {
     image: "Denver_Omelet.jpg",
@@ -37,8 +34,6 @@ export const food_menu_item = [
     cuisine: "American",
     preference: "Non-Vegetarian",
     stockQuantity: 125,
-    ingredients:
-      "Sausages(Chicken/Pork), Eggs, Green Bell Pepper, Cheddar Cheese, Pepper, Onions, Oil",
   },
   {
     image: "Vanilla_Panna_Cotta.jpg",
@@ -51,8 +46,6 @@ export const food_menu_item = [
     cuisine: "Italian",
     preference: "Vegetarian",
     stockQuantity: 100,
-    ingredients:
-      "Milk, Cream, Gelatin, Sugar, Vanilla Extract, Chocolate Syrup",
   },
   {
     image: "Chicken_Schnitzel.jpg",
@@ -65,8 +58,6 @@ export const food_menu_item = [
     cuisine: "German",
     preference: "Non-Vegetarian",
     stockQuantity: 120,
-    ingredients:
-      "Chicken Breast, Pepper, Chilli Powder, Rosemary, Thyme, Cornflour, Eggs, Breadcrumbs",
   },
   {
     image: "Palak_Paneer.jpg",
@@ -79,7 +70,6 @@ export const food_menu_item = [
     cuisine: "Indian",
     preference: "Vegetarian",
     stockQuantity: 120,
-    ingredients: "Cottage Cheese, Onions, Spinach, Garlic, Cream",
   },
   {
     image: "Turkish_Poached_Eggs.jpg",
@@ -92,8 +82,6 @@ export const food_menu_item = [
     cuisine: "Mediterranean",
     preference: "Non-Vegetarian",
     stockQuantity: 120,
-    ingredients:
-      "Eggs, Garlic, Butter, Yogurt(Curd), Oil, Red Chilli Oil, Water for Poaching",
   },
   {
     image: "Omurice.jpg",
@@ -106,7 +94,6 @@ export const food_menu_item = [
     cuisine: "Japanese",
     preference: "Non-Vegetarian",
     stockQuantity: 120,
-    ingredients: "Rice, Bell Pepper, Eggs, Oil, Soy Sauce, Spring Onions",
   },
   {
     image: "Paneer_Tikka.jpg",
@@ -119,8 +106,6 @@ export const food_menu_item = [
     cuisine: "Indian",
     preference: "Vegetarian",
     stockQuantity: 110,
-    ingredients:
-      "Cottage Cheese, Yogurt(Curd), Pesto Sauce, Red Chilli Powder, Pepper, Rosemary, Thyme, Oil, Garlic",
   },
   {
     image: "Vanilla_Banana_Parfait.jpg",
@@ -133,8 +118,6 @@ export const food_menu_item = [
     cuisine: "French",
     preference: "Vegetarian",
     stockQuantity: 200,
-    ingredients:
-      "Milk, Cream, Vanilla Extract, Gelatin, Bananas, Vanilla Wafers, Sugar, Graham Cracker Crumbs",
   },
   {
     image: "Creamy_Mushroom_Pasta.jpg",
@@ -147,8 +130,6 @@ export const food_menu_item = [
     cuisine: "Italian",
     preference: "Vegetarian",
     stockQuantity: 130,
-    ingredients:
-      "Fettucine Pasta, Mushrroms, Olives, All-Purpose Flour, Butter, Garlic, Parsley",
   },
   {
     image: "Custard_T_Cup.jpg",
@@ -160,8 +141,6 @@ export const food_menu_item = [
     cuisine: "Modern",
     preference: "Vegetarian",
     stockQuantity: 100,
-    ingredients:
-      "Milk, Vanilla Extract, Gelatin, Vanilla Ice-Cream, Sugar, Butter, Egg Whites, All-Purpose Flour",
   },
   {
     image: "Vegetable_Pizza.jpg",
@@ -174,8 +153,6 @@ export const food_menu_item = [
     cuisine: "Italian",
     preference: "Vegetarian",
     stockQuantity: 100,
-    ingredients:
-      "All Purpose Flour, Butter, Yeast, Sugar, Oil, Garlic Powder, Mushrooms, Bell Peppers, Onions, Olives",
   },
 ];
 

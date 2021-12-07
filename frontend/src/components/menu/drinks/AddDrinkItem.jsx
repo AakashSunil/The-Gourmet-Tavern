@@ -6,10 +6,8 @@ import { Add_Edit_Drink_Page } from "../../../helpers/helperString";
 import { setError } from "../../../store/actions/commonActions";
 
 const AddDrinkItem = (props) => {
-
-
-  const error = useSelector(state => state.error);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const error = useSelector((state) => state.error);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [msgtype, setMsgType] = useState(null);
   const [msg, setMsg] = useState(null);
   const [name, setName] = useState("");
@@ -23,73 +21,102 @@ const AddDrinkItem = (props) => {
 
   const dispatch = useDispatch();
   const handleFileInput = (e) => {
-    getBase64(e.target.files[0]).then(data => {
-      setImageData(data)
+    getBase64(e.target.files[0]).then((data) => {
+      setImageData(data);
     });
   };
 
-    const form_validation = () => {
+  const form_validation = () => {
+    const drink_item = {
+      productName: name,
+      productType: "drink",
+      description: description,
+      price: price,
+      isDeleted: isDeleted,
+      category: category,
+      level: level,
+      quantity: stockQuantity,
+      imageData: imageData,
+    };
 
-      const drink_item = {
-          productName:name,
-          productType:"drink",
-          description: description,
-          price:price,
-          isDeleted: isDeleted,
-          category: category,
-          level: level,
-          quantity:stockQuantity,
-          imageData: imageData
-      }
+    if (
+      name.trim().length === 0 ||
+      description.trim().length === 0 ||
+      price.trim().length === 0 ||
+      category.trim().length === 0 ||
+      level.trim().length === 0 ||
+      stockQuantity.trim().length === 0 ||
+      imageData.trim().length === 0
+    ) {
+      setError(
+        dispatch,
+        { msg: "All Fields are Required", type: "All" },
+        400,
+        "ADD_FORM_FAILURE"
+      );
+    }
 
-      if(name.trim().length === 0 || description.trim().length === 0 || price.trim().length === 0 || category.trim().length === 0 || level.trim().length === 0 || stockQuantity.trim().length === 0 || imageData.trim().length === 0) {
-          setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'ADD_FORM_FAILURE');
-      }
+    //check if phone number meets all requirements
+    else if (price.trim() < 0) {
+      setError(
+        dispatch,
+        { msg: "Please enter a Positive Price", type: "Price" },
+        400,
+        "ADD_FORM_FAILURE"
+      );
+    } else if (description.length > 200) {
+      setError(
+        dispatch,
+        {
+          msg: `Description Length is too High. Current length: ${description.length}. Character Limit: 200`,
+          type: "Address",
+        },
+        400,
+        "ADD_FORM_FAILURE"
+      );
+    }
 
-      //check if phone number meets all requirements
-      else if(price.trim() < 0) {
-          setError(dispatch ,{msg:"Please enter a Positive Price",type:"Price"}, 400, 'ADD_FORM_FAILURE');
-      }
+    //check if password meets all requirements
+    else if (stockQuantity.trim() < 0) {
+      const message = "Please Enter a Positive Stock Quantity";
+      setError(
+        dispatch,
+        { msg: message, type: "Stock" },
+        400,
+        "ADD_FORM_FAILURE"
+      );
+    } else if (level.trim() < 0) {
+      setError(
+        dispatch,
+        {
+          msg: "Please Enter a Positive Level. Minimum value is 0",
+          type: "Level",
+        },
+        400,
+        "ADD_FORM_FAILURE"
+      );
+    }
 
-      else if(description.length > 200) {
-          setError(dispatch, {msg:`Description Length is too High. Current length: ${description.length}. Character Limit: 200`, type:"Address"}, 400, 'ADD_FORM_FAILURE');
-
-      }
-
-      //check if password meets all requirements
-      else if(stockQuantity.trim() < 0) {
-
-          const message = "Please Enter a Positive Stock Quantity";
-          setError(dispatch, {msg:message,type:"Stock"}, 400, 'ADD_FORM_FAILURE');
-      }
-
-      else if(level.trim() < 0) {
-          setError(dispatch, {msg:"Please Enter a Positive Level. Minimum value is 0", type:"Level"}, 400, 'ADD_FORM_FAILURE');
-
-      }
-
-      //if all fields are valid
-      else {
-          props.add(drink_item)
-      }
-  }
+    //if all fields are valid
+    else {
+      props.add(drink_item);
+    }
+  };
 
   const handleDrinkAdd = () => {
     form_validation();
   };
 
-  useEffect( () => {
-    if(error.id === 'ADD_FORM_FAILURE') {
-        setMsg(error.msg.msg);
-        setMsgType(error.msg.type)
+  useEffect(() => {
+    if (error.id === "ADD_FORM_FAILURE") {
+      setMsg(error.msg.msg);
+      setMsgType(error.msg.type);
     }
-    if(error.id === 'ADD_FAILURE') {
-        setMsg(error.msg);
-        setMsgType("API")
+    if (error.id === "ADD_FAILURE") {
+      setMsg(error.msg);
+      setMsgType("API");
     }
-    
-    
-}, [error, isAuthenticated] )
+  }, [error, isAuthenticated]);
 
   return (
     <>

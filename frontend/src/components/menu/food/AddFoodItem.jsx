@@ -5,9 +5,8 @@ import { getBase64 } from "../../../helpers/helperFunctions";
 import { Add_Edit_Food_Page } from "../../../helpers/helperString";
 
 const AddFoodItem = (props) => {
-
-  const error = useSelector(state => state.error);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const error = useSelector((state) => state.error);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [msgtype, setMsgType] = useState(null);
   const [msg, setMsg] = useState(null);
   const [name, setName] = useState("");
@@ -17,18 +16,16 @@ const AddFoodItem = (props) => {
   const [category, setCategory] = useState("");
   const [cuisine, setCuisine] = useState("");
   const [preference, setPreference] = useState("");
-  const [ingredients, setIngredients] = useState("");
   const [stockQuantity, setStockQuantity] = useState("");
   const [imageData, setImageData] = useState("");
 
   const handleFileInput = (e) => {
     getBase64(e.target.files[0]).then((data) => {
-      setImageData(data)
-    })
+      setImageData(data);
+    });
   };
 
   const handleFoodAdd = () => {
-
     const food_item = {
       productName: name,
       productType: "food",
@@ -39,24 +36,20 @@ const AddFoodItem = (props) => {
       image: imageData,
       cuisine: cuisine,
       preference: preference,
-    }
-    props.add(food_item)
+    };
+    props.add(food_item);
   };
 
-  useEffect( () => {
-
-    if(error.id === 'ADD_FORM_FAILURE') {
-        setMsg(error.msg.msg);
-        setMsgType(error.msg.type)
+  useEffect(() => {
+    if (error.id === "ADD_FORM_FAILURE") {
+      setMsg(error.msg.msg);
+      setMsgType(error.msg.type);
     }
-    if(error.id === 'ADD_FAILURE') {
-        setMsg(error.msg);
-        setMsgType("API")
+    if (error.id === "ADD_FAILURE") {
+      setMsg(error.msg);
+      setMsgType("API");
     }
-    
-    
-    
-}, [error, isAuthenticated] )
+  }, [error, isAuthenticated]);
   return (
     <>
       {msgtype !== null && (
@@ -161,21 +154,6 @@ const AddFoodItem = (props) => {
           />
           <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
         </Form.Group>
-        {/* <Form.Group className="mb-3">
-          <Form.Label>{Add_Edit_Food_Page.INGREDIENTS}</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder={Add_Edit_Food_Page.PLACEHOLDER_FOOD_INGREDIENTS}
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            isInvalid={
-              msgtype === "All"
-                ? ingredients.length === 0
-                : msgtype === "Ingredients"
-            }
-          />
-          <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
-        </Form.Group> */}
         <Form.Group className="mb-3">
           <Form.Label>{Add_Edit_Food_Page.STOCK_QUANTITY}</Form.Label>
           <Form.Control

@@ -22,16 +22,10 @@ import { addDrink } from "../../../store/actions/productActions";
 import AddDrinkItem from "./AddDrinkItem";
 
 const DrinksMenuList = (props) => {
-
-  // const isUser = useSelector(state => state.auth.user);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  // const token = localStorage.getItem('token');
-
-  // let isAdmin;
-  // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   let admin_privilege = props.isAdmin;
   let authenticated = props.isAuthenticated;
@@ -105,7 +99,13 @@ const DrinksMenuList = (props) => {
       level: "",
       quantity: 0,
     };
-    let card_grid = grid_create(items, item_blank, admin_privilege, isAuthenticated, "Drinks");
+    let card_grid = grid_create(
+      items,
+      item_blank,
+      admin_privilege,
+      isAuthenticated,
+      "Drinks"
+    );
     return card_grid;
   };
 
@@ -120,20 +120,20 @@ const DrinksMenuList = (props) => {
       category: category_filter,
       level: level_filter,
     };
-    props.search(search_filter)
+    props.search(search_filter);
   };
 
   const resetClick = (e) => {
     e.preventDefault();
-    setSearch("")
-    setCategoryFilter("")
-    setLevelFilter("")
+    setSearch("");
+    setCategoryFilter("");
+    setLevelFilter("");
     const search_filter = {
       search: "",
       category: "",
       level: "",
     };
-    props.search(search_filter)
+    props.search(search_filter);
   };
 
   const [addOpen, setAddOpen] = useState(false);
@@ -147,7 +147,7 @@ const DrinksMenuList = (props) => {
   };
 
   const handleAddDrinkSubmit = (value) => {
-    dispatch(addDrink(value,token))
+    dispatch(addDrink(value, token));
     setAddOpen(false);
   };
   return (
@@ -166,21 +166,13 @@ const DrinksMenuList = (props) => {
                     onChange={(e) => setCategoryFilter(e.target.value)}
                   >
                     <option>{DrinksMenu_Page.SELECT_CATEGORY}</option>
-                    {dropdown_populate(props.full_item_list, DrinksMenu_Page.CATEGORY)}
+                    {dropdown_populate(
+                      props.full_item_list,
+                      DrinksMenu_Page.CATEGORY
+                    )}
                   </Form.Select>
                 </FloatingLabel>
               </Col>
-              {/* <Col md>
-                <FloatingLabel label="Alcohol Level">
-                  <Form.Select
-                    value={level_filter}
-                    onChange={(e) => setLevelFilter(e.target.value)}
-                  >
-                    <option>{DrinksMenu_Page.SELECT_ALCOHOL_LEVEL}</option>
-                    {dropdown_populate(props.full_item_list, DrinksMenu_Page.LEVEL)}
-                  </Form.Select>
-                </FloatingLabel>
-              </Col> */}
               <Col md>
                 <FloatingLabel label="Search">
                   <Form.Control
@@ -196,12 +188,22 @@ const DrinksMenuList = (props) => {
               <Col md className="button_align">
                 <div className="search_reset">
                   <Col md>
-                    <Button variant="primary" type="button" size="lg" onClick={(e) => handleSubmit(e)}>
+                    <Button
+                      variant="primary"
+                      type="button"
+                      size="lg"
+                      onClick={(e) => handleSubmit(e)}
+                    >
                       {DrinksMenu_Page.SEARCH}
                     </Button>
                   </Col>
                   <Col md>
-                    <Button variant="primary" type="button" size="lg" onClick={(e) => resetClick(e)}>
+                    <Button
+                      variant="primary"
+                      type="button"
+                      size="lg"
+                      onClick={(e) => resetClick(e)}
+                    >
                       {DrinksMenu_Page.RESET}
                     </Button>
                   </Col>
@@ -226,7 +228,7 @@ const DrinksMenuList = (props) => {
         ) : null}
         <Modal
           show={addOpen}
-          onHide={()=>handleAddClose()}
+          onHide={() => handleAddClose()}
           backdrop="static"
           keyboard={false}
         >

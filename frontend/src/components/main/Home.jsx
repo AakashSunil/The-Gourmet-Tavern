@@ -8,7 +8,7 @@ const Home = () => {
         <div className="content">
           <h1 className="heading">{Home_Page.GREETING}</h1>
           <img
-            src="/name.png"
+            src="name.png"
             className="center"
             alt="The Gourmet Tavern"
           ></img>

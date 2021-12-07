@@ -2,22 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { order_list_create } from "../../helpers/helperFunctions";
-// import { orders_list } from "../../helpers/orders";
 import { getOrders } from "../../store/actions/orderActions";
 
 const MyOrdersPage = () => {
 
   const error = useSelector(state => state.error)
-  // const isUser = useSelector(state => state.auth.user);
-  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const token = localStorage.getItem('token');
 
-  // let isAdmin;
-  // isUser === null? isAdmin = false : isAdmin = isUser.isAdmin
-
   const dispatch = useDispatch();
-  const order_items = useSelector((state) => state.order)
-
+  const order_items = useSelector((state) => state.order.length!==0?state.order:[])
   let orderList = order_items;
 
   const [msg, setMsg] = useState(null);
@@ -29,26 +22,25 @@ const MyOrdersPage = () => {
   };
 
   useEffect(() => {
-    // if(error.status !== null){
-    //   if(error.id === 'GET_ORDER_FAILURE') {
-    //     setMsg(error.msg.msg);
-    //     setMsgType(error.msg.type)
-    //   }
-    //   else {
-    //     dispatch({
-    //       type : 'CLEAR_ERROR'
-    //   });
-    //   }
-    // }
-    // else {
-    //   dispatch({
-    //     type : 'CLEAR_ERROR'
-    // });
-    // dispatch(getOrders(token))
-
-    // }
+    if(error.status !== null){
+      if(error.id === 'GET_ORDER_FAILURE') {
+        setMsg(error.msg.msg);
+        setMsgType(error.msg.type)
+      }
+      else {
+        dispatch({
+          type : 'CLEAR_ERROR'
+      });
+      }
+    }
+    else {
+      dispatch({
+        type : 'CLEAR_ERROR'
+    });
     dispatch(getOrders(token))
 
+    }
+    dispatch(getOrders(token))
   },[dispatch,token])
 
   return <>{msgtype !== null && (

@@ -5,14 +5,13 @@ import { Cart_Items } from "../../helpers/helperString";
 import { deleteFromCart, updateCart } from "../../store/actions/cartActions";
 import { addOrders } from "../../store/actions/orderActions";
 import CartQuantity from "./CartQuantity";
-import { useHistory } from 'react-router';
-
+import { useHistory } from "react-router";
 
 const CartList = (props) => {
   const { item } = props;
   const { bill } = props;
-  
-  const token = localStorage.getItem('token');
+
+  const token = localStorage.getItem("token");
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -42,39 +41,36 @@ const CartList = (props) => {
 
   const handleSubmit = () => {
     const order_type = {
-      orderType: dine? Cart_Items.DELIVERY:Cart_Items.DINE_IN
-    }
-    dispatch(addOrders(order_type,token,history))
+      orderType: dine ? Cart_Items.DELIVERY : Cart_Items.DINE_IN,
+    };
+    dispatch(addOrders(order_type, token, history));
     setShowModal(false);
-    history.push("/myCart")
+    history.push("/myCart");
+  };
 
-  }
-
-  const handleAdd = (quantity_modified,item) => {
-    
+  const handleAdd = (quantity_modified, item) => {
     item.quantity = quantity_modified;
     const product = {
       id: item.productID,
       name: item.name,
       price: item.price,
       quantity: item.quantity,
-    }
-    dispatch(updateCart(product,token));
+    };
+    dispatch(updateCart(product, token));
     handleClick();
   };
   const handleRemoveItem = (item_to_remove) => {
     const product = {
       id: item_to_remove.productID,
-    }
-    dispatch(deleteFromCart(product,token))
-    setShowQuantity(false)
-    setShowRemove(false)
-    setShowModal(false)
-
+    };
+    dispatch(deleteFromCart(product, token));
+    setShowQuantity(false);
+    setShowRemove(false);
+    setShowModal(false);
   };
   const handleRadio = () => {
-    setDine(!dine)
-  }
+    setDine(!dine);
+  };
   const changeButton = (type) => {
     if (!(showQuantity || showRemove)) {
       if (type === "Quantity") {
@@ -131,7 +127,7 @@ const CartList = (props) => {
                         <CartQuantity
                           items={item_detail}
                           close={() => handleClick()}
-                          add={(quantity) => handleAdd(quantity,item_detail)}
+                          add={(quantity) => handleAdd(quantity, item_detail)}
                         />
                       )}
                       {showRemove && (
@@ -146,7 +142,6 @@ const CartList = (props) => {
             </tbody>
           </Table>
         </Card.Body>
-
       </Card>
       {
         <Modal
@@ -158,10 +153,9 @@ const CartList = (props) => {
             <Modal.Title>{Cart_Items.ORDER_TYPE_HEADING}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          
             <Form.Check
               // disabled
-              onChange={()=>handleRadio()}
+              onChange={() => handleRadio()}
               value={dine}
               type={"radio"}
               label={Cart_Items.DINE_IN}
@@ -169,7 +163,7 @@ const CartList = (props) => {
               id={Cart_Items.DINE_IN}
             />
             <Form.Check
-              onChange={()=>handleRadio()}
+              onChange={() => handleRadio()}
               // disabled
               value={!dine}
               type={"radio"}
@@ -187,8 +181,8 @@ const CartList = (props) => {
       }
       <div className="cart_button_align">
         <h2>
-            {Cart_Items.TOTAL_PRICE}
-            {bill}
+          {Cart_Items.TOTAL_PRICE}
+          {bill}
         </h2>
       </div>
       <div className="cart_button_align">

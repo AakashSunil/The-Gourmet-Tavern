@@ -14,8 +14,6 @@ export const orders_list = [
         cuisine: "Indian",
         preference: "Vegetarian",
         stockQuantity: 100,
-        ingredients:
-          "Baby Corn, Ghee, Red Chillies, Garlic, Cinnamon, Fenugreek Seeds, Cumin Seeds, Coriander Seeds, Tamamrind Paste, Curd(Yogurt), Lemon Juice, Turmeric Powder, Chilli Powder ",
         quantity: 3,
       },
       {
@@ -49,8 +47,6 @@ export const orders_list = [
         cuisine: "American",
         preference: "Non-Vegetarian",
         stockQuantity: 125,
-        ingredients:
-          "Sausages(Chicken/Pork), Eggs, Green Bell Pepper, Cheddar Cheese, Pepper, Onions, Oil",
         quantity: 2,
       },
     ],

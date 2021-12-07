@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { Add_Edit_Food_Page } from "../../../helpers/helperString";
 import { getBase64 } from "../../../helpers/helperFunctions";
 import { setError } from "../../../store/actions/commonActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const EditFoodItem = (props) => {
   const { item } = props;
 
-  const error = useSelector(state => state.error);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const dispatch = useDispatch();
 
   const [msgtype, setMsgType] = useState(null);
@@ -21,7 +19,6 @@ const EditFoodItem = (props) => {
   const [category, setCategory] = useState(item.category);
   const [cuisine, setCuisine] = useState(item.cuisine);
   const [preference, setPreference] = useState(item.preference);
-  // const [ingredients, setIngredients] = useState(item.ingredients);
   const [stockQuantity, setStockQuantity] = useState(item.quantity);
   const [imageData, setImageData] = useState(item.image);
 
@@ -30,74 +27,77 @@ const EditFoodItem = (props) => {
   };
 
   const form_validation = () => {
+    const food_item = {
+      productName: name,
+      productType: "food",
+      description: description,
+      price: price,
+      isDeleted: isDeleted,
+      category: category,
+      cuisine: cuisine,
+      preference: preference,
+      quantity: stockQuantity,
+      imageData: imageData,
+    };
 
-      const food_item = {
-          productName:name,
-          productType: "food",
-          description: description,
-          price:price,
-          isDeleted: isDeleted,
-          category: category,
-          cuisine:cuisine,
-          preference:preference,
-          quantity:stockQuantity,
-          imageData: imageData
-      }
+    if (
+      name.trim().length === 0 ||
+      description.trim().length === 0 ||
+      String(price).trim().length === 0 ||
+      category.trim().length === 0 ||
+      cuisine.trim().length === 0 ||
+      preference.trim().length === 0 ||
+      String(stockQuantity).trim().length === 0 ||
+      imageData.trim().length === 0
+    ) {
+      setError(
+        dispatch,
+        { msg: "All Fields are Required", type: "All" },
+        400,
+        "EDIT_FORM_FAILURE"
+      );
+    }
 
-      if(name.trim().length === 0 || description.trim().length === 0 || String(price).trim().length === 0 || category.trim().length === 0 || cuisine.trim().length === 0 || preference.trim().length === 0 ||  String(stockQuantity).trim().length === 0 || imageData.trim().length === 0) {
-          setError(dispatch, {msg:"All Fields are Required",type:"All"}, 400, 'EDIT_FORM_FAILURE');
-      }
+    //check if phone number meets all requirements
+    else if (price < 0) {
+      setError(
+        dispatch,
+        { msg: "Please enter a Positive Price", type: "Price" },
+        400,
+        "EDIT_FORM_FAILURE"
+      );
+    } else if (description.length > 200) {
+      setError(
+        dispatch,
+        {
+          msg: `Description Length is too High. Current length: ${description.length}. Character Limit: 200`,
+          type: "Address",
+        },
+        400,
+        "EDIT_FORM_FAILURE"
+      );
+    }
 
-      //check if phone number meets all requirements
-      else if(price < 0) {
-          setError(dispatch ,{msg:"Please enter a Positive Price",type:"Price"}, 400, 'EDIT_FORM_FAILURE');
-      }
+    //check if password meets all requirements
+    else if (stockQuantity <= 0) {
+      const message = "Please Enter a Positive Stock Quantity";
+      setError(
+        dispatch,
+        { msg: message, type: "Stock" },
+        400,
+        "EDIT_FORM_FAILURE"
+      );
+    }
 
-      else if(description.length > 200) {
-          setError(dispatch, {msg:`Description Length is too High. Current length: ${description.length}. Character Limit: 200`, type:"Address"}, 400, 'EDIT_FORM_FAILURE');
-
-      }
-
-      //check if password meets all requirements
-      else if(stockQuantity <= 0) {
-
-          const message = "Please Enter a Positive Stock Quantity";
-          setError(dispatch, {msg:message,type:"Stock"}, 400, 'EDIT_FORM_FAILURE');
-      }
-
-      //if all fields are valid
-      else {
-          // signUpUser(dispatch, name, email, phone, password, address, history);
-          // setShow(false)
-          // history.push('/foodMenu');
-          props.edit(food_item)
-      }
-  }
-
-  const handleSubmit = () => {
-    form_validation()
+    //if all fields are valid
+    else {
+      props.edit(food_item);
+    }
   };
 
-//   useEffect( () => {
-//     if(error.status !== null){
-//       if(error.id === 'EDIT_FORM_FAILURE') {
-//           setMsg(error.msg.msg);
-//           setMsgType(error.msg.type)
-//       }
-//       if(error.id === 'EDIT_FAILURE') {
-//           setMsg(error.msg);
-//           setMsgType("API")
-//       }
-//     }
-//     else {
-//       dispatch({
-//         type : 'CLEAR_ERROR'
-//     });
-//     }
-    
-    
-    
-// }, [error, isAuthenticated] )
+  const handleSubmit = () => {
+    form_validation();
+  };
 
   return (
     <>
@@ -203,21 +203,6 @@ const EditFoodItem = (props) => {
           />
           <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
         </Form.Group>
-        {/* <Form.Group className="mb-3">
-          <Form.Label>{Add_Edit_Food_Page.INGREDIENTS}</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder={Add_Edit_Food_Page.PLACEHOLDER_FOOD_INGREDIENTS}
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
-            isInvalid={
-              msgtype === "All"
-                ? ingredients.length === 0
-                : msgtype === "Ingredients"
-            }
-          />
-          <Form.Control.Feedback type="invalid">{msg}</Form.Control.Feedback>
-        </Form.Group> */}
         <Form.Group className="mb-3">
           <Form.Label>{Add_Edit_Food_Page.STOCK_QUANTITY}</Form.Label>
           <Form.Control
