@@ -30,7 +30,7 @@ Both the following Methods are Run form the Outermost package.json File Level.
     Achieved Using package "concurrently" and defined "custom scripts".
     
 #   npm run build
-    Run the Server and A Build Version of the Client
+    Runs the Server and A Build Version of the Client
     In this method, a build folder for the frontend will be created.
     This will then need to be Served to the Browser. 
     All the required steps for this setup have been declared as part of the Custom Scripts.
