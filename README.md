@@ -66,6 +66,7 @@ The Setup will include the following Features
 There is a sample Products JSON file that can be added to the MongoDB setup. 
 
 If creating before running the code then, 
+
     1. The Database name has to be "The-Gourmet-Tavern". 
     2. The collection has to be "products".
 
