@@ -41,7 +41,7 @@ const CartList = (props) => {
 
   const handleSubmit = () => {
     const order_type = {
-      orderType: dine ? Cart_Items.DELIVERY : Cart_Items.DINE_IN,
+      orderType: !dine ? Cart_Items.DELIVERY : Cart_Items.DINE_IN,
     };
     dispatch(addOrders(order_type, token, history));
     setShowModal(false);
@@ -70,6 +70,7 @@ const CartList = (props) => {
   };
   const handleRadio = () => {
     setDine(!dine);
+    console.log(dine);
   };
   const changeButton = (type) => {
     if (!(showQuantity || showRemove)) {
