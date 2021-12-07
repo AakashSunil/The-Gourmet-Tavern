@@ -121,7 +121,7 @@
     "description": "A Dark Beer made using Roasted Malt or Roasted Barley, Hops, Water and Yeast.",
     "price": 12,
     "isDeleted": false,
-    "category": "Cocktail",
+    "category": "Beer",
     "level": "5",
     "quantity": 50
   },
