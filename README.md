@@ -61,3 +61,13 @@ The Setup will include the following Features
         4. Encryted Passwords for Saving in the Database
         5. React Redux Architecture for State Management on the Client Side
         6. React-Router Navigation - Page Navigation 
+
+# Sample Products JSON.
+There is a sample Products JSON file hat can be added to the MongoDB setup. 
+
+If creating before running the code then, 
+    1. The Database name has to be "The-Gourmet-Tavern". 
+    2. The collection has to be products.
+
+If inserting the documents after running the code - 
+    Insert the documents, after running the npm start / npm run build and before navigating through the site, to the products collection created in the database.
