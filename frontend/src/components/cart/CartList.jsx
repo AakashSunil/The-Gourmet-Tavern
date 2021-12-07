@@ -19,7 +19,7 @@ const CartList = (props) => {
   const [showQuantity, setShowQuantity] = useState(false);
   const [showRemove, setShowRemove] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [dine, setDine] = useState(false);
+  const [dine, setDine] = useState(true);
 
   // const handleRemoveItem = (item_to_remove) => {
   //   const product = {
@@ -43,6 +43,7 @@ const CartList = (props) => {
     const order_type = {
       orderType: !dine ? Cart_Items.DELIVERY : Cart_Items.DINE_IN,
     };
+    console.log(order_type,dine);
     dispatch(addOrders(order_type, token, history));
     setShowModal(false);
     history.push("/myCart");
@@ -156,6 +157,7 @@ const CartList = (props) => {
           <Modal.Body>
             <Form.Check
               // disabled
+              defaultChecked={true}
               onChange={() => handleRadio()}
               value={dine}
               type={"radio"}
